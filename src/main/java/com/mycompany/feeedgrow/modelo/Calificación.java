@@ -141,7 +141,7 @@ public class Calificación {
         this.responsabilidad = responsabilidad;
         //hacerlos concordar con cada uno de los atributos
         //y que aquí se calcule el promedio o hacer un metodo por fuera que se llame aquí
-       
+       //xd
     }
 
   
