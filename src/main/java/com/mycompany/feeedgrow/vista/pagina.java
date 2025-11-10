@@ -20,7 +20,7 @@ private Estudiante estudiante;
     }
     
     private void initContent() {
-        cambiarPanel(new Principal(estudiante));
+        cambiarPanel(new principal(estudiante));
     }
     
     private void initStyles(){  
@@ -257,7 +257,7 @@ private Estudiante estudiante;
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotónPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónPrincipalActionPerformed
-    cambiarPanel(new Principal(estudiante));
+    cambiarPanel(new principal(estudiante));
 
 // TODO add your handling code here:
     }//GEN-LAST:event_BotónPrincipalActionPerformed
