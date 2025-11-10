@@ -3,31 +3,41 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.feeedgrow.vista;
+import com.mycompany.feeedgrow.modelo.Estudiante;
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
 
-import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMTMaterialLighterIJTheme;
-import javax.swing.UIManager;
 
 
-/**
- *
- * @author PC
- */
 public class pagina extends javax.swing.JFrame {
-
-    /**
-     * Creates new form pagina
-     */
-    public pagina() {
+private Estudiante estudiante;
+   
+    public pagina(Estudiante estudiante) {
+        this.estudiante = estudiante;
         initComponents();
         initStyles();
-        
+        initContent();    
     }
-    private void initStyles(){
-    BotónPrincipal.putClientProperty( "JButton.buttonType" , "roundRect" );
-    BotónBúsqueda.putClientProperty( "JButton.buttonType" , "roundRect" ); 
-    BotónGestor.putClientProperty( "JButton.buttonType" , "roundRect" ); 
-    BotónRanking.putClientProperty( "JButton.buttonType" , "roundRect" ); 
+    
+    private void initContent() {
+        cambiarPanel(new Principal(estudiante));
+    }
+    
+    private void initStyles(){  
+        BotónPrincipal.putClientProperty( "JButton.buttonType" , "roundRect" );
+        BotónBúsqueda.putClientProperty( "JButton.buttonType" , "roundRect" ); 
+        BotónGestor.putClientProperty( "JButton.buttonType" , "roundRect" ); 
+        BotónRanking.putClientProperty( "JButton.buttonType" , "roundRect" ); 
+    }
+    
+    public void cambiarPanel(JPanel p) {
+        p.setSize(972, 651);
+        p.setLocation(0,0); 
+        content.removeAll();
+        content.add(p, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+        //revusar el layout horizontal
     }
 
     /**
@@ -51,6 +61,7 @@ public class pagina extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,6 +77,11 @@ public class pagina extends javax.swing.JFrame {
         BotónPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotónPrincipal.setMaximumSize(new java.awt.Dimension(86, 32));
         BotónPrincipal.setMinimumSize(new java.awt.Dimension(86, 32));
+        BotónPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotónPrincipalMouseClicked(evt);
+            }
+        });
         BotónPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotónPrincipalActionPerformed(evt);
@@ -192,24 +208,42 @@ public class pagina extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        content.setBackground(new java.awt.Color(250, 250, 250));
+
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 972, Short.MAX_VALUE)
+        );
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 978, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1125, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1131, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,7 +257,9 @@ public class pagina extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotónPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónPrincipalActionPerformed
-        // TODO add your handling code here:
+    cambiarPanel(new Principal(estudiante));
+
+// TODO add your handling code here:
     }//GEN-LAST:event_BotónPrincipalActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -231,7 +267,7 @@ public class pagina extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void BotónGestorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónGestorActionPerformed
-        // TODO add your handling code here:
+        cambiarPanel(new Gestor());
     }//GEN-LAST:event_BotónGestorActionPerformed
 
     private void BotónBúsquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónBúsquedaActionPerformed
@@ -242,47 +278,17 @@ public class pagina extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BotónRankingActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel *///<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(pagina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(pagina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(pagina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(pagina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold
-        FlatMTMaterialLighterIJTheme.setup();
-        //UIManager.put( "Button.arc", 999 );
+    private void BotónPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotónPrincipalMouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new pagina().setVisible(true);
-            }
-        });
-    }
+    }//GEN-LAST:event_BotónPrincipalMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotónBúsqueda;
     private javax.swing.JButton BotónGestor;
     private javax.swing.JButton BotónPrincipal;
     private javax.swing.JButton BotónRanking;
+    private javax.swing.JPanel content;
     private javax.swing.JPanel fondo;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;

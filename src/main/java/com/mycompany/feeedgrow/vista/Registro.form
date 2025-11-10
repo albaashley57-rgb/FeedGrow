@@ -113,18 +113,6 @@
                       <Component id="logo" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="CampoCarrera" max="32767" attributes="0"/>
-                          <Component id="campoNombre" max="32767" attributes="0"/>
-                          <Component id="CampoCorreo" alignment="1" max="32767" attributes="0"/>
-                          <Component id="CampoConfirmarContraseña" alignment="1" max="32767" attributes="0"/>
-                          <Component id="CampoContraseña" alignment="0" max="32767" attributes="0"/>
-                          <Component id="CampoCódigo" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -145,6 +133,18 @@
                       </Group>
                       <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jComboBoxCarrera" max="32767" attributes="0"/>
+                          <Component id="campoNombre" max="32767" attributes="0"/>
+                          <Component id="campoCorreo" alignment="1" max="32767" attributes="0"/>
+                          <Component id="campoConfirmarContraseña" alignment="1" max="32767" attributes="0"/>
+                          <Component id="campoContraseña" alignment="0" max="32767" attributes="0"/>
+                          <Component id="campoCódigo" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -157,15 +157,15 @@
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="campoNombre" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="CampoCódigo" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="campoCódigo" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="CampoCorreo" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="campoCorreo" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="CampoCarrera" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jComboBoxCarrera" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="CampoContraseña" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="campoContraseña" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="CampoConfirmarContraseña" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="campoConfirmarContraseña" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="botonAceptar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -217,27 +217,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNombreActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="CampoCarrera">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto Light" size="12" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Carrera"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CampoCarreraMouseClicked"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="CampoCorreo">
+            <Component class="javax.swing.JTextField" name="campoCorreo">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -254,11 +234,11 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CampoCorreoMouseClicked"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoCorreoActionPerformed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="campoCorreoMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoCorreoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="CampoConfirmarContrase&#xf1;a">
+            <Component class="javax.swing.JTextField" name="campoConfirmarContrase&#xf1;a">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -275,10 +255,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CampoConfirmarContrase&#xf1;aMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="campoConfirmarContrase&#xf1;aMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="CampoContrase&#xf1;a">
+            <Component class="javax.swing.JTextField" name="campoContrase&#xf1;a">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -295,11 +275,11 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CampoContrase&#xf1;aMouseClicked"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoContrase&#xf1;aActionPerformed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="campoContrase&#xf1;aMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoContrase&#xf1;aActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="CampoC&#xf3;digo">
+            <Component class="javax.swing.JTextField" name="campoC&#xf3;digo">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -316,8 +296,8 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CampoC&#xf3;digoMouseClicked"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoC&#xf3;digoActionPerformed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="campoC&#xf3;digoMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoC&#xf3;digoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botonAceptar">
@@ -360,6 +340,40 @@
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="IniciarSesi&#xf3;nMouseEntered"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="IniciarSesi&#xf3;nMouseExited"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBoxCarrera">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Roboto Light" size="12" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="99" green="99" red="99" type="rgb"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="8">
+                    <StringItem index="0" value="Seleccione su carrera"/>
+                    <StringItem index="1" value="Ingenier&#xed;a de Sistemas"/>
+                    <StringItem index="2" value="Ingenier&#xed;a Electr&#xf3;nica"/>
+                    <StringItem index="3" value="Ingenier&#xed;a Biom&#xe9;dica"/>
+                    <StringItem index="4" value="Ingenier&#xed;a Qu&#xed;mica"/>
+                    <StringItem index="5" value="Biolog&#xed;a"/>
+                    <StringItem index="6" value="Derecho"/>
+                    <StringItem index="7" value="Medicina"/>
+                  </StringArray>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxCarreraActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

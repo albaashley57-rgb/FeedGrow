@@ -1,34 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.mycompany.feeedgrow.vista;
 
+import com.mycompany.feeedgrow.controlador.InicioDeSesionControlador;
+import com.mycompany.feeedgrow.modelo.Estudiante;
 import java.awt.Color;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JPanel;
 
-/**
- *
- * @author PC
- */
 public class InicioDeSesion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form InicioDeSesion
-     */
     public InicioDeSesion() {
         initComponents();
+        initLocation();
         initCustom();
     }
- private void initCustom() {
-    agregarDegradado(jPanel1, new Degradado(19, 188, 129, 22, 140, 202, false));
     
+ private void initCustom() {
+    agregarDegradado(jPanel1, new Degradado(19, 188, 129, 22, 140, 202, false));   
+}
+ private void initLocation(){
+    Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+    int x = (pantalla.width - this.getWidth()) / 2;
+    int y = (pantalla.height - this.getHeight()) / 2;
+    this.setLocation(x, y);
 }
 
 private void agregarDegradado(JPanel destino, Degradado fondo) {
@@ -250,79 +245,30 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
     }//GEN-LAST:event_campoContraseñaMouseClicked
 
     private void botonAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAceptarMouseClicked
+    InicioDeSesionControlador controlador = new InicioDeSesionControlador();
     String codigoIngresado = campoUsuario.getText().trim();
     String contraseñaIngresada = String.valueOf(campoContraseña.getPassword());
-
-    // Validaciones básicas
-    if (codigoIngresado.isEmpty() || contraseñaIngresada.isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this,
-                "Debe ingresar su código y contraseña.",
-                "Error",
-                javax.swing.JOptionPane.ERROR_MESSAGE);
+    
+    String errorCampos = controlador.validarCamposLogin(codigoIngresado, contraseñaIngresada);
+    if (!errorCampos.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, errorCampos, "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         return;
     }
 
-    File archivo = new File("usuarios.txt");
-
-    if (!archivo.exists()) {
-        javax.swing.JOptionPane.showMessageDialog(this,
-                "No hay registros aún. Debe registrarse primero.",
-                "Error",
-                javax.swing.JOptionPane.ERROR_MESSAGE);
+    String errorLogin = controlador.verificarUsuario(codigoIngresado, contraseñaIngresada);
+    if (!errorLogin.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, errorLogin, "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         return;
     }
+    Estudiante e = controlador.getGestor().buscarPorCodigo(codigoIngresado);
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Inicio de sesión exitoso. Bienvenido/a " + e.getNombre() + "!",
+            "Éxito",
+            javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
-    boolean encontrado = false;
-    boolean contraseñaCorrecta = false;
-    String nombreUsuario = "";
-
-    try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
-        String linea;
-        while ((linea = br.readLine()) != null) {
-            String[] datos = linea.split(",");
-
-            if (datos.length >= 5) {
-                String codigoArchivo = datos[0].trim();
-                String contraseñaArchivo = datos[4].trim();
-
-                if (codigoArchivo.equals(codigoIngresado)) {
-                    encontrado = true;
-                    if (contraseñaArchivo.equals(contraseñaIngresada)) {
-                        contraseñaCorrecta = true;
-                        nombreUsuario = datos[1];
-                    }
-                    break;
-                }
-            }
-        }
-
-        if (!encontrado) {
-            javax.swing.JOptionPane.showMessageDialog(this,
-                    "No existe una cuenta con ese código.",
-                    "Usuario no encontrado",
-                    javax.swing.JOptionPane.WARNING_MESSAGE);
-        } else if (!contraseñaCorrecta) {
-            javax.swing.JOptionPane.showMessageDialog(this,
-                    "La contraseña es incorrecta.",
-                    "Error",
-                    javax.swing.JOptionPane.ERROR_MESSAGE);
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(this,
-                    "Inicio de sesión exitoso. Bienvenido/a " + nombreUsuario + "!",
-                    "Éxito",
-                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
-            abrirPaginaPrincipal();
-        }
-
-    } catch (IOException e) {
-        javax.swing.JOptionPane.showMessageDialog(this,
-                "Error al leer el archivo de usuarios.",
-                "Error",
-                javax.swing.JOptionPane.ERROR_MESSAGE);
-        e.printStackTrace();//?
-    }
-        javax.swing.JOptionPane.showMessageDialog(this,"Intento de login con los datos: \nUsuario:" + campoUsuario.getText() + "\nContraseña:" + String.valueOf(campoContraseña.getPassword()), "LOGIN", javax.swing.JOptionPane.INFORMATION_MESSAGE );
+     pagina ventana = new pagina(e);
+     ventana.setVisible(true);
+     this.dispose();
     }//GEN-LAST:event_botonAceptarMouseClicked
 
     private void registrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarseMouseEntered
@@ -338,11 +284,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registrarseMouseClicked
-    private void abrirPaginaPrincipal(){
-        pagina ventana = new pagina();
-        ventana.setVisible(true);
-        this.dispose();
-    }
+
     /**
      * @param args the command line arguments
      */

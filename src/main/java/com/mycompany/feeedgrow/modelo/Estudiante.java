@@ -4,26 +4,23 @@ package com.mycompany.feeedgrow.modelo;
 
 import java.util.ArrayList;
 public class Estudiante {
-    
-    /*para usar cosas de herencia se podría crear una clase usuario que acortaría este código 
-    y se podria argumentar con la custion de extensibilidad del proyecto a más usuarios en caso
-    de que creciera, además se aplicarían mas conceptos*/
+   
     private String nombre;
-    private String usuario;//en caso de crear la clase usuario ya no sería un String
+    private String código;
     private String carrera;
     private String correo;
-    private String contrasena;
+    private String contraseña;
     private Perfil perfil;
     private ArrayList<Calificación> calificacionesHechas;
     private ArrayList<Calificación> calificacionesRecibidas;
     
     
-    public Estudiante(String nombre, String usuario, String carrera, String correo, String contrasena) {
+    public Estudiante(String nombre, String código, String carrera, String correo, String contrasena) {
         this.nombre = nombre;
-        this.usuario = usuario;
+        this.código = código;
         this.carrera = carrera;
         this.correo = correo;
-        this.contrasena = contrasena;
+        this.contraseña = contrasena;
         this.calificacionesHechas = new ArrayList<>();
         this.calificacionesRecibidas = new ArrayList<>();
         this.perfil = new Perfil(this);
@@ -40,12 +37,12 @@ public class Estudiante {
         this.nombre = nombre;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getCódigo() {
+        return código;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setCódigo(String código) {
+        this.código = código;
     }
 
     public String getCarrera() {
@@ -64,12 +61,12 @@ public class Estudiante {
         this.correo = correo;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getContraseña() {
+        return contraseña;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     public ArrayList<Calificación> getCalificacionesHechas() {
@@ -95,15 +92,18 @@ public class Estudiante {
 
 
     // Métodos (revisar lógica y si son necesarios más)
-    public void agregarCalificacionRecibida(Calificación calificacion) { 
-        this.calificacionesRecibidas.add(calificacion);
+    public void agregarCalificacionRecibida(Calificación calificación) { 
+        this.calificacionesRecibidas.add(calificación);
         this.perfil.actualizarPromedios();
      }
     
-    public void agregarCalificacionHecha(Calificación calificacion) {
-        this.calificacionesHechas.add(calificacion); 
+    public void agregarCalificacionHecha(Calificación calificación) {
+        this.calificacionesHechas.add(calificación); 
     }
 
-   
+   @Override
+   public String toString(){
+       return this.código + "," + this.nombre + "," + this.correo + "," +  this.carrera + "," + this.contraseña;
+   }
 }
 

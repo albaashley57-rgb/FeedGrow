@@ -1,77 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.mycompany.feeedgrow.vista;
 
+import com.mycompany.feeedgrow.controlador.RegistroControlador;
+import com.mycompany.feeedgrow.modelo.Estudiante;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- *
- * @author PC
- */
 public class Registro extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Registro
-     */
+    
     public Registro() {
         initComponents();
+        initLocation();
         initCustom();
     }
-    private boolean validarCampos() {
-    String nombre = campoNombre.getText().trim();
-    String carrera = CampoCarrera.getText().trim();
-    String codigo = CampoCódigo.getText().trim();
-    String contraseña = CampoContraseña.getText().trim();
-    String confirmar = CampoConfirmarContraseña.getText().trim();
-
-    String[] placeholders = {
-        "Nombre", "Carrera", 
-        "Código de estudiante", "Contraseña", "Confirmar Contraseña"
-    };
-
-    if (nombre.isEmpty() || nombre.equalsIgnoreCase(placeholders[0])) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Debe ingresar su nombre completo.");
-        return false;
-    }
-
-    if (codigo.isEmpty() || codigo.equalsIgnoreCase(placeholders[2])) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Debe ingresar su código estudiantil.");
-        return false;
-    }
-
-    if (!codigo.matches("\\d+")) {
-        javax.swing.JOptionPane.showMessageDialog(this, "El código solo puede contener números.");
-        return false;
-    }
     
-    if (carrera.isEmpty() || carrera.equalsIgnoreCase(placeholders[1])) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Debe ingresar su carrera");
-        return false;
-    }
-
-
-    if (contraseña.isEmpty() || contraseña.equalsIgnoreCase(placeholders[3])) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Debe ingresar una contraseña.");
-        return false;
-    }
-
-    if (confirmar.isEmpty() || confirmar.equalsIgnoreCase(placeholders[4])) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Debe confirmar la contraseña.");
-        return false;
-    }
-
-    if (!contraseña.equals(confirmar)) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden.");
-        return false;
-    }
-
-    return true;
+private void initLocation(){
+    Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+    int x = (pantalla.width - this.getWidth()) / 2;
+    int y = (pantalla.height - this.getHeight()) / 2;
+    this.setLocation(x, y);
 }
-    
-    
+  
 private void initCustom() {
     agregarDegradado(jPanel5, new Degradado(19, 188, 129, 22, 140, 202, false));
     agregarDegradado(jPanel6, new Degradado(22, 140, 202, 19, 188, 129, false));
@@ -106,13 +58,13 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         logo = new javax.swing.JLabel();
         título = new javax.swing.JLabel();
         campoNombre = new javax.swing.JTextField();
-        CampoCarrera = new javax.swing.JTextField();
-        CampoCorreo = new javax.swing.JTextField();
-        CampoConfirmarContraseña = new javax.swing.JTextField();
-        CampoContraseña = new javax.swing.JTextField();
-        CampoCódigo = new javax.swing.JTextField();
+        campoCorreo = new javax.swing.JTextField();
+        campoConfirmarContraseña = new javax.swing.JTextField();
+        campoContraseña = new javax.swing.JTextField();
+        campoCódigo = new javax.swing.JTextField();
         botonAceptar = new javax.swing.JButton();
         IniciarSesión = new javax.swing.JLabel();
+        jComboBoxCarrera = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
 
@@ -170,73 +122,62 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             }
         });
 
-        CampoCarrera.setBackground(new java.awt.Color(255, 255, 255));
-        CampoCarrera.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
-        CampoCarrera.setForeground(new java.awt.Color(153, 153, 153));
-        CampoCarrera.setText("Carrera");
-        CampoCarrera.setBorder(null);
-        CampoCarrera.addMouseListener(new java.awt.event.MouseAdapter() {
+        campoCorreo.setBackground(new java.awt.Color(255, 255, 255));
+        campoCorreo.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        campoCorreo.setForeground(new java.awt.Color(153, 153, 153));
+        campoCorreo.setText("Correo");
+        campoCorreo.setBorder(null);
+        campoCorreo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoCarreraMouseClicked(evt);
+                campoCorreoMouseClicked(evt);
             }
         });
-
-        CampoCorreo.setBackground(new java.awt.Color(255, 255, 255));
-        CampoCorreo.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
-        CampoCorreo.setForeground(new java.awt.Color(153, 153, 153));
-        CampoCorreo.setText("Correo");
-        CampoCorreo.setBorder(null);
-        CampoCorreo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoCorreoMouseClicked(evt);
-            }
-        });
-        CampoCorreo.addActionListener(new java.awt.event.ActionListener() {
+        campoCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoCorreoActionPerformed(evt);
+                campoCorreoActionPerformed(evt);
             }
         });
 
-        CampoConfirmarContraseña.setBackground(new java.awt.Color(255, 255, 255));
-        CampoConfirmarContraseña.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
-        CampoConfirmarContraseña.setForeground(new java.awt.Color(153, 153, 153));
-        CampoConfirmarContraseña.setText("Confirmar Contraseña");
-        CampoConfirmarContraseña.setBorder(null);
-        CampoConfirmarContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
+        campoConfirmarContraseña.setBackground(new java.awt.Color(255, 255, 255));
+        campoConfirmarContraseña.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        campoConfirmarContraseña.setForeground(new java.awt.Color(153, 153, 153));
+        campoConfirmarContraseña.setText("Confirmar Contraseña");
+        campoConfirmarContraseña.setBorder(null);
+        campoConfirmarContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoConfirmarContraseñaMouseClicked(evt);
+                campoConfirmarContraseñaMouseClicked(evt);
             }
         });
 
-        CampoContraseña.setBackground(new java.awt.Color(255, 255, 255));
-        CampoContraseña.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
-        CampoContraseña.setForeground(new java.awt.Color(153, 153, 153));
-        CampoContraseña.setText("Contraseña");
-        CampoContraseña.setBorder(null);
-        CampoContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
+        campoContraseña.setBackground(new java.awt.Color(255, 255, 255));
+        campoContraseña.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        campoContraseña.setForeground(new java.awt.Color(153, 153, 153));
+        campoContraseña.setText("Contraseña");
+        campoContraseña.setBorder(null);
+        campoContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoContraseñaMouseClicked(evt);
+                campoContraseñaMouseClicked(evt);
             }
         });
-        CampoContraseña.addActionListener(new java.awt.event.ActionListener() {
+        campoContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoContraseñaActionPerformed(evt);
+                campoContraseñaActionPerformed(evt);
             }
         });
 
-        CampoCódigo.setBackground(new java.awt.Color(255, 255, 255));
-        CampoCódigo.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
-        CampoCódigo.setForeground(new java.awt.Color(153, 153, 153));
-        CampoCódigo.setText("Código de estudiante");
-        CampoCódigo.setBorder(null);
-        CampoCódigo.addMouseListener(new java.awt.event.MouseAdapter() {
+        campoCódigo.setBackground(new java.awt.Color(255, 255, 255));
+        campoCódigo.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        campoCódigo.setForeground(new java.awt.Color(153, 153, 153));
+        campoCódigo.setText("Código de estudiante");
+        campoCódigo.setBorder(null);
+        campoCódigo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CampoCódigoMouseClicked(evt);
+                campoCódigoMouseClicked(evt);
             }
         });
-        CampoCódigo.addActionListener(new java.awt.event.ActionListener() {
+        campoCódigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoCódigoActionPerformed(evt);
+                campoCódigoActionPerformed(evt);
             }
         });
 
@@ -273,6 +214,17 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             }
         });
 
+        jComboBoxCarrera.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBoxCarrera.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jComboBoxCarrera.setForeground(new java.awt.Color(153, 153, 153));
+        jComboBoxCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione su carrera", "Ingeniería de Sistemas", "Ingeniería Electrónica", "Ingeniería Biomédica", "Ingeniería Química", "Biología", "Derecho", "Medicina" }));
+        jComboBoxCarrera.setBorder(null);
+        jComboBoxCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCarreraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -281,16 +233,6 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
                 .addGap(72, 72, 72)
                 .addComponent(logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(66, 66, 66))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(CampoCarrera)
-                    .addComponent(campoNombre)
-                    .addComponent(CampoCorreo)
-                    .addComponent(CampoConfirmarContraseña)
-                    .addComponent(CampoContraseña, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CampoCódigo, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(36, 36, 36))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -305,6 +247,16 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
                             .addComponent(botonAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(8, 8, 8)))
                 .addGap(151, 151, 151))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jComboBoxCarrera, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoNombre)
+                    .addComponent(campoCorreo)
+                    .addComponent(campoConfirmarContraseña)
+                    .addComponent(campoContraseña, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoCódigo, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(36, 36, 36))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,15 +268,15 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
                 .addGap(12, 12, 12)
                 .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(CampoCódigo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoCódigo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(CampoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(CampoCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(CampoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(CampoConfirmarContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoConfirmarContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(botonAceptar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -390,97 +342,100 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+private void estéticaCampos(javax.swing.JTextField campo){
+    campo.setText("");
+    campo.setForeground(Color.BLACK);
+    if(!campo.equals(campoNombre)&& campoNombre.getText().isEmpty()){
+        campoNombre.setText("Nombre");
+        campoNombre.setForeground(new Color(153, 153, 153));
+    }
+    if(!campo.equals(campoCódigo)&& campoCódigo.getText().isEmpty()){
+        campoCódigo.setText("Código de estudiante");
+        campoCódigo.setForeground(new Color(153, 153, 153));
+    }
+    if(!campo.equals(campoCorreo)&& campoCorreo.getText().isEmpty()){
+        campoCorreo.setText("Correo");
+        campoCorreo.setForeground(new Color(153, 153, 153));
+    }
+    if(!campo.equals(campoContraseña)&& campoContraseña.getText().isEmpty()){
+        campoContraseña.setText("Contraseña");
+        campoContraseña.setForeground(new Color(153, 153, 153));
+    }
+    if(!campo.equals(campoConfirmarContraseña)&& campoConfirmarContraseña.getText().isEmpty()){
+        campoConfirmarContraseña.setText("Confirmar COntraseña");
+        campoConfirmarContraseña.setForeground(new Color(153, 153, 153));
+    }
+}
     private void campoNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoNombreMouseClicked
-        campoNombre.setText("");
-        campoNombre.setForeground(Color.black);
+        estéticaCampos(campoNombre);
     }//GEN-LAST:event_campoNombreMouseClicked
 
-    private void CampoCarreraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoCarreraMouseClicked
-       CampoCarrera.setText("");
-       CampoCarrera.setForeground(Color.black);
+    private void campoCorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoCorreoMouseClicked
+       estéticaCampos(campoCorreo);
+    }//GEN-LAST:event_campoCorreoMouseClicked
 
-    }//GEN-LAST:event_CampoCarreraMouseClicked
+    private void campoConfirmarContraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoConfirmarContraseñaMouseClicked
+        estéticaCampos(campoConfirmarContraseña);
+    }//GEN-LAST:event_campoConfirmarContraseñaMouseClicked
 
-    private void CampoCorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoCorreoMouseClicked
-       CampoCorreo.setText("");
-       CampoCorreo.setForeground(Color.black);
-    }//GEN-LAST:event_CampoCorreoMouseClicked
-
-    private void CampoConfirmarContraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoConfirmarContraseñaMouseClicked
-       CampoConfirmarContraseña.setText("");
-       CampoConfirmarContraseña.setForeground(Color.black);
-    }//GEN-LAST:event_CampoConfirmarContraseñaMouseClicked
-
-    private void CampoContraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoContraseñaMouseClicked
-       CampoContraseña.setText("");
-       CampoContraseña.setForeground(Color.black);
-    }//GEN-LAST:event_CampoContraseñaMouseClicked
+    private void campoContraseñaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoContraseñaMouseClicked
+        estéticaCampos(campoContraseña);
+    }//GEN-LAST:event_campoContraseñaMouseClicked
 
     private void campoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoNombreActionPerformed
 
-    private void CampoCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCorreoActionPerformed
+    private void campoCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCorreoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoCorreoActionPerformed
+    }//GEN-LAST:event_campoCorreoActionPerformed
 
-    private void CampoCódigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CampoCódigoMouseClicked
-         CampoCódigo.setText("");
-       CampoCódigo.setForeground(Color.black);
-    }//GEN-LAST:event_CampoCódigoMouseClicked
+    private void campoCódigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoCódigoMouseClicked
+        estéticaCampos(campoCódigo);
+    }//GEN-LAST:event_campoCódigoMouseClicked
 
-    private void CampoCódigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoCódigoActionPerformed
+    private void campoCódigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCódigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoCódigoActionPerformed
+    }//GEN-LAST:event_campoCódigoActionPerformed
 
-    private void CampoContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoContraseñaActionPerformed
+    private void campoContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoContraseñaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoContraseñaActionPerformed
+    }//GEN-LAST:event_campoContraseñaActionPerformed
 
     private void botonAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAceptarMouseClicked
-                                          
-    if (!validarCampos()) return; // si algo está mal, no continúa
 
-    String codigo = CampoCódigo.getText().trim();
-    String nombre = campoNombre.getText().trim();
-    String correo = CampoCorreo.getText().trim();
-    String carrera = CampoCarrera.getText().trim();
-    String contraseña = CampoContraseña.getText().trim();
+    RegistroControlador controller = new RegistroControlador();
 
-    try {
-        java.io.File archivo = new java.io.File("usuarios.txt");
-        archivo.createNewFile(); // si no existe lo crea
-        java.util.List<String> lineas = java.nio.file.Files.readAllLines(archivo.toPath());
+    // Crear el objeto estudiante
+    Estudiante estudiante = new Estudiante(
+        campoNombre.getText().trim(),
+        campoCódigo.getText().trim(),
+        campoCorreo.getText().trim(),
+        jComboBoxCarrera.getSelectedItem().toString(),
+        campoContraseña.getText().trim()
+    );
 
-        for (String linea : lineas) {
-            if (linea.startsWith(codigo + ",")) {
-                javax.swing.JOptionPane.showMessageDialog(this, 
-                    "Ya existe una cuenta con ese código estudiantil.",
-                    "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-        }
+    String confirmar = campoConfirmarContraseña.getText().trim();
 
-        // Si pasa todo, guardar datos
-        java.io.FileWriter writer = new java.io.FileWriter(archivo, true);
-        writer.write(codigo + "," + nombre + "," + correo + "," + carrera + "," + contraseña + "\n");
-        writer.close();
+    // Validar datos
+    String errores = controller.validarEstudiante(estudiante, confirmar);
 
-        javax.swing.JOptionPane.showMessageDialog(this, 
-            "Registro exitoso. ¡Bienvenido/a, " + nombre + "!",
-            "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-         InicioDeSesion ventana = new InicioDeSesion();
-         ventana.setVisible(true);
-         this.dispose();
-
-    } catch (Exception e) {
-        javax.swing.JOptionPane.showMessageDialog(this, 
-            "Error al registrar: " + e.getMessage(),
-            "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    if (!errores.isEmpty()) {
+        JOptionPane.showMessageDialog(this, errores, "Error de validación", JOptionPane.ERROR_MESSAGE);
+        return;
     }
 
+    // Registrar estudiante
+    String resultado = controller.registrarEstudiante(estudiante);
 
-        javax.swing.JOptionPane.showMessageDialog(this,"Intento de login con los datos: \nUsuario:" + CampoCódigo.getText() + "\nContraseña:" + CampoContraseña.getText(), "REGISTRO", javax.swing.JOptionPane.INFORMATION_MESSAGE );
+    if (resultado.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Registro exitoso. ¡Bienvenido/a, " + estudiante.getNombre() + "!");
+        new InicioDeSesion().setVisible(true);
+        this.dispose();
+    } else {
+        JOptionPane.showMessageDialog(this, resultado, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+                
     }//GEN-LAST:event_botonAceptarMouseClicked
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
@@ -500,6 +455,10 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
     private void IniciarSesiónMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IniciarSesiónMouseExited
       IniciarSesión.setForeground(new Color(102, 102, 102));
     }//GEN-LAST:event_IniciarSesiónMouseExited
+
+    private void jComboBoxCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCarreraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxCarreraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -537,14 +496,14 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField CampoCarrera;
-    private javax.swing.JTextField CampoConfirmarContraseña;
-    private javax.swing.JTextField CampoContraseña;
-    private javax.swing.JTextField CampoCorreo;
-    private javax.swing.JTextField CampoCódigo;
     private javax.swing.JLabel IniciarSesión;
     private javax.swing.JButton botonAceptar;
+    private javax.swing.JTextField campoConfirmarContraseña;
+    private javax.swing.JTextField campoContraseña;
+    private javax.swing.JTextField campoCorreo;
+    private javax.swing.JTextField campoCódigo;
     private javax.swing.JTextField campoNombre;
+    private javax.swing.JComboBox<String> jComboBoxCarrera;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
