@@ -9,10 +9,10 @@ import javax.swing.JPanel;
 
 
 
-public class pagina extends javax.swing.JFrame {
+public class PáginaMenú extends javax.swing.JFrame {
 private Estudiante estudiante;
    
-    public pagina(Estudiante estudiante) {
+    public PáginaMenú(Estudiante estudiante) {
         this.estudiante = estudiante;
         initComponents();
         initStyles();
@@ -20,7 +20,7 @@ private Estudiante estudiante;
     }
     
     private void initContent() {
-        cambiarPanel(new principal(estudiante));
+        cambiarPanel(new Principal(estudiante));
     }
     
     private void initStyles(){  
@@ -257,7 +257,7 @@ private Estudiante estudiante;
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotónPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónPrincipalActionPerformed
-    cambiarPanel(new principal(estudiante));
+    cambiarPanel(new Principal(estudiante));
 
 // TODO add your handling code here:
     }//GEN-LAST:event_BotónPrincipalActionPerformed

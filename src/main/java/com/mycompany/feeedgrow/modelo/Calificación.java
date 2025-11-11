@@ -1,122 +1,56 @@
 
 package com.mycompany.feeedgrow.modelo;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Calificación {
-    private final Estudiante evaluador;
+    private final Estudiante evaluador; //cambiar a calificacdor y calificado
     private final Estudiante evaluado;
-    /*/si existiera una forma mas eficiente para manejar todos estos datos y 
-    recorrerlos (ya que vienen en pares) preguntar e implementarlo, habria que 
-    "migrar" todas las clases*/
     private double promedio;
-    private double responsabilidad;
-    private double colaboracion;
-    private double comunicacion;
-    private double participación;
-    private double compromiso;
-    private double inicitiva;
-    private double liderazgo;
-    private double resoluciónDeConflictos;
-    private double confiabilidad;
-    private double actitud;
+    private final Map<String, Double> calificaciones;
     private String atributo;
-    private String recomendacion;
- 
+    private String títuloRecomendación;
+    private String recomendación;
 
-    public double getResponsabilidad() {
-        return responsabilidad;
+
+    public Calificación(Estudiante evaluador, Estudiante evaluado,double responsabilidad,
+       double colaboración, double comunicación,double participación, double compromiso,
+       double iniciativa,double liderazgo,double resoluciónDeConflictos,double confiabilidad,
+       double actitud,String atributo,String títuloRecomendación, String recomendación) {
+        
+           this.evaluador = evaluador;
+           this.evaluado = evaluado;
+           this.calificaciones = new HashMap<>();
+            calificaciones.put("responsabilidad", responsabilidad);
+            calificaciones.put("colaboración", colaboración);
+            calificaciones.put("comunicación", comunicación);
+            calificaciones.put("participacion", participación);
+            calificaciones.put("compromiso", compromiso);
+            calificaciones.put("iniciativa", iniciativa);
+            calificaciones.put("liderazgo", liderazgo);
+            calificaciones.put("resolución de conflictos", resoluciónDeConflictos);
+            calificaciones.put("confiabilidad", confiabilidad);
+            calificaciones.put("actitud", actitud);
+           this.atributo = atributo;
+           this.recomendación = recomendación;
+           this.títuloRecomendación = títuloRecomendación;
+           this.promedio = calcularPromedioLocal();
     }
 
-    public void setResponsabilidad(double responsabilidad) {
-        this.responsabilidad = responsabilidad;
+  private double calcularPromedioLocal(){
+    double suma = 0;
+    Collection valores = calificaciones.values();
+    for(Object valor: valores){
+        suma += (double)valor;
     }
+    return suma / 10; 
+  }
 
-    public double getColaboracion() {
-        return colaboracion;
-    }
-
-    public void setColaboracion(double colaboracion) {
-        this.colaboracion = colaboracion;
-    }
-
-    public double getComunicacion() {
-        return comunicacion;
-    }
-
-    public void setComunicacion(double comunicacion) {
-        this.comunicacion = comunicacion;
-    }
-
-    public double getParticipación() {
-        return participación;
-    }
-
-    public void setParticipación(double participación) {
-        this.participación = participación;
-    }
-
-    public double getCompromiso() {
-        return compromiso;
-    }
-
-    public void setCompromiso(double compromiso) {
-        this.compromiso = compromiso;
-    }
-
-    public double getInicitiva() {
-        return inicitiva;
-    }
-
-    public void setInicitiva(double inicitiva) {
-        this.inicitiva = inicitiva;
-    }
-
-    public double getLiderazgo() {
-        return liderazgo;
-    }
-
-    public void setLiderazgo(double liderazgo) {
-        this.liderazgo = liderazgo;
-    }
-
-    public double getResoluciónDeConflictos() {
-        return resoluciónDeConflictos;
-    }
-
-    public void setResoluciónDeConflictos(double resoluciónDeConflictos) {
-        this.resoluciónDeConflictos = resoluciónDeConflictos;
-    }
-
-    public double getConfiabilidad() {
-        return confiabilidad;
-    }
-
-    public void setConfiabilidad(double confiabilidad) {
-        this.confiabilidad = confiabilidad;
-    }
-
-    public double getActitud() {
-        return actitud;
-    }
-
-    public void setActitud(double actitud) {
-        this.actitud = actitud;
-    }
-
-    public String getAtributo() {
-        return atributo;
-    }
-
-    public void setAtributo(String atributo) {
-        this.atributo = atributo;
-    }
-
-    public String getRecomendacion() {
-        return recomendacion;
-    }
-
-    public void setRecomendacion(String recomendacion) {
-        this.recomendacion = recomendacion;
-    }
+  public double getCalificaciónÁrea(String área){
+       return calificaciones.get(área);
+   }
 
     public Estudiante getEvaluador() {
         return evaluador;
@@ -130,22 +64,31 @@ public class Calificación {
         return promedio;
     }
 
-
-    public Calificación(Estudiante evaluador, Estudiante evaluado,double responsabilidad,
-       double colaboracion, double comunicacion,double participación, double compromiso,
-       double inicitiva,double liderazgo,double resoluciónDeConflictos,double confiabilidad,
-       double actitud,String atributo,String recomendacion) {
-        
-        this.evaluador = evaluador;
-        this.evaluado = evaluado;
-        this.responsabilidad = responsabilidad;
-        //hacerlos concordar con cada uno de los atributos
-        //y que aquí se calcule el promedio o hacer un metodo por fuera que se llame aquí
-       
+    public String getAtributo() {
+        return atributo;
     }
 
-  
+    public String getTítuloRecomendación() {
+        return títuloRecomendación;
+    }
 
-    
+    public String getRecomendación() {
+        return recomendación;
+    }
+
+    public void setAtributo(String atributo) {
+        this.atributo = atributo;
+    }
+
+    public void setTítuloRecomendación(String títuloRecomendación) {
+        this.títuloRecomendación = títuloRecomendación;
+    }
+
+    public void setRecomendación(String recomendación) {
+        this.recomendación = recomendación;
+    }
+   //determinar la mejor logica para editar calificaciones, lo mismo en perfil para editar mi perfil
+   
+           
 }
 
