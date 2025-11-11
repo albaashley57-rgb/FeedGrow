@@ -2,7 +2,7 @@ package com.mycompany.feeedgrow.controlador;
 import com.mycompany.feeedgrow.modelo.Estudiante;
 import com.mycompany.feeedgrow.modelo.GestorDatos;
 
-public class InicioDeSesionControlador {
+public class InicioDeSesiónControlador {
 private GestorDatos gestor = new GestorDatos();
 
     public GestorDatos getGestor() {

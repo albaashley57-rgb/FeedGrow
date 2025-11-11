@@ -1,7 +1,7 @@
 
 package com.mycompany.feeedgrow.modelo;
 
-import com.mycompany.feeedgrow.controlador.RegistroControlador;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class GestorDatos {
@@ -105,18 +106,17 @@ public class GestorDatos {
         return estudiantes;
     }
 
-    public String top3() {
-        /* ejemplo básico: ordena por promedio descendente
-        estudiantes.sort((a, b) -> Float.compare(b.getPromedio(), a.getPromedio()));
-
-        StringBuilder top = new StringBuilder("🏅 Top 3 estudiantes:\n");
-        for (int i = 0; i < Math.min(3, estudiantes.size()); i++) {
-            Estudiante e = estudiantes.get(i);
-            top.append((i + 1) + ". " + e.getNombre() + " - Promedio: " + e.getPromedio() + "\n");
-        }
-
-        return top.toString();*/ //REVISAR
-        return"";
+    public ArrayList<Estudiante> top3() {
+        ArrayList<Estudiante> copia =new ArrayList(estudiantes);
+        int n = 3;
+        copia.sort(Comparator.comparingDouble(Estudiante::getPromedioGlobal).reversed());
+        if (n > copia.size()) n = copia.size();
+        return new ArrayList<>(copia.subList(0, n));
     }
+    
+    //crear un método que genere la lista omitiendo un estudiante que entre por parametro, y así 
+    //reecribir los metodos búsquedapor codigo y nombre, esto es con la intención de buscar enntre mis calificaciones o así
+    //o quizas implementarlo en el controlador
+    
 }
 

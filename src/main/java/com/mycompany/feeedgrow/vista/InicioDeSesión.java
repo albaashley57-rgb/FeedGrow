@@ -1,16 +1,16 @@
 
 package com.mycompany.feeedgrow.vista;
 
-import com.mycompany.feeedgrow.controlador.InicioDeSesionControlador;
+import com.mycompany.feeedgrow.controlador.InicioDeSesiónControlador;
 import com.mycompany.feeedgrow.modelo.Estudiante;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
 
-public class InicioDeSesion extends javax.swing.JFrame {
+public class InicioDeSesión extends javax.swing.JFrame {
 
-    public InicioDeSesion() {
+    public InicioDeSesión() {
         initComponents();
         initLocation();
         initCustom();
@@ -245,7 +245,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
     }//GEN-LAST:event_campoContraseñaMouseClicked
 
     private void botonAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAceptarMouseClicked
-    InicioDeSesionControlador controlador = new InicioDeSesionControlador();
+    InicioDeSesiónControlador controlador = new InicioDeSesiónControlador();
     String codigoIngresado = campoUsuario.getText().trim();
     String contraseñaIngresada = String.valueOf(campoContraseña.getPassword());
     
@@ -266,7 +266,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             "Éxito",
             javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
-     pagina ventana = new pagina(e);
+     PáginaMenú ventana = new PáginaMenú(e);
      ventana.setVisible(true);
      this.dispose();
     }//GEN-LAST:event_botonAceptarMouseClicked
@@ -302,20 +302,21 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InicioDeSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioDeSesión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InicioDeSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioDeSesión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InicioDeSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioDeSesión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InicioDeSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioDeSesión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InicioDeSesion().setVisible(true);
+                new InicioDeSesión().setVisible(true);
             }
         });
     }

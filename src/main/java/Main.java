@@ -1,12 +1,15 @@
 
-import com.mycompany.feeedgrow.vista.InicioDeSesion;
+import com.mycompany.feeedgrow.vista.InicioDeSesión;
+
+
 
 
 public class Main {
 
     public static void main(String[] args) {
-        InicioDeSesion iniciar = new InicioDeSesion();
-        iniciar.setVisible(true);
+       InicioDeSesión inicio = new InicioDeSesión();
+       inicio.setVisible(true);
+       
     }
     
 }

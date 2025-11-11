@@ -1,157 +1,131 @@
 
 package com.mycompany.feeedgrow.modelo;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+
 public class Perfil {
-    private Estudiante estudiante;
-    private ArrayList<Calificación> calificacionesRecibidas;
-    // promedios precalculados
-    /*para cuestiones esteticas podría crearse un atributo color y una clase color 
-    con valores rgb y un metodo para generar colores al azar y se creen colores al 
-    azar por defecto para la "foto" de perfil, que pues esta sería como una imagen 
-    a la que solo se le cambia el color*/
-    private double promedioResponsabilidad;
-    private double promedioColaboracion;
-    private double promedioComunicacion;
-    private double promedioParticipación;
-    private double promedioCompromiso;
-    private double promedioInicitiva;
-    private double promedioLiderazgo;
-    private double promedioResoluciónDeConflictos;
-    private double promedioConfiabilidad;
-    private double promedioActitud;
+    
+    private final Estudiante estudiante;
+    private final Map<String, Double> promedioCalificaciones;
     private double promedioGlobal;
     private String[] mejoresAtributos;
 
     public Perfil(Estudiante estudiante) {
         this.estudiante = estudiante;
-        this.calificacionesRecibidas = estudiante.getCalificacionesRecibidas();
         this.mejoresAtributos = new String[3];
+        this.promedioCalificaciones = new HashMap();
         this.actualizarPromedios();
+        this.actualizarMejoresAtributo();
     }
-
+    
+    public void actualizarPromedios(){
+        promedioCalificaciones.put("responsabilidad", this.calcularPromedioPorArea("responsabilidad"));
+        promedioCalificaciones.put("colaboración", this.calcularPromedioPorArea("colaboración"));
+        promedioCalificaciones.put("comunicación", this.calcularPromedioPorArea("comunicación"));
+        promedioCalificaciones.put("participacion", this.calcularPromedioPorArea("participación"));
+        promedioCalificaciones.put("compromiso", this.calcularPromedioPorArea("compromiso"));
+        promedioCalificaciones.put("iniciativa", this.calcularPromedioPorArea("iniciativa"));
+        promedioCalificaciones.put("liderazgo", this.calcularPromedioPorArea("liderazgo"));
+        promedioCalificaciones.put("resolución de conflictos", this.calcularPromedioPorArea("resoluciónDeConflictos"));
+        promedioCalificaciones.put("confiabilidad", this.calcularPromedioPorArea("confiabilidad"));
+        promedioCalificaciones.put("actitud", this.calcularPromedioPorArea("actitud"));
+        this.promedioGlobal = this.calcularPromedioGlobal();
+    }
+     
+    private double calcularPromedioPorArea(String area){
+        ArrayList<Calificación> calificacionesRecibidas = this.estudiante.getCalificacionesRecibidas();
+        if (calificacionesRecibidas.isEmpty()){
+            return 0.0;
+        }
+        double suma = 0;
+        int contador = 0;
+        for (Calificación c : calificacionesRecibidas) {
+            Double valor = c.getCalificaciónÁrea(area);
+            if (valor != null) {
+                suma += valor;
+                contador++;
+            }
+        }
+        return contador == 0 ? 0 : suma / contador;
+    }
+    
+    private double calcularPromedioGlobal(){
+        ArrayList<Calificación> calificacionesRecibidas = this.estudiante.getCalificacionesRecibidas();
+        double suma = 0.0;
+        for(Calificación c : calificacionesRecibidas){
+            suma += c.getPromedio();
+        }
+        return suma / calificacionesRecibidas.size();
+    }
+    
     public Estudiante getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(Estudiante estudiante) {
-        this.estudiante = estudiante;
+    public double getPromedioGlobal() {
+        return promedioGlobal;
     }
 
-    public ArrayList<Calificación> getCalificacionesRecibidas() {
-        return calificacionesRecibidas;
+    public double getPromedio(String area){
+        return promedioCalificaciones.get(area);
     }
-
-    public void setCalificacionesRecibidas(ArrayList<Calificación> calificacionesRecibidas) {
-        this.calificacionesRecibidas = calificacionesRecibidas;
-    }
-
-    public double getPromedioResponsabilidad() {
-        return promedioResponsabilidad;
-    }
-
-    public void setPromedioResponsabilidad(double promedioResponsabilidad) {
-        this.promedioResponsabilidad = promedioResponsabilidad;
-    }
-
-    public double getPromedioColaboracion() {
-        return promedioColaboracion;
-    }
-
-    public void setPromedioColaboracion(double promedioColaboracion) {
-        this.promedioColaboracion = promedioColaboracion;
-    }
-
-    public double getPromedioParticipación() {
-        return promedioParticipación;
-    }
-
-    public void setPromedioParticipación(double promedioParticipación) {
-        this.promedioParticipación = promedioParticipación;
-    }
-
-    public double getPromedioCompromiso() {
-        return promedioCompromiso;
-    }
-
-    public void setPromedioCompromiso(double promedioCompromiso) {
-        this.promedioCompromiso = promedioCompromiso;
-    }
-
-    public double getPromedioInicitiva() {
-        return promedioInicitiva;
-    }
-
-    public void setPromedioInicitiva(double promedioInicitiva) {
-        this.promedioInicitiva = promedioInicitiva;
-    }
-
-    public double getPromedioResoluciónDeConflictos() {
-        return promedioResoluciónDeConflictos;
-    }
-
-    public void setPromedioResoluciónDeConflictos(double promedioResoluciónDeConflictos) {
-        this.promedioResoluciónDeConflictos = promedioResoluciónDeConflictos;
-    }
-
-    public double getPromedioConfiabilidad() {
-        return promedioConfiabilidad;
-    }
-
-    public void setPromedioConfiabilidad(double promedioConfiabilidad) {
-        this.promedioConfiabilidad = promedioConfiabilidad;
-    }
-
-    public double getPromedioActitud() {
-        return promedioActitud;
-    }
-
-    public void setPromedioActitud(double promedioActitud) {
-        this.promedioActitud = promedioActitud;
-    }
-
+   
     public String[] getMejoresAtributos() {
         return mejoresAtributos;
     }
 
-    public void setMejoresAtributos(String[] mejoresAtributos) {
-        this.mejoresAtributos = mejoresAtributos;
-    }
-    
 
-    public void actualizarPromedios() {
-        if (this.calificacionesRecibidas.isEmpty()) {
-           this.promedioLiderazgo = this.promedioComunicacion  = this.promedioGlobal = 0;//por ejemplo, obvio hacer para todos
-            for (int i=0; i<3; i++){
-            this.mejoresAtributos [i] = " ";
-            }
-        }else{
-
-            double sumaL = 0, sumaC = 0;
-            for (Calificación e : this.calificacionesRecibidas) {
-                sumaL += e.getLiderazgo();
-                sumaC += e.getComunicacion();
-                //toca poner la suma por atributo y por promedio para hallar promedios globales y así
-            }
-
-            int n = this.calificacionesRecibidas.size();
-           this.promedioLiderazgo = sumaL / n;
-           this.promedioComunicacion = sumaC / n;
-           
-           this.actualizarMejoresAtributo();
+    //revisar
+    public void actualizarMejoresAtributo() {
+        ArrayList<Calificación> calificacionesRecibidas = this.estudiante.getCalificacionesRecibidas();
+        if (calificacionesRecibidas.isEmpty()) {
+            this.mejoresAtributos = new String[] {"", "", ""};
+            return;
         }
-        
-        
-    }
- 
+        Map<String, Integer> freq = new HashMap<>();
+        for (Calificación c : calificacionesRecibidas) {
+            String a = c.getAtributo();
+            if (a != null) {
+                a = a.trim();
+                if (!a.isEmpty()) {
+                    String key = a.toLowerCase(); 
+                    freq.put(key, freq.getOrDefault(key, 0) + 1);
+                }
+            }
+        }
 
-    private void actualizarMejoresAtributo() {
-        /*este metodo tiene que revisar en la lsita de calificaciones y ver cuales
-        Strings se repiten maas veces en el atributo "atributo"(recomendaria cambiar
-        el nombre para no confundrnod pero el caso es que se refiere como a la mejor 
-        habilidad y escoger los primeros tres para el vector*/
+    
+        PriorityQueue<Map.Entry<String,Integer>> pq =
+            new PriorityQueue<>(Comparator.comparingInt(Map.Entry::getValue));
+
+        for (Map.Entry<String,Integer> e : freq.entrySet()) {
+            if (pq.size() < 3) {
+                pq.offer(e);
+            } else if (e.getValue() > pq.peek().getValue()) {
+                pq.poll();
+                pq.offer(e);
+            }
+        }
+
+        
+        this.mejoresAtributos = new String[] {"", "", ""};
+        int i = pq.size() - 1;
+        while (!pq.isEmpty()) {
+            this.mejoresAtributos[i--] = pq.poll().getKey();
+        }
       
     }
-    
+    public void actualizarPerfil(){
+        this.actualizarMejoresAtributo();
+        this.actualizarPromedios();
+    }
+    public void editarPerfil(String carrera){
+        this.estudiante.setCarrera(carrera);
+        //como lo que dice en calificacion de editar calificacion, no se sbae cual es la mejor forma de hacerlo
+    }
 }
   
   

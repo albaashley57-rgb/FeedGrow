@@ -4,15 +4,10 @@
  */
 package com.mycompany.feeedgrow.vista;
 
-/**
- *
- * @author PC
- */
+import java.awt.Color;
+
 public class Ranking extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Ranking
-     */
     public Ranking() {
         initComponents();
     }

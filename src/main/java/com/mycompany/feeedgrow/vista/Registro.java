@@ -430,7 +430,7 @@ private void estéticaCampos(javax.swing.JTextField campo){
 
     if (resultado.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Registro exitoso. ¡Bienvenido/a, " + estudiante.getNombre() + "!");
-        new InicioDeSesion().setVisible(true);
+        new InicioDeSesión().setVisible(true);
         this.dispose();
     } else {
         JOptionPane.showMessageDialog(this, resultado, "Error", JOptionPane.ERROR_MESSAGE);
@@ -443,7 +443,7 @@ private void estéticaCampos(javax.swing.JTextField campo){
     }//GEN-LAST:event_botonAceptarActionPerformed
 
     private void IniciarSesiónMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IniciarSesiónMouseClicked
-         InicioDeSesion ventana = new InicioDeSesion();
+         InicioDeSesión ventana = new InicioDeSesión();
          ventana.setVisible(true);
          this.dispose();
     }//GEN-LAST:event_IniciarSesiónMouseClicked

@@ -9,10 +9,10 @@ import javax.swing.JPanel;
 
 
 
-public class pagina extends javax.swing.JFrame {
+public class PáginaMenú extends javax.swing.JFrame {
 private Estudiante estudiante;
    
-    public pagina(Estudiante estudiante) {
+    public PáginaMenú(Estudiante estudiante) {
         this.estudiante = estudiante;
         initComponents();
         initStyles();
@@ -20,7 +20,7 @@ private Estudiante estudiante;
     }
     
     private void initContent() {
-        cambiarPanel(new principal(estudiante));
+        cambiarPanel(new Principa1(estudiante));
     }
     
     private void initStyles(){  
@@ -214,7 +214,7 @@ private Estudiante estudiante;
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 972, Short.MAX_VALUE)
+            .addGap(0, 978, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,8 +228,7 @@ private Estudiante estudiante;
             .addGroup(fondoLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +256,7 @@ private Estudiante estudiante;
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotónPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónPrincipalActionPerformed
-    cambiarPanel(new principal(estudiante));
+    cambiarPanel(new Principa1(estudiante));
 
 // TODO add your handling code here:
     }//GEN-LAST:event_BotónPrincipalActionPerformed

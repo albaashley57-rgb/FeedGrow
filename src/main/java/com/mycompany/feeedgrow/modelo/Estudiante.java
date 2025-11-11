@@ -1,18 +1,18 @@
 package com.mycompany.feeedgrow.modelo;
 
 
-
 import java.util.ArrayList;
 public class Estudiante {
    
-    private String nombre;
-    private String código;
+    private final String nombre;
+    private final String código;
     private String carrera;
     private String correo;
     private String contraseña;
-    private Perfil perfil;
-    private ArrayList<Calificación> calificacionesHechas;
-    private ArrayList<Calificación> calificacionesRecibidas;
+    private double promedioGlobal;
+    private final Perfil perfil;
+    private final ArrayList<Calificación> calificacionesHechas;
+    private final ArrayList<Calificación> calificacionesRecibidas;
     
     
     public Estudiante(String nombre, String código, String carrera, String correo, String contrasena) {
@@ -24,6 +24,7 @@ public class Estudiante {
         this.calificacionesHechas = new ArrayList<>();
         this.calificacionesRecibidas = new ArrayList<>();
         this.perfil = new Perfil(this);
+        this.promedioGlobal = this.perfil.getPromedioGlobal();
     }
 
     /*getters &setters (si llegan a existir unos que no se usen eliminar, igual para todas las clase
@@ -33,16 +34,12 @@ public class Estudiante {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public double getPromedioGlobal() {
+        return promedioGlobal;
     }
 
     public String getCódigo() {
         return código;
-    }
-
-    public void setCódigo(String código) {
-        this.código = código;
     }
 
     public String getCarrera() {
@@ -73,37 +70,33 @@ public class Estudiante {
         return calificacionesHechas;
     }
 
-    public void setCalificacionesHechas(ArrayList<Calificación> calificacionesHechas) {
-        this.calificacionesHechas = calificacionesHechas;
-    }
 
     public ArrayList<Calificación> getCalificacionesRecibidas() {
         return calificacionesRecibidas;
     }
 
-    public void setCalificacionesRecibidas(ArrayList<Calificación> calificacionesRecibidas) {
-        this.calificacionesRecibidas = calificacionesRecibidas;
-    }
-    
      public Perfil getPerfil() { 
          return perfil; 
      }
     
 
-
-    // Métodos (revisar lógica y si son necesarios más)
     public void agregarCalificacionRecibida(Calificación calificación) { 
         this.calificacionesRecibidas.add(calificación);
-        this.perfil.actualizarPromedios();
+        this.perfil.actualizarPerfil();
+        
      }
     
     public void agregarCalificacionHecha(Calificación calificación) {
         this.calificacionesHechas.add(calificación); 
+        calificación.getEvaluado().perfil.actualizarPerfil();
     }
 
    @Override
    public String toString(){
        return this.código + "," + this.nombre + "," + this.correo + "," +  this.carrera + "," + this.contraseña;
    }
+   
+
+    // quizás lo de editar el "perfil" es mejor editar el estudiante enlazado a él
 }
 
