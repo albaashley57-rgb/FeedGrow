@@ -25,7 +25,7 @@ public class Perfil {
         promedioCalificaciones.put("responsabilidad", this.calcularPromedioPorArea("responsabilidad"));
         promedioCalificaciones.put("colaboración", this.calcularPromedioPorArea("colaboración"));
         promedioCalificaciones.put("comunicación", this.calcularPromedioPorArea("comunicación"));
-        promedioCalificaciones.put("participacion", this.calcularPromedioPorArea("participación"));
+        promedioCalificaciones.put("participación", this.calcularPromedioPorArea("participación"));
         promedioCalificaciones.put("compromiso", this.calcularPromedioPorArea("compromiso"));
         promedioCalificaciones.put("iniciativa", this.calcularPromedioPorArea("iniciativa"));
         promedioCalificaciones.put("liderazgo", this.calcularPromedioPorArea("liderazgo"));
