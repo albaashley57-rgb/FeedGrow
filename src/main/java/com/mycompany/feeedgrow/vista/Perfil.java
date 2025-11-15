@@ -286,7 +286,7 @@ public void cargarCalificaciones(Estudiante e) {
 
         jLabel43.setFont(new java.awt.Font("Segoe UI Emoji", 0, 36)); // NOI18N
         jLabel43.setText("jLabel43");
-        fondo11.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, -1, -1));
+        fondo11.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
