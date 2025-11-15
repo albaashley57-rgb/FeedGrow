@@ -2,13 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.mycompany.feeedgrow.vista;
+package com.mycompany.feedgrow.vista;
 
-import java.awt.Color;
+/**
+ *
+ * @author PC
+ */
+public class Búsqueda extends javax.swing.JPanel {
 
-public class Ranking extends javax.swing.JPanel {
-
-    public Ranking() {
+    /**
+     * Creates new form Búsqueda
+     */
+    public Búsqueda() {
         initComponents();
     }
 

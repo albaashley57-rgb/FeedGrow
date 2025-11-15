@@ -1,8 +1,8 @@
 
-package com.mycompany.feeedgrow.vista;
+package com.mycompany.feedgrow.vista;
 
-import com.mycompany.feeedgrow.controlador.InicioDeSesiónControlador;
-import com.mycompany.feeedgrow.modelo.Estudiante;
+import com.mycompany.feedgrow.controlador.InicioDeSesiónControlador;
+import com.mycompany.feedgrow.modelo.Estudiante;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;

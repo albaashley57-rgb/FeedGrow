@@ -1,5 +1,5 @@
 
-package com.mycompany.feeedgrow.vista;
+package com.mycompany.feedgrow.vista;
 
 import java.awt.Color;
 import java.awt.GradientPaint;

@@ -1,7 +1,7 @@
-package com.mycompany.feeedgrow.controlador;
+package com.mycompany.feedgrow.controlador;
 
-import com.mycompany.feeedgrow.modelo.Estudiante;
-import com.mycompany.feeedgrow.modelo.GestorDatos;
+import com.mycompany.feedgrow.modelo.Estudiante;
+import com.mycompany.feedgrow.modelo.GestorDatos;
 import java.util.List;
 
 public class RegistroControlador {

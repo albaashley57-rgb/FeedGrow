@@ -1,6 +1,6 @@
-package com.mycompany.feeedgrow.controlador;
-import com.mycompany.feeedgrow.modelo.Estudiante;
-import com.mycompany.feeedgrow.modelo.GestorDatos;
+package com.mycompany.feedgrow.controlador;
+import com.mycompany.feedgrow.modelo.Estudiante;
+import com.mycompany.feedgrow.modelo.GestorDatos;
 
 public class InicioDeSesiónControlador {
 private GestorDatos gestor = new GestorDatos();

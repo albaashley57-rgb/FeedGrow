@@ -1,5 +1,5 @@
 
-package com.mycompany.feeedgrow.modelo;
+package com.mycompany.feedgrow.modelo;
 
 
 import java.io.BufferedReader;
@@ -17,7 +17,7 @@ public class GestorDatos {
       
     private final File archivoEstudiantes = new File("estudiantes.txt");
     private ArrayList<Estudiante> estudiantes;
-    private ArrayList<Calificación> calificaciones;
+    private ArrayList<Calificacion> calificaciones;
  
 
     public GestorDatos() {
@@ -96,7 +96,7 @@ public class GestorDatos {
         return null;
     }
 
-    public void agregarEvaluacion(Calificación e) {
+    public void agregarEvaluacion(Calificacion e) {
         this.calificaciones.add(e);
         e.getEvaluador().agregarCalificacionHecha(e);
         e.getEvaluado().agregarCalificacionRecibida(e);

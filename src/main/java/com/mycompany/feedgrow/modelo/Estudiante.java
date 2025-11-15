@@ -1,4 +1,4 @@
-package com.mycompany.feeedgrow.modelo;
+package com.mycompany.feedgrow.modelo;
 
 
 import java.util.ArrayList;
@@ -11,8 +11,8 @@ public class Estudiante {
     private String contraseña;
     private double promedioGlobal;
     private final Perfil perfil;
-    private final ArrayList<Calificación> calificacionesHechas;
-    private final ArrayList<Calificación> calificacionesRecibidas;
+    private final ArrayList<Calificacion> calificacionesHechas;
+    private final ArrayList<Calificacion> calificacionesRecibidas;
     
     
     public Estudiante(String nombre, String código, String carrera, String correo, String contrasena) {
@@ -66,12 +66,12 @@ public class Estudiante {
         this.contraseña = contraseña;
     }
 
-    public ArrayList<Calificación> getCalificacionesHechas() {
+    public ArrayList<Calificacion> getCalificacionesHechas() {
         return calificacionesHechas;
     }
 
 
-    public ArrayList<Calificación> getCalificacionesRecibidas() {
+    public ArrayList<Calificacion> getCalificacionesRecibidas() {
         return calificacionesRecibidas;
     }
 
@@ -80,13 +80,13 @@ public class Estudiante {
      }
     
 
-    public void agregarCalificacionRecibida(Calificación calificación) { 
+    public void agregarCalificacionRecibida(Calificacion calificación) { 
         this.calificacionesRecibidas.add(calificación);
         this.perfil.actualizarPerfil();
         
      }
     
-    public void agregarCalificacionHecha(Calificación calificación) {
+    public void agregarCalificacionHecha(Calificacion calificación) {
         this.calificacionesHechas.add(calificación); 
         calificación.getEvaluado().perfil.actualizarPerfil();
     }

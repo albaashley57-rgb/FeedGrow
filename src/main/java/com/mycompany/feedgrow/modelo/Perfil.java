@@ -1,5 +1,5 @@
 
-package com.mycompany.feeedgrow.modelo;
+package com.mycompany.feedgrow.modelo;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public class Perfil {
         promedioCalificaciones.put("responsabilidad", this.calcularPromedioPorArea("responsabilidad"));
         promedioCalificaciones.put("colaboración", this.calcularPromedioPorArea("colaboración"));
         promedioCalificaciones.put("comunicación", this.calcularPromedioPorArea("comunicación"));
-        promedioCalificaciones.put("participación", this.calcularPromedioPorArea("participación"));
+        promedioCalificaciones.put("participacion", this.calcularPromedioPorArea("participación"));
         promedioCalificaciones.put("compromiso", this.calcularPromedioPorArea("compromiso"));
         promedioCalificaciones.put("iniciativa", this.calcularPromedioPorArea("iniciativa"));
         promedioCalificaciones.put("liderazgo", this.calcularPromedioPorArea("liderazgo"));
@@ -36,13 +36,13 @@ public class Perfil {
     }
      
     private double calcularPromedioPorArea(String area){
-        ArrayList<Calificación> calificacionesRecibidas = this.estudiante.getCalificacionesRecibidas();
+        ArrayList<Calificacion> calificacionesRecibidas = this.estudiante.getCalificacionesRecibidas();
         if (calificacionesRecibidas.isEmpty()){
             return 0.0;
         }
         double suma = 0;
         int contador = 0;
-        for (Calificación c : calificacionesRecibidas) {
+        for (Calificacion c : calificacionesRecibidas) {
             Double valor = c.getCalificaciónÁrea(area);
             if (valor != null) {
                 suma += valor;
@@ -53,12 +53,12 @@ public class Perfil {
     }
     
     private double calcularPromedioGlobal(){
-        ArrayList<Calificación> calificacionesRecibidas = this.estudiante.getCalificacionesRecibidas();
+        ArrayList<Calificacion> calificacionesRecibidas = this.estudiante.getCalificacionesRecibidas();
         double suma = 0.0;
-        for(Calificación c : calificacionesRecibidas){
+        for(Calificacion c : calificacionesRecibidas){
             suma += c.getPromedio();
         }
-        return suma / calificacionesRecibidas.size();
+        return calificacionesRecibidas.isEmpty() ? 0 : suma / calificacionesRecibidas.size();
     }
     
     public Estudiante getEstudiante() {
@@ -80,13 +80,13 @@ public class Perfil {
 
     //revisar
     public void actualizarMejoresAtributo() {
-        ArrayList<Calificación> calificacionesRecibidas = this.estudiante.getCalificacionesRecibidas();
+        ArrayList<Calificacion> calificacionesRecibidas = this.estudiante.getCalificacionesRecibidas();
         if (calificacionesRecibidas.isEmpty()) {
             this.mejoresAtributos = new String[] {"", "", ""};
             return;
         }
         Map<String, Integer> freq = new HashMap<>();
-        for (Calificación c : calificacionesRecibidas) {
+        for (Calificacion c : calificacionesRecibidas) {
             String a = c.getAtributo();
             if (a != null) {
                 a = a.trim();
