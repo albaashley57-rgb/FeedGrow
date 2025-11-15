@@ -14,11 +14,14 @@ private Estudiante estudiante;
      * Creates new form EditarPerfil
      */
     public EditarPerfil(Estudiante estudiante) {
+        this.estudiante = estudiante;
         initComponents();
         initCustom();
     }
     public void initCustom(){
-       jLabel11.setText(estudiante.getNombre());
+      if(estudiante != null){
+        jLabel11.setText(estudiante.getNombre());
+    }
     }
 
     /**
@@ -57,7 +60,7 @@ private Estudiante estudiante;
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Black", 0, 28)); // NOI18N
         jLabel11.setText("{estudiante nombre}");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, -1, 36));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, 36));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
