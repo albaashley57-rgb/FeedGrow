@@ -27,4 +27,5 @@
             <version>RELEASE250</version>
         </dependency>
     </dependencies>
+    <name>FeedGrow</name>
 </project>

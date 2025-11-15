@@ -1,7 +1,7 @@
 
-package com.mycompany.feeedgrow.vista;
+package com.mycompany.feedgrow.vista;
 
-import com.mycompany.feeedgrow.modelo.Estudiante;
+import com.mycompany.feedgrow.modelo.Estudiante;
 import javax.swing.JPanel;
 
 

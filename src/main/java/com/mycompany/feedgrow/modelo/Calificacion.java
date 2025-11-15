@@ -1,11 +1,11 @@
 
-package com.mycompany.feeedgrow.modelo;
+package com.mycompany.feedgrow.modelo;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Calificación {
+public class Calificacion {
     private final Estudiante evaluador; //cambiar a calificacdor y calificado
     private final Estudiante evaluado;
     private double promedio;
@@ -15,7 +15,7 @@ public class Calificación {
     private String recomendación;
 
 
-    public Calificación(Estudiante evaluador, Estudiante evaluado,double responsabilidad,
+    public Calificacion(Estudiante evaluador, Estudiante evaluado,double responsabilidad,
        double colaboración, double comunicación,double participación, double compromiso,
        double iniciativa,double liderazgo,double resoluciónDeConflictos,double confiabilidad,
        double actitud,String atributo,String títuloRecomendación, String recomendación) {
