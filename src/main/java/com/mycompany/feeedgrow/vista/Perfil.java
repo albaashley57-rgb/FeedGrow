@@ -3,19 +3,70 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.feeedgrow.vista;
+import com.mycompany.feeedgrow.modelo.Calificación;
+import com.mycompany.feeedgrow.modelo.Estudiante;
+import java.awt.BorderLayout;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+import javax.swing.JPanel;
+
+
 
 /**
  *
  * @author PC
  */
 public class Perfil extends javax.swing.JPanel {
-
+private Estudiante estudiante;
     /**
-     * Creates new form Perfil
+     * Creates new form EditarPerfil
      */
-    public Perfil() {
+    public Perfil(Estudiante estudiante) {
+        this.estudiante = estudiante;
         initComponents();
+        initCustom();
+        cargarCalificaciones(estudiante);
+        
     }
+    public void initCustom(){
+        jLabel12.setText("Carrera • " + estudiante.getCarrera());
+        jLabel11.setText(estudiante.getNombre());
+        jLabel13.setText("Correo: " + estudiante.getCorreo());
+    }
+    public void cambiarPanel(JPanel p) {
+        fondo11.removeAll();
+        fondo11.setLayout(new java.awt.BorderLayout());
+        fondo11.add(p, BorderLayout.CENTER);
+        fondo11.revalidate();
+        fondo11.repaint();
+        
+    }
+    private static final DecimalFormat DF =
+    new DecimalFormat("#0.0", new DecimalFormatSymbols(new Locale("es", "CO")));
+
+private void setScore(javax.swing.JLabel label, double valor) {
+    label.setText(DF.format(valor)); // Muestra 2,0 con coma en vez de punto
+}
+
+public void cargarCalificaciones(Estudiante e) {
+    if (e == null || e.getPerfil() == null) return;
+    var p = e.getPerfil();
+
+    setScore(jLabel24,         p.getPromedio("responsabilidad"));
+    setScore(jLabel28,         p.getPromedio("colaboración"));
+    setScore(jLabel29,         p.getPromedio("comunicación"));
+    setScore(jLabel26,         p.getPromedio("participación"));
+    setScore(jLabel27,         p.getPromedio("compromiso"));
+    setScore(jLabel41,         p.getPromedio("iniciativa"));
+    setScore(jLabel44,         p.getPromedio("liderazgo"));
+    setScore(jLabel39,         p.getPromedio("resolución de conflictos"));
+    setScore(jLabel42,         p.getPromedio("confiabilidad"));
+    setScore(jLabel48,         p.getPromedio("actitud"));
+    setScore(jLabel43, p.getPromedioGlobal());
+}
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,19 +77,282 @@ public class Perfil extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fondo11 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        Responsabilidad = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+
+        fondo11.setBackground(new java.awt.Color(255, 255, 255));
+        fondo11.setPreferredSize(new java.awt.Dimension(978, 653));
+        fondo11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-02-04 233137.png"))); // NOI18N
+        fondo11.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 173));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Black", 0, 28)); // NOI18N
+        jLabel11.setText("{estudiante nombre}");
+        fondo11.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, 36));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel12.setText("Carrera • {estudiante carrera}");
+        fondo11.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel13.setText("Correo: {estudiante correo}");
+        fondo11.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(0, 204, 255));
+        jButton1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Rapidez");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        fondo11.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, -1, -1));
+
+        jButton2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 0, 0));
+        jButton2.setText("Cerrar sesion");
+        jButton2.setBorder(null);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        fondo11.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel16.setText("Iniciativa");
+        fondo11.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, 192, -1));
+
+        jLabel15.setText("Cumple las tareas a tiempo y con calidad.");
+        fondo11.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+
+        jLabel17.setText("Ayuda y aporta al trabajo conjunto.");
+        fondo11.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+
+        jLabel19.setText("Nivel de involucramiento en reuniones y discusiones.");
+        fondo11.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel20.setText("Comunicación");
+        fondo11.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 192, -1));
+
+        jLabel21.setText("Explica claro, escucha y respesta turnos.");
+        fondo11.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel22.setText("Participación");
+        fondo11.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 192, -1));
+
+        jLabel23.setText("Demuestra interés y constancia en el proyecto.");
+        fondo11.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
+
+        jButton3.setBackground(new java.awt.Color(0, 204, 102));
+        jButton3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Editar perfil");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        fondo11.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, -1, -1));
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        jLabel24.setText("jLabel24");
+        fondo11.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, -1, -1));
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        jLabel26.setText("jLabel26");
+        fondo11.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, -1, -1));
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        jLabel27.setText("jLabel27");
+        fondo11.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, -1, -1));
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        jLabel28.setText("jLabel28");
+        fondo11.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
+
+        jLabel29.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        jLabel29.setText("jLabel29");
+        fondo11.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, -1, -1));
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel31.setText("Actitud");
+        fondo11.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, 270, -1));
+
+        jLabel37.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel37.setText("Compromiso");
+        fondo11.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 192, -1));
+
+        jLabel39.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        jLabel39.setText("jLabel39");
+        fondo11.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 400, -1, -1));
+
+        jLabel40.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-11-11 220725.png"))); // NOI18N
+        fondo11.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 70, -1, -1));
+
+        jLabel41.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        jLabel41.setText("jLabel41");
+        fondo11.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 280, -1, -1));
+
+        jLabel42.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        jLabel42.setText("jLabel42");
+        fondo11.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 460, 110, -1));
+
+        jLabel44.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        jLabel44.setText("jLabel44");
+        fondo11.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 340, -1, -1));
+
+        Responsabilidad.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        Responsabilidad.setText("Responsabilidad");
+        fondo11.add(Responsabilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 282, 192, -1));
+
+        jLabel45.setText("Propone ideas nuevas.");
+        fondo11.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, -1, -1));
+
+        jLabel46.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel46.setText("Colaboracion");
+        fondo11.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+
+        jLabel47.setText("Muestra disposición positiva, respeto y motivación.");
+        fondo11.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 550, -1, -1));
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel32.setText("Liderazgo");
+        fondo11.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 192, -1));
+
+        jLabel49.setText("Motiva, organia o guía al grupo cuando es necesario.");
+        fondo11.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, -1, -1));
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel33.setText("Resolución de conflictos");
+        fondo11.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 270, -1));
+
+        jLabel50.setText("Maneja difrencias sin generar discusiones negativas.");
+        fondo11.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, -1, -1));
+
+        jLabel34.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel34.setText("Confiabilidad");
+        fondo11.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 460, 270, -1));
+
+        jLabel51.setText("El equipo puede contar con el/ella; cumple lo que promete.");
+        fondo11.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, -1, -1));
+
+        jLabel48.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        jLabel48.setText("jLabel48");
+        fondo11.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 520, -1, -1));
+
+        jLabel43.setFont(new java.awt.Font("Segoe UI Emoji", 0, 36)); // NOI18N
+        jLabel43.setText("jLabel43");
+        fondo11.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(fondo11, javax.swing.GroupLayout.PREFERRED_SIZE, 978, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(fondo11, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        cambiarPanel (new EditarPerfil(estudiante));
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Responsabilidad;
+    private javax.swing.JPanel fondo11;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     // End of variables declaration//GEN-END:variables
 }
