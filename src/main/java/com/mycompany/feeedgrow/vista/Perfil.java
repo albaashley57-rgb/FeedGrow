@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 public class Perfil extends javax.swing.JPanel {
 private Estudiante estudiante;
     /**
-     * Creates new form EditarPerfil
+     * Creates new form EditarPerfila
      */
     public Perfil(Estudiante estudiante) {
         this.estudiante = estudiante;
