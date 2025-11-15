@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
@@ -42,6 +43,12 @@ private Estudiante estudiante;
         fondo11.repaint();
         
     }
+    public void cambiarFrame(javax.swing.JFrame nuevo) {
+    this.removeAll();       // Cierra la ventana actual
+    nuevo.setLocationRelativeTo(null); // Centra el nuevo frame
+    nuevo.setVisible(true); 
+}
+
     private static final DecimalFormat DF =
     new DecimalFormat("#0.0", new DecimalFormatSymbols(new Locale("es", "CO")));
 
@@ -65,7 +72,6 @@ public void cargarCalificaciones(Estudiante e) {
     setScore(jLabel48,         p.getPromedio("actitud"));
     setScore(jLabel43, p.getPromedioGlobal());
 }
-
 
 
     /**
@@ -301,7 +307,11 @@ public void cargarCalificaciones(Estudiante e) {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        cambiarFrame (new InicioDeSesión());
+        javax.swing.JOptionPane.showMessageDialog(this,
+            "Cierre de sesión exitoso. " + estudiante.getNombre() + "!",
+            "Hasta luego",
+            javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
