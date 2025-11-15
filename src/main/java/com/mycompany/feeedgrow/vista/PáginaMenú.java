@@ -61,6 +61,7 @@ private Estudiante estudiante;
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,10 +72,9 @@ private Estudiante estudiante;
         jPanel1.setBackground(new java.awt.Color(250, 236, 252));
         jPanel1.setToolTipText("");
 
-        BotónPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         BotónPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/principal50x50.png.png"))); // NOI18N
         BotónPrincipal.setBorderPainted(false);
-        BotónPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotónPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BotónPrincipal.setMaximumSize(new java.awt.Dimension(86, 32));
         BotónPrincipal.setMinimumSize(new java.awt.Dimension(86, 32));
         BotónPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -88,10 +88,9 @@ private Estudiante estudiante;
             }
         });
 
-        BotónBúsqueda.setBackground(new java.awt.Color(255, 255, 255));
         BotónBúsqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Búsqueda50x50.png.png"))); // NOI18N
         BotónBúsqueda.setBorderPainted(false);
-        BotónBúsqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotónBúsqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BotónBúsqueda.setMaximumSize(new java.awt.Dimension(86, 32));
         BotónBúsqueda.setMinimumSize(new java.awt.Dimension(86, 32));
         BotónBúsqueda.addActionListener(new java.awt.event.ActionListener() {
@@ -100,10 +99,9 @@ private Estudiante estudiante;
             }
         });
 
-        BotónGestor.setBackground(new java.awt.Color(255, 255, 255));
         BotónGestor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gestor50x50.png.png"))); // NOI18N
         BotónGestor.setBorderPainted(false);
-        BotónGestor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotónGestor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BotónGestor.setMaximumSize(new java.awt.Dimension(86, 32));
         BotónGestor.setMinimumSize(new java.awt.Dimension(86, 32));
         BotónGestor.addActionListener(new java.awt.event.ActionListener() {
@@ -112,10 +110,9 @@ private Estudiante estudiante;
             }
         });
 
-        BotónRanking.setBackground(new java.awt.Color(255, 255, 255));
         BotónRanking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ranking50x50.png.png"))); // NOI18N
         BotónRanking.setBorderPainted(false);
-        BotónRanking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotónRanking.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BotónRanking.setMaximumSize(new java.awt.Dimension(86, 32));
         BotónRanking.setMinimumSize(new java.awt.Dimension(86, 32));
         BotónRanking.addActionListener(new java.awt.event.ActionListener() {
@@ -124,11 +121,10 @@ private Estudiante estudiante;
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("perfil");
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icono perfil pequeño.png"))); // NOI18N
         jButton5.setAutoscrolls(true);
         jButton5.setBorderPainted(false);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -159,35 +155,43 @@ private Estudiante estudiante;
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Ranking");
 
+        jLabel6.setFont(new java.awt.Font("Roboto SemiBold", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(98, 91, 113));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Perfil");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(6, 6, 6))
-                    .addComponent(BotónPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BotónBúsqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BotónGestor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BotónRanking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(BotónPrincipal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BotónBúsqueda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BotónGestor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BotónRanking, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addContainerGap(10, Short.MAX_VALUE)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BotónPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
@@ -262,7 +266,7 @@ private Estudiante estudiante;
     }//GEN-LAST:event_BotónPrincipalActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+   cambiarPanel ( new Perfil(estudiante));
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void BotónGestorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónGestorActionPerformed
@@ -295,6 +299,7 @@ private Estudiante estudiante;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
