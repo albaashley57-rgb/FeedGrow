@@ -4,19 +4,128 @@
  */
 package com.mycompany.feeedgrow.vista;
 
+import com.mycompany.feeedgrow.modelo.Calificación;
+import com.mycompany.feeedgrow.modelo.Estudiante;
+import com.mycompany.feeedgrow.modelo.GestorDatos;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author PC
  */
 public class Calificar extends javax.swing.JPanel {
-
+private Estudiante evaluador;
+private Estudiante evaluado;
+private GestorDatos gestor;
     /**
      * Creates new form Calificar
+     * @param evaluado
      */
-    public Calificar() {
+    public Calificar(Estudiante evaluado) {
         initComponents();
+        this.evaluado = evaluado;
+        initCustom();
     }
+private void initCustom(){
+    Nombre.setText(evaluado.getNombre());
+    
+}
+private double LeerNota(javax.swing.JTextField campo){
+    try {
+        return Double.parseDouble(campo.getText().trim());
+    }
+    catch(Exception e){
+        return 0.0;
+    }
+}
 
+private void guardar(){
+    this.evaluador = getEvaluador();
+    this.gestor = getGestor();
+    
+    if(evaluador == null || gestor == null){
+        JOptionPane.showMessageDialog(this, "No se pudo obtener el usuario actual o el gestor de datos.", "Error",JOptionPane.ERROR_MESSAGE);
+    return;
+    }
+    
+    double responsabilidad = LeerNota(jResponsabilidad);
+    double colaboración = LeerNota(jColaboracion);
+    double comunicación = LeerNota(jComunicacion);
+    double participación = LeerNota(jParticipacion);
+    double compromiso = LeerNota(jCompromiso);
+    double iniciativa = LeerNota(jIniciativa);
+    double liderazgo = LeerNota(jLiderazgo);
+    double resoluciónDeConflictos = LeerNota(JResolucion);
+    double confiabilidad = LeerNota(jConfiabilidad);
+    double actitud = LeerNota(jActitud);
+    String recomendación = jRecomendacion.getText();
+    String atributo = (String) jComboAtributo.getSelectedItem();
+    String titulo = "Recomendacion de "+ evaluador.getNombre();
+    
+   
+    String[] nombres = {
+    "responsabilidad", "colaboración", "comunicación", "participación",
+    "compromiso", "iniciativa", "liderazgo", "resolución de conflictos",
+    "confiabilidad", "actitud"
+};
+
+double[] valores = {
+    responsabilidad, colaboración, comunicación, participación,
+    compromiso, iniciativa, liderazgo, resoluciónDeConflictos,
+    confiabilidad, actitud
+};
+
+StringBuilder errores = new StringBuilder();
+
+for (int i = 0; i < nombres.length; i++) {
+    double v = valores[i];
+    if (v < 0 || v > 5) {
+        errores.append(nombres[i]).append(" debe estar entre 0 y 5.\n");
+    }
+}
+
+if (errores.length() > 0) {
+    JOptionPane.showMessageDialog(this, errores.toString(), "Revisa las notas", JOptionPane.WARNING_MESSAGE);
+    return;
+}
+    
+    
+    Calificación c = new Calificación(
+            evaluador,
+            evaluado,
+            responsabilidad,
+            colaboración,
+            comunicación,
+            participación,
+            compromiso,
+            iniciativa,
+            liderazgo,
+            resoluciónDeConflictos,
+            confiabilidad,
+            actitud,
+            atributo,
+            titulo,
+            recomendación
+            
+   );
+   gestor.agregarEvaluacion(c);
+   JOptionPane.showMessageDialog(this, "Calificación guardada con éxito");
+}
+
+private Estudiante getEvaluador(){
+    java.awt.Window w= javax.swing.SwingUtilities.getWindowAncestor(this);
+    if(w instanceof PáginaMenú){
+        return ((PáginaMenú)w).getEstudiante();
+    }
+    return null;
+}
+private GestorDatos getGestor(){
+    java.awt.Window w= javax.swing.SwingUtilities.getWindowAncestor(this);
+    if(w instanceof PáginaMenú){
+        return ((PáginaMenú)w).getGestor();
+    }
+    return null;
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,35 +135,209 @@ public class Calificar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panel1 = new java.awt.Panel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Nombre = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        Responsabilidad = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jRecomendacion = new javax.swing.JTextField();
+        jActitud = new javax.swing.JTextField();
+        jColaboracion = new javax.swing.JTextField();
+        jComunicacion = new javax.swing.JTextField();
+        jParticipacion = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jResponsabilidad = new javax.swing.JTextField();
+        jIniciativa = new javax.swing.JTextField();
+        jLiderazgo = new javax.swing.JTextField();
+        JResolucion = new javax.swing.JTextField();
+        jConfiabilidad = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
+        jCompromiso = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        jComboAtributo = new javax.swing.JComboBox<>();
+        Guardar = new javax.swing.JButton();
+
+        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
+        panel1.setLayout(panel1Layout);
+        panel1Layout.setHorizontalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        panel1Layout.setVerticalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Nombre Estudiante Calificado");
+        Nombre.setFont(new java.awt.Font("Segoe UI Black", 0, 28)); // NOI18N
+        Nombre.setText("{estudiante nombre}");
+        jPanel1.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, 36));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(681, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(593, Short.MAX_VALUE))
-        );
+        jLabel15.setText("Cumple las tareas a tiempo y con calidad.");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+
+        jLabel17.setText("Ayuda y aporta al trabajo conjunto.");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+
+        jLabel19.setText("Nivel de involucramiento en reuniones y discusiones.");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel20.setText("Comunicación");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 192, -1));
+
+        jLabel21.setText("Explica claro, escucha y respesta turnos.");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel22.setText("Participación");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 192, -1));
+
+        jLabel23.setText("Demuestra interés y constancia en el proyecto.");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
+
+        jLabel37.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel37.setText("Mejor cualidad:");
+        jPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 500, 220, -1));
+
+        Responsabilidad.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        Responsabilidad.setText("Responsabilidad");
+        jPanel1.add(Responsabilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 192, -1));
+
+        jLabel46.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel46.setText("Colaboracion");
+        jPanel1.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+
+        jRecomendacion.setBackground(new java.awt.Color(200, 200, 200));
+        jRecomendacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jRecomendacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRecomendacionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jRecomendacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 310, 90));
+
+        jActitud.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel1.add(jActitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 410, 40, 30));
+
+        jColaboracion.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel1.add(jColaboracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 40, 30));
+
+        jComunicacion.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel1.add(jComunicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 40, 30));
+
+        jParticipacion.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel1.add(jParticipacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 40, 30));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel16.setText("Iniciativa");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 192, -1));
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel31.setText("Actitud");
+        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 270, -1));
+
+        jLabel45.setText("Propone ideas nuevas.");
+        jPanel1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
+
+        jLabel47.setText("Muestra disposición positiva, respeto y motivación.");
+        jPanel1.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, -1, -1));
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel32.setText("Liderazgo");
+        jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 192, -1));
+
+        jLabel49.setText("Motiva, organia o guía al grupo cuando es necesario.");
+        jPanel1.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel33.setText("Resolución de conflictos");
+        jPanel1.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 270, -1));
+
+        jLabel50.setText("Maneja difrencias sin generar discusiones negativas.");
+        jPanel1.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
+
+        jLabel34.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel34.setText("Confiabilidad");
+        jPanel1.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 270, -1));
+
+        jLabel51.setText("El equipo puede contar con el/ella; cumple lo que promete.");
+        jPanel1.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, -1, -1));
+
+        jResponsabilidad.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel1.add(jResponsabilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 40, 30));
+
+        jIniciativa.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel1.add(jIniciativa, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 160, 40, 30));
+
+        jLiderazgo.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel1.add(jLiderazgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 230, 40, 30));
+
+        JResolucion.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel1.add(JResolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 290, 40, 30));
+
+        jConfiabilidad.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel1.add(jConfiabilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 350, 40, 30));
+
+        jLabel38.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel38.setText("Compromiso");
+        jPanel1.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 192, -1));
+
+        jCompromiso.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel1.add(jCompromiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, 40, 30));
+
+        jLabel39.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        jLabel39.setText("Recomendaciones:");
+        jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 220, -1));
+
+        jComboAtributo.setBackground(new java.awt.Color(200, 200, 200));
+        jComboAtributo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jComboAtributo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Resonsabilidad", "Colaboración", "Comunicación", "Participación", "Compromiso", "Iniciativa", "Liderazgo", "Resolución de conflictos", "Confiabilidad", "Actitud" }));
+        jComboAtributo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboAtributoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboAtributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 540, 310, 40));
+
+        Guardar.setBackground(new java.awt.Color(0, 204, 102));
+        Guardar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        Guardar.setForeground(new java.awt.Color(255, 255, 255));
+        Guardar.setText("Guardar cambios");
+        Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 600, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -62,9 +345,57 @@ public class Calificar extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jRecomendacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRecomendacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRecomendacionActionPerformed
+
+    private void jComboAtributoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboAtributoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboAtributoActionPerformed
+
+    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
+        guardar();
+    }//GEN-LAST:event_GuardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton Guardar;
+    private javax.swing.JTextField JResolucion;
+    private javax.swing.JLabel Nombre;
+    private javax.swing.JLabel Responsabilidad;
+    private javax.swing.JTextField jActitud;
+    private javax.swing.JTextField jColaboracion;
+    private javax.swing.JComboBox<String> jComboAtributo;
+    private javax.swing.JTextField jCompromiso;
+    private javax.swing.JTextField jComunicacion;
+    private javax.swing.JTextField jConfiabilidad;
+    private javax.swing.JTextField jIniciativa;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JTextField jLiderazgo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jParticipacion;
+    private javax.swing.JTextField jRecomendacion;
+    private javax.swing.JTextField jResponsabilidad;
+    private java.awt.Panel panel1;
     // End of variables declaration//GEN-END:variables
 }
