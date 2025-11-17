@@ -26,7 +26,7 @@ public class Calificación {
             calificaciones.put("responsabilidad", responsabilidad);
             calificaciones.put("colaboración", colaboración);
             calificaciones.put("comunicación", comunicación);
-            calificaciones.put("participacion", participación);
+            calificaciones.put("participación", participación);
             calificaciones.put("compromiso", compromiso);
             calificaciones.put("iniciativa", iniciativa);
             calificaciones.put("liderazgo", liderazgo);
@@ -48,8 +48,8 @@ public class Calificación {
     return suma / 10; 
   }
 
-  public double getCalificaciónÁrea(String área){
-       return calificaciones.get(área);
+  public Double getCalificaciónÁrea(String area){
+       return calificaciones.get(area);
    }
 
     public Estudiante getEvaluador() {
