@@ -311,7 +311,7 @@ private GestorDatos getGestor(){
 
         jComboAtributo.setBackground(new java.awt.Color(200, 200, 200));
         jComboAtributo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboAtributo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Resonsabilidad", "Colaboración", "Comunicación", "Participación", "Compromiso", "Iniciativa", "Liderazgo", "Resolución de conflictos", "Confiabilidad", "Actitud" }));
+        jComboAtributo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la mejor cualidad", "Resonsabilidad", "Colaboración", "Comunicación", "Participación", "Compromiso", "Iniciativa", "Liderazgo", "Resolución de conflictos", "Confiabilidad", "Actitud" }));
         jComboAtributo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboAtributoActionPerformed(evt);

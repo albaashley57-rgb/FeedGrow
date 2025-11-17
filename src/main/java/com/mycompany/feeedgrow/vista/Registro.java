@@ -106,7 +106,6 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         título.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         título.setText("REGISTRO");
 
-        campoNombre.setBackground(new java.awt.Color(255, 255, 255));
         campoNombre.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         campoNombre.setForeground(new java.awt.Color(153, 153, 153));
         campoNombre.setText("Nombre");
@@ -122,7 +121,6 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             }
         });
 
-        campoCorreo.setBackground(new java.awt.Color(255, 255, 255));
         campoCorreo.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         campoCorreo.setForeground(new java.awt.Color(153, 153, 153));
         campoCorreo.setText("Correo");
@@ -138,7 +136,6 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             }
         });
 
-        campoConfirmarContraseña.setBackground(new java.awt.Color(255, 255, 255));
         campoConfirmarContraseña.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         campoConfirmarContraseña.setForeground(new java.awt.Color(153, 153, 153));
         campoConfirmarContraseña.setText("Confirmar Contraseña");
@@ -149,7 +146,6 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             }
         });
 
-        campoContraseña.setBackground(new java.awt.Color(255, 255, 255));
         campoContraseña.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         campoContraseña.setForeground(new java.awt.Color(153, 153, 153));
         campoContraseña.setText("Contraseña");
@@ -165,7 +161,6 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             }
         });
 
-        campoCódigo.setBackground(new java.awt.Color(255, 255, 255));
         campoCódigo.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         campoCódigo.setForeground(new java.awt.Color(153, 153, 153));
         campoCódigo.setText("Código de estudiante");
@@ -185,7 +180,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         botonAceptar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         botonAceptar.setForeground(new java.awt.Color(255, 255, 255));
         botonAceptar.setText("Aceptar");
-        botonAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonAceptarMouseClicked(evt);
@@ -201,7 +196,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         IniciarSesión.setForeground(new java.awt.Color(102, 102, 102));
         IniciarSesión.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IniciarSesión.setText("O Inciar Sesión");
-        IniciarSesión.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        IniciarSesión.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         IniciarSesión.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 IniciarSesiónMouseClicked(evt);
@@ -214,10 +209,9 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             }
         });
 
-        jComboBoxCarrera.setBackground(new java.awt.Color(255, 255, 255));
         jComboBoxCarrera.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jComboBoxCarrera.setForeground(new java.awt.Color(153, 153, 153));
-        jComboBoxCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione su carrera", "Ingeniería de Sistemas", "Ingeniería Electrónica", "Ingeniería Biomédica", "Ingeniería Química", "Biología", "Derecho", "Medicina" }));
+        jComboBoxCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione su carrera", "Biología", "Física", "Licenciatura en Matemáticas", "Matemáticas", "Química", "Ingeniería de Sistemas", "Ingeniería Eléctrica", "Ingeniería Electrónica", "Ingeniería Industrial", "Ingeniería Mecánica", "Ingeniería Biomédica", "Ingeniería en Ciencia de Datos", "Diseño Industrial", "Ingeniería Civil", "Ingeniería Química", "Ingeniería de Petróleos", "Geología", "Enfermería", "Fisioterapia", "Medicina", "Microbiología y Bioanálisis", "Nutrición y Dietética", "Derecho", "Economía", "Filosofía", "Historia y Archivística", "Licenciatura en Educación Básica Primaria", "Licenciatura en Literatura y Lengua Castellana", "Licenciatura en Lenguas Extranjeras con énfasis en Inglés", "Licenciatura en Música", "Trabajo Social", "Técnica Profesional en Ejecución de Proyectos Culturales y Creativos" }));
         jComboBoxCarrera.setBorder(null);
         jComboBoxCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,7 +244,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBoxCarrera, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxCarrera, 0, 366, Short.MAX_VALUE)
                     .addComponent(campoNombre)
                     .addComponent(campoCorreo)
                     .addComponent(campoConfirmarContraseña)
@@ -290,7 +284,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 147, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,7 +297,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 149, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

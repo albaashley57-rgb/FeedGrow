@@ -18,15 +18,15 @@ public class EditarPerfil extends javax.swing.JPanel {
     private void initCustom() {
         if (estudiante != null) {
             jLabel11.setText(estudiante.getNombre());
-            jTextField1.setText(estudiante.getCarrera());
             jTextField2.setText(estudiante.getCorreo());
+            jComboCarrera.setSelectedItem(estudiante.getCarrera());
         }
     }
 
     private void guardar() {
         List<String> errores = new ArrayList<>();
 
-        String carrera    = jTextField1.getText().trim();
+        String carrera    =  ((String)jComboCarrera.getSelectedItem()).trim();
         String correo     = jTextField2.getText().trim();
         String contrasena = new String(jPasswordField1.getPassword());
         String newPass    = new String(jPasswordField2.getPassword());
@@ -103,7 +103,6 @@ public class EditarPerfil extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         Guardar = new javax.swing.JButton();
         Responsabilidad = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         Responsabilidad1 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         Responsabilidad2 = new javax.swing.JLabel();
@@ -112,6 +111,7 @@ public class EditarPerfil extends javax.swing.JPanel {
         jPasswordField1 = new javax.swing.JPasswordField();
         jPasswordField2 = new javax.swing.JPasswordField();
         jPasswordField3 = new javax.swing.JPasswordField();
+        jComboCarrera = new javax.swing.JComboBox<>();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -150,15 +150,6 @@ public class EditarPerfil extends javax.swing.JPanel {
         Responsabilidad.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
         Responsabilidad.setText("Confirmar contraseña:");
         jPanel2.add(Responsabilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 250, -1));
-
-        jTextField1.setBackground(new java.awt.Color(200, 200, 200));
-        jTextField1.setText("{jTextField1}");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 560, -1));
 
         Responsabilidad1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
         Responsabilidad1.setText("Carrera:");
@@ -204,6 +195,11 @@ public class EditarPerfil extends javax.swing.JPanel {
         });
         jPanel2.add(jPasswordField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 560, -1));
 
+        jComboCarrera.setBackground(new java.awt.Color(200, 200, 200));
+        jComboCarrera.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biología", "Física", "Licenciatura en Matemáticas", "Matemáticas", "Química", "Ingeniería de Sistemas", "Ingeniería Eléctrica", "Ingeniería Electrónica", "Ingeniería Industrial", "Ingeniería Mecánica", "Ingeniería Biomédica", "Ingeniería en Ciencia de Datos", "Diseño Industrial", "Ingeniería Civil", "Ingeniería Química", "Ingeniería de Petróleos", "Geología", "Enfermería", "Fisioterapia", "Medicina", "Microbiología y Bioanálisis", "Nutrición y Dietética", "Derecho", "Economía", "Filosofía", "Historia y Archivística", "Licenciatura en Educación Básica Primaria", "Licenciatura en Literatura y Lengua Castellana", "Licenciatura en Lenguas Extranjeras con énfasis en Inglés", "Licenciatura en Música", "Trabajo Social", "Técnica Profesional en Ejecución de Proyectos Culturales y Creativos" }));
+        jPanel2.add(jComboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 560, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -225,10 +221,6 @@ public class EditarPerfil extends javax.swing.JPanel {
      guardar();                                   
     }//GEN-LAST:event_GuardarActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
@@ -249,6 +241,7 @@ public class EditarPerfil extends javax.swing.JPanel {
     private javax.swing.JLabel Responsabilidad2;
     private javax.swing.JLabel Responsabilidad3;
     private javax.swing.JLabel Responsabilidad4;
+    private javax.swing.JComboBox<String> jComboCarrera;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -260,7 +253,6 @@ public class EditarPerfil extends javax.swing.JPanel {
     private javax.swing.JPasswordField jPasswordField3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
