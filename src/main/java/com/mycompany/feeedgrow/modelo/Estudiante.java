@@ -93,8 +93,9 @@ public class Estudiante {
 
    @Override
    public String toString(){
-       return this.código + "," + this.nombre + "," + this.correo + "," +  this.carrera + "," + this.contraseña;
+       return this.código + "," + this.nombre + "," + this.correo + "," +  this.carrera + ","+this.contraseña;
    }
+    
    
 
     // quizás lo de editar el "perfil" es mejor editar el estudiante enlazado a él
