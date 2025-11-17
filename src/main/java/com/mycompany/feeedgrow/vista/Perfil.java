@@ -53,7 +53,7 @@ private Estudiante estudiante;
     new DecimalFormat("#0.0", new DecimalFormatSymbols(new Locale("es", "CO")));
 
 private void setScore(javax.swing.JLabel label, double valor) {
-    label.setText(DF.format(valor)); // Muestra 2,0 con coma en vez de punto
+    label.setText(DF.format(valor)); 
 }
 
 public void cargarCalificaciones(Estudiante e) {

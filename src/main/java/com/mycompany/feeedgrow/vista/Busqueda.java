@@ -22,8 +22,7 @@ public class Busqueda extends JPanel {
     }
 
     private void initCustom() {
-        // Esto es raro en un JList, pero lo dejo como lo tenías.
-        // Lo ideal sería que jListResultados fuera un JPanel, no un JList.
+       
         jListResultados.setLayout(
             new javax.swing.BoxLayout(jListResultados, javax.swing.BoxLayout.Y_AXIS)
         );

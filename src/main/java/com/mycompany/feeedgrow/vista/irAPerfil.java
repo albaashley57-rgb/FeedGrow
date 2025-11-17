@@ -19,11 +19,11 @@ public class irAPerfil extends javax.swing.JPanel {
 
     private Estudiante estudiante;
 
-    // Constructor que usará el programa
+   
     public irAPerfil(Estudiante evaluado) {
         this.estudiante = evaluado;
         initComponents();
-        cargarDatos();   // aquí llenas los labels cuando los tengas
+        cargarDatos();   
     }
 
  
@@ -40,7 +40,7 @@ public class irAPerfil extends javax.swing.JPanel {
     new DecimalFormat("#0.0", new DecimalFormatSymbols(new Locale("es", "CO")));
 
 private void setScore(javax.swing.JLabel label, double valor) {
-    label.setText(DF.format(valor)); // Muestra 2,0 con coma en vez de punto
+    label.setText(DF.format(valor)); 
 }
     public void cargarCalificaciones(Estudiante e) {
     if (e == null || e.getPerfil() == null) return;
