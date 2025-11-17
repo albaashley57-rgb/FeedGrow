@@ -222,7 +222,7 @@ public class EditarPerfil extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
-        guardar();
+     guardar();                                   
     }//GEN-LAST:event_GuardarActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

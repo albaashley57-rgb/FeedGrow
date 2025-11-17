@@ -3,6 +3,7 @@ package com.mycompany.feeedgrow.vista;
 
 import com.mycompany.feeedgrow.controlador.InicioDeSesiónControlador;
 import com.mycompany.feeedgrow.modelo.Estudiante;
+import com.mycompany.feeedgrow.modelo.GestorDatos;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -266,7 +267,8 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             "Éxito",
             javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
-     PáginaMenú ventana = new PáginaMenú(e);
+    GestorDatos g = controlador.getGestor();
+     PáginaMenú ventana = new PáginaMenú(g, e);
      ventana.setVisible(true);
      this.dispose();
     }//GEN-LAST:event_botonAceptarMouseClicked

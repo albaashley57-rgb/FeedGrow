@@ -4,6 +4,7 @@
  */
 package com.mycompany.feeedgrow.vista;
 import com.mycompany.feeedgrow.modelo.Estudiante;
+import com.mycompany.feeedgrow.modelo.GestorDatos;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
@@ -11,12 +12,21 @@ import javax.swing.JPanel;
 
 public class PáginaMenú extends javax.swing.JFrame {
 private Estudiante estudiante;
+private GestorDatos gestor;
+
    
-    public PáginaMenú(Estudiante estudiante) {
+    public PáginaMenú(GestorDatos gestor,Estudiante estudiante) {
         this.estudiante = estudiante;
+        this.gestor = gestor;
         initComponents();
         initStyles();
         initContent();    
+    }
+    public Estudiante getEstudiante (){
+        return estudiante;
+    }
+    public GestorDatos getGestor(){
+        return gestor;
     }
     
     private void initContent() {
@@ -274,7 +284,7 @@ private Estudiante estudiante;
     }//GEN-LAST:event_BotónGestorActionPerformed
 
     private void BotónBúsquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónBúsquedaActionPerformed
-        // TODO add your handling code here:
+ cambiarPanel(new Busqueda(gestor));
     }//GEN-LAST:event_BotónBúsquedaActionPerformed
 
     private void BotónRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónRankingActionPerformed

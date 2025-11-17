@@ -6,14 +6,14 @@ package com.mycompany.feeedgrow.vista;
 
 /**
  *
- * @author PC
+ * @author micha
  */
-public class Búsqueda extends javax.swing.JPanel {
+public class PerfilResponsive extends javax.swing.JPanel {
 
     /**
-     * Creates new form Búsqueda
+     * Creates new form PerfilResponsive
      */
-    public Búsqueda() {
+    public PerfilResponsive() {
         initComponents();
     }
 

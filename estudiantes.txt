@@ -1,2 +1,5 @@
-2250181,Ashley Dayana Alba Pérez,albaashley57@gmail.com,Ingeniería de Sistemas,1094050932
-2250194,hola,Ingeniería Biomédica,holahola,aleja123
+2250194,andres rivera,Ingeniería de Sistemas,hola@gmail.com,hola123
+2250195,Andres Felipe Rivera Carreño,hola@gmail.com,Medicina,hola123
+225091,hola123,Ingeniería Electrónica,j@gmail.com,hola123
+2250196,hola,halhgkdalh,Derecho,hola123
+2250190,Maria Rivera,Ingeniería Química,maria@gmail.com,aleja123
