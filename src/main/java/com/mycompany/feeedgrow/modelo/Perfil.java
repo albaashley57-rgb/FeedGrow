@@ -35,22 +35,22 @@ public class Perfil {
         this.promedioGlobal = this.calcularPromedioGlobal();
     }
      
-    private double calcularPromedioPorArea(String area){
-        ArrayList<Calificación> calificacionesRecibidas = this.estudiante.getCalificacionesRecibidas();
-        if (calificacionesRecibidas.isEmpty()){
-            return 0.0;
-        }
-        double suma = 0;
-        int contador = 0;
-        for (Calificación c : calificacionesRecibidas) {
-            Double valor = c.getCalificaciónÁrea(area);
-            if (valor != null) {
-                suma += valor;
-                contador++;
-            }
-        }
-        return contador == 0 ? 0 : suma / contador;
+   private double calcularPromedioPorArea(String area){
+    ArrayList<Calificación> calificacionesRecibidas = this.estudiante.getCalificacionesRecibidas();
+    if (calificacionesRecibidas.isEmpty()){
+        return 0.0;
     }
+    double suma = 0;
+    int contador = 0;
+    for (Calificación c : calificacionesRecibidas) {
+        Double valor = c.getCalificaciónÁrea(area);
+        if (valor != null) {
+            suma += valor;
+            contador++;
+        }
+    }
+    return contador == 0 ? 0 : suma / contador;
+}
     
     private double calcularPromedioGlobal(){
         ArrayList<Calificación> calificacionesRecibidas = this.estudiante.getCalificacionesRecibidas();
@@ -70,7 +70,8 @@ public class Perfil {
     }
 
     public double getPromedio(String area){
-        return promedioCalificaciones.get(area);
+        if(promedioCalificaciones==null)return 0.0;
+        return promedioCalificaciones.getOrDefault(area, 0.0);
     }
    
     public String[] getMejoresAtributos() {
