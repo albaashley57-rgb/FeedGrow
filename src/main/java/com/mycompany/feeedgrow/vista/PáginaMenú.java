@@ -288,7 +288,7 @@ private GestorDatos gestor;
     }//GEN-LAST:event_BotónBúsquedaActionPerformed
 
     private void BotónRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónRankingActionPerformed
-        cambiarPanel(new Ranking());
+        cambiarPanel(new Ranking(gestor));
     }//GEN-LAST:event_BotónRankingActionPerformed
 
     private void BotónPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotónPrincipalMouseClicked

@@ -118,7 +118,7 @@ public class ItemBusqueda extends javax.swing.JPanel {
 
         jMejoresAtributos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMejoresAtributos.setText("{mejores atributos}");
-        jPanel1.add(jMejoresAtributos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, 30));
+        jPanel1.add(jMejoresAtributos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 430, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-11-11 220725.png"))); // NOI18N

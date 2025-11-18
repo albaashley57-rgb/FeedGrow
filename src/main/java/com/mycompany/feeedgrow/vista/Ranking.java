@@ -4,13 +4,37 @@
  */
 package com.mycompany.feeedgrow.vista;
 
-import java.awt.Color;
+import com.mycompany.feeedgrow.modelo.Estudiante;
+import com.mycompany.feeedgrow.persistencia.GestorDatos;
+import java.util.List;
+import javax.swing.BoxLayout;
 
 public class Ranking extends javax.swing.JPanel {
-
-    public Ranking() {
+private GestorDatos gestor;
+    public Ranking(GestorDatos gestor) {
         initComponents();
+        this.gestor = gestor;
+        cargarRanking();
     }
+    private void cargarRanking(){
+         
+        jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.Y_AXIS));
+        jPanel2.removeAll();
+
+        if (gestor == null) return;
+
+        List<Estudiante> top = gestor.top3();
+        for (Estudiante e : top) {
+            if (e == null) 
+                continue;
+            ItemRanking item = new ItemRanking(e);
+            jPanel2.add(item);
+        }
+
+        jPanel2.revalidate();
+        jPanel2.repaint();
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -21,19 +45,55 @@ public class Ranking extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
+        jLabel1.setText("Mis Calificaciones");
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
+        jLabel2.setText("Ranking");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 200, -1));
+
+        jPanel2.setBackground(new java.awt.Color(250, 240, 252));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 828, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 458, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 978, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
         );
+
+        getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

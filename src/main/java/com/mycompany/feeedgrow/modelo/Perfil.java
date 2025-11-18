@@ -58,13 +58,31 @@ private String[] mejoresAtributos;
     }
 
     private void actualizarMejoresAtributos() {
-        List<Map.Entry<CriterioEvaluacion, Double>> lista = new ArrayList<>(promediosPorCriterio.entrySet());
-        lista.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
+    
+    java.util.Arrays.fill(mejoresAtributos, "");
 
-        for (int i = 0; i < 3; i++) {
-            mejoresAtributos[i] = (i < lista.size()) ? lista.get(i).getKey().name() : "";
-        }
+   
+    java.util.List<java.util.Map.Entry<CriterioEvaluacion, Double>> lista =
+            new java.util.ArrayList<>(promediosPorCriterio.entrySet());
+
+    
+    lista.removeIf(e -> e.getValue() == null || e.getValue() <= 0.0);
+
+    
+    if (lista.isEmpty()) {
+        // mejoresAtributos se queda con "", "", ""
+        return;
     }
+
+   
+    lista.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
+
+    
+    int limite = Math.min(3, lista.size());
+    for (int i = 0; i < limite; i++) {
+        mejoresAtributos[i] = lista.get(i).getKey().name();  // o toString() si lo formateas distinto
+    }
+}
 
     public double getPromedio(CriterioEvaluacion criterio) {
         return promediosPorCriterio.getOrDefault(criterio, 0.0);

@@ -11,6 +11,5 @@ public enum CriterioEvaluacion {
     LIDERAZGO,
     RESOLUCION_CONFLICTOS,
     CONFIABILIDAD,
-    ACTITUD;
-
+    ACTITUD
 }

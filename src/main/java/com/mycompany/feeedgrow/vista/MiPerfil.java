@@ -184,7 +184,7 @@ public void cargarPromedios() {
                 jButton3ActionPerformed(evt);
             }
         });
-        fondo11.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, -1, -1));
+        fondo11.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, -1, -1));
 
         jLabel24.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
         jLabel24.setText("jLabel24");
@@ -277,8 +277,9 @@ public void cargarPromedios() {
         jLabel43.setText("jLabel43");
         fondo11.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, -1, -1));
 
+        textoAtributos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textoAtributos.setText("atributos: {atributos}");
-        fondo11.add(textoAtributos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 210, -1));
+        fondo11.add(textoAtributos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 410, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

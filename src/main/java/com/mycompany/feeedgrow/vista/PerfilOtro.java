@@ -266,8 +266,9 @@ private void setScore(javax.swing.JLabel label, double valor) {
         });
         fondo11.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, -1, -1));
 
+        textoAtributos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textoAtributos.setText("atributos: {atributos}");
-        fondo11.add(textoAtributos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 210, -1));
+        fondo11.add(textoAtributos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 410, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
