@@ -3,6 +3,7 @@ package com.mycompany.feeedgrow.vista;
 
 import com.mycompany.feeedgrow.controlador.RegistroControlador;
 import com.mycompany.feeedgrow.modelo.Estudiante;
+import com.mycompany.feeedgrow.persistencia.GestorDatos;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -10,8 +11,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Registro extends javax.swing.JFrame {
+    private GestorDatos gestor;
     
-    public Registro() {
+    public Registro(GestorDatos gestor) {
+        this.gestor = gestor;
         initComponents();
         initLocation();
         initCustom();
@@ -106,6 +109,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         título.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         título.setText("REGISTRO");
 
+        campoNombre.setBackground(new java.awt.Color(255, 255, 255));
         campoNombre.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         campoNombre.setForeground(new java.awt.Color(153, 153, 153));
         campoNombre.setText("Nombre");
@@ -121,6 +125,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             }
         });
 
+        campoCorreo.setBackground(new java.awt.Color(255, 255, 255));
         campoCorreo.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         campoCorreo.setForeground(new java.awt.Color(153, 153, 153));
         campoCorreo.setText("Correo");
@@ -136,6 +141,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             }
         });
 
+        campoConfirmarContraseña.setBackground(new java.awt.Color(255, 255, 255));
         campoConfirmarContraseña.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         campoConfirmarContraseña.setForeground(new java.awt.Color(153, 153, 153));
         campoConfirmarContraseña.setText("Confirmar Contraseña");
@@ -146,6 +152,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             }
         });
 
+        campoContraseña.setBackground(new java.awt.Color(255, 255, 255));
         campoContraseña.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         campoContraseña.setForeground(new java.awt.Color(153, 153, 153));
         campoContraseña.setText("Contraseña");
@@ -161,6 +168,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             }
         });
 
+        campoCódigo.setBackground(new java.awt.Color(255, 255, 255));
         campoCódigo.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         campoCódigo.setForeground(new java.awt.Color(153, 153, 153));
         campoCódigo.setText("Código de estudiante");
@@ -209,6 +217,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
             }
         });
 
+        jComboBoxCarrera.setBackground(new java.awt.Color(255, 255, 255));
         jComboBoxCarrera.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jComboBoxCarrera.setForeground(new java.awt.Color(153, 153, 153));
         jComboBoxCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione su carrera", "Biología", "Física", "Licenciatura en Matemáticas", "Matemáticas", "Química", "Ingeniería de Sistemas", "Ingeniería Eléctrica", "Ingeniería Electrónica", "Ingeniería Industrial", "Ingeniería Mecánica", "Ingeniería Biomédica", "Ingeniería en Ciencia de Datos", "Diseño Industrial", "Ingeniería Civil", "Ingeniería Química", "Ingeniería de Petróleos", "Geología", "Enfermería", "Fisioterapia", "Medicina", "Microbiología y Bioanálisis", "Nutrición y Dietética", "Derecho", "Economía", "Filosofía", "Historia y Archivística", "Licenciatura en Educación Básica Primaria", "Licenciatura en Literatura y Lengua Castellana", "Licenciatura en Lenguas Extranjeras con énfasis en Inglés", "Licenciatura en Música", "Trabajo Social", "Técnica Profesional en Ejecución de Proyectos Culturales y Creativos" }));
@@ -398,9 +407,8 @@ private void estéticaCampos(javax.swing.JTextField campo){
 
     private void botonAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAceptarMouseClicked
 
-    RegistroControlador controller = new RegistroControlador();
+    RegistroControlador controller = new RegistroControlador(gestor);
 
-    // Crear el objeto estudiante
     Estudiante estudiante = new Estudiante(
         campoNombre.getText().trim(),
         campoCódigo.getText().trim(),
@@ -411,7 +419,6 @@ private void estéticaCampos(javax.swing.JTextField campo){
 
     String confirmar = campoConfirmarContraseña.getText().trim();
 
-    // Validar datos
     String errores = controller.validarEstudiante(estudiante, confirmar);
 
     if (!errores.isEmpty()) {
@@ -419,12 +426,11 @@ private void estéticaCampos(javax.swing.JTextField campo){
         return;
     }
 
-    // Registrar estudiante
     String resultado = controller.registrarEstudiante(estudiante);
 
     if (resultado.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Registro exitoso. ¡Bienvenido/a, " + estudiante.getNombre() + "!");
-        new InicioDeSesión().setVisible(true);
+        new InicioDeSesion(gestor).setVisible(true);
         this.dispose();
     } else {
         JOptionPane.showMessageDialog(this, resultado, "Error", JOptionPane.ERROR_MESSAGE);
@@ -437,7 +443,7 @@ private void estéticaCampos(javax.swing.JTextField campo){
     }//GEN-LAST:event_botonAceptarActionPerformed
 
     private void IniciarSesiónMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IniciarSesiónMouseClicked
-         InicioDeSesión ventana = new InicioDeSesión();
+         InicioDeSesion ventana = new InicioDeSesion(gestor);
          ventana.setVisible(true);
          this.dispose();
     }//GEN-LAST:event_IniciarSesiónMouseClicked
@@ -454,40 +460,6 @@ private void estéticaCampos(javax.swing.JTextField campo){
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxCarreraActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Registro().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IniciarSesión;

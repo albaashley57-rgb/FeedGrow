@@ -145,16 +145,15 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="jCampoCorreo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="c8" green="c8" red="c8" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="{jTextField2}"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="370" width="560" height="-1"/>
+              <AbsoluteConstraints x="20" y="370" width="890" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -208,7 +207,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="440" width="560" height="-1"/>
+              <AbsoluteConstraints x="20" y="440" width="890" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -223,7 +222,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="510" width="560" height="-1"/>
+              <AbsoluteConstraints x="20" y="510" width="890" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -238,7 +237,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="580" width="560" height="-1"/>
+              <AbsoluteConstraints x="20" y="580" width="890" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -251,39 +250,40 @@
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="32">
-                <StringItem index="0" value="Biolog&#xed;a"/>
-                <StringItem index="1" value="F&#xed;sica"/>
-                <StringItem index="2" value="Licenciatura en Matem&#xe1;ticas"/>
-                <StringItem index="3" value="Matem&#xe1;ticas"/>
-                <StringItem index="4" value="Qu&#xed;mica"/>
-                <StringItem index="5" value="Ingenier&#xed;a de Sistemas"/>
-                <StringItem index="6" value="Ingenier&#xed;a El&#xe9;ctrica"/>
-                <StringItem index="7" value="Ingenier&#xed;a Electr&#xf3;nica"/>
-                <StringItem index="8" value="Ingenier&#xed;a Industrial"/>
-                <StringItem index="9" value="Ingenier&#xed;a Mec&#xe1;nica"/>
-                <StringItem index="10" value="Ingenier&#xed;a Biom&#xe9;dica"/>
-                <StringItem index="11" value="Ingenier&#xed;a en Ciencia de Datos"/>
-                <StringItem index="12" value="Dise&#xf1;o Industrial"/>
-                <StringItem index="13" value="Ingenier&#xed;a Civil"/>
-                <StringItem index="14" value="Ingenier&#xed;a Qu&#xed;mica"/>
-                <StringItem index="15" value="Ingenier&#xed;a de Petr&#xf3;leos"/>
-                <StringItem index="16" value="Geolog&#xed;a"/>
-                <StringItem index="17" value="Enfermer&#xed;a"/>
-                <StringItem index="18" value="Fisioterapia"/>
-                <StringItem index="19" value="Medicina"/>
-                <StringItem index="20" value="Microbiolog&#xed;a y Bioan&#xe1;lisis"/>
-                <StringItem index="21" value="Nutrici&#xf3;n y Diet&#xe9;tica"/>
-                <StringItem index="22" value="Derecho"/>
-                <StringItem index="23" value="Econom&#xed;a"/>
-                <StringItem index="24" value="Filosof&#xed;a"/>
-                <StringItem index="25" value="Historia y Archiv&#xed;stica"/>
-                <StringItem index="26" value="Licenciatura en Educaci&#xf3;n B&#xe1;sica Primaria"/>
-                <StringItem index="27" value="Licenciatura en Literatura y Lengua Castellana"/>
-                <StringItem index="28" value="Licenciatura en Lenguas Extranjeras con &#xe9;nfasis en Ingl&#xe9;s"/>
-                <StringItem index="29" value="Licenciatura en M&#xfa;sica"/>
-                <StringItem index="30" value="Trabajo Social"/>
-                <StringItem index="31" value="T&#xe9;cnica Profesional en Ejecuci&#xf3;n de Proyectos Culturales y Creativos"/>
+              <StringArray count="33">
+                <StringItem index="0" value="Seleccione su carrera..."/>
+                <StringItem index="1" value="Biolog&#xed;a"/>
+                <StringItem index="2" value="F&#xed;sica"/>
+                <StringItem index="3" value="Licenciatura en Matem&#xe1;ticas"/>
+                <StringItem index="4" value="Matem&#xe1;ticas"/>
+                <StringItem index="5" value="Qu&#xed;mica"/>
+                <StringItem index="6" value="Ingenier&#xed;a de Sistemas"/>
+                <StringItem index="7" value="Ingenier&#xed;a El&#xe9;ctrica"/>
+                <StringItem index="8" value="Ingenier&#xed;a Electr&#xf3;nica"/>
+                <StringItem index="9" value="Ingenier&#xed;a Industrial"/>
+                <StringItem index="10" value="Ingenier&#xed;a Mec&#xe1;nica"/>
+                <StringItem index="11" value="Ingenier&#xed;a Biom&#xe9;dica"/>
+                <StringItem index="12" value="Ingenier&#xed;a en Ciencia de Datos"/>
+                <StringItem index="13" value="Dise&#xf1;o Industrial"/>
+                <StringItem index="14" value="Ingenier&#xed;a Civil"/>
+                <StringItem index="15" value="Ingenier&#xed;a Qu&#xed;mica"/>
+                <StringItem index="16" value="Ingenier&#xed;a de Petr&#xf3;leos"/>
+                <StringItem index="17" value="Geolog&#xed;a"/>
+                <StringItem index="18" value="Enfermer&#xed;a"/>
+                <StringItem index="19" value="Fisioterapia"/>
+                <StringItem index="20" value="Medicina"/>
+                <StringItem index="21" value="Microbiolog&#xed;a y Bioan&#xe1;lisis"/>
+                <StringItem index="22" value="Nutrici&#xf3;n y Diet&#xe9;tica"/>
+                <StringItem index="23" value="Derecho"/>
+                <StringItem index="24" value="Econom&#xed;a"/>
+                <StringItem index="25" value="Filosof&#xed;a"/>
+                <StringItem index="26" value="Historia y Archiv&#xed;stica"/>
+                <StringItem index="27" value="Licenciatura en Educaci&#xf3;n B&#xe1;sica Primaria"/>
+                <StringItem index="28" value="Licenciatura en Literatura y Lengua Castellana"/>
+                <StringItem index="29" value="Licenciatura en Lenguas Extranjeras con &#xe9;nfasis en Ingl&#xe9;s"/>
+                <StringItem index="30" value="Licenciatura en M&#xfa;sica"/>
+                <StringItem index="31" value="Trabajo Social"/>
+                <StringItem index="32" value="T&#xe9;cnica Profesional en Ejecuci&#xf3;n de Proyectos Culturales y Creativos"/>
               </StringArray>
             </Property>
           </Properties>
@@ -292,7 +292,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="300" width="560" height="-1"/>
+              <AbsoluteConstraints x="20" y="300" width="890" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

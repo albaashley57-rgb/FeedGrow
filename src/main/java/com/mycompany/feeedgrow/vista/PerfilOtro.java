@@ -1,27 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package com.mycompany.feeedgrow.vista;
 
+import com.mycompany.feeedgrow.controlador.PerfilControlador;
+import com.mycompany.feeedgrow.modelo.CriterioEvaluacion;
 import com.mycompany.feeedgrow.modelo.Estudiante;
-import com.mycompany.feeedgrow.modelo.GestorDatos;
+import com.mycompany.feeedgrow.persistencia.GestorDatos;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import javax.swing.SwingUtilities;
 
-/**
- *
- * @author micha
- */
-public class irAPerfil extends javax.swing.JPanel {
 
+public class PerfilOtro extends javax.swing.JPanel {
     private Estudiante estudiante;
+    private Estudiante usuario;
+    private GestorDatos gestor;
 
    
-    public irAPerfil(Estudiante evaluado) {
-        this.estudiante = evaluado;
+    public PerfilOtro(Estudiante usuario, GestorDatos gestor, Estudiante estudiante) {
+        this.estudiante = estudiante;
+        this.usuario = usuario;
+        this.gestor = gestor;
         initComponents();
         cargarDatos();   
     }
@@ -32,9 +31,10 @@ public class irAPerfil extends javax.swing.JPanel {
     private void cargarDatos() {
         if (estudiante == null) return;
         jNombre.setText(estudiante.getNombre());
-        jCarrera.setText(estudiante.getCarrera());
-        jCorreo.setText(estudiante.getCorreo());
-       cargarCalificaciones(estudiante);
+        jCarrera.setText("Carrera • " + estudiante.getCarrera());
+        jCorreo.setText("Correo: " +estudiante.getCorreo());
+        textoAtributos.setText("Atributos: " + estudiante.getPerfil().getMejoresAtributos());
+       cargarPromedios();
     }
     private static final DecimalFormat DF =
     new DecimalFormat("#0.0", new DecimalFormatSymbols(new Locale("es", "CO")));
@@ -42,21 +42,20 @@ public class irAPerfil extends javax.swing.JPanel {
 private void setScore(javax.swing.JLabel label, double valor) {
     label.setText(DF.format(valor)); 
 }
-    public void cargarCalificaciones(Estudiante e) {
-    if (e == null || e.getPerfil() == null) return;
-    var p = e.getPerfil();
+    public void cargarPromedios() {
+     PerfilControlador pc = new PerfilControlador(gestor); 
 
-    setScore(jLabel24,         p.getPromedio("responsabilidad"));
-    setScore(jLabel28,         p.getPromedio("colaboración"));
-    setScore(jLabel29,         p.getPromedio("comunicación"));
-    setScore(jLabel26,         p.getPromedio("participación"));
-    setScore(jLabel27,         p.getPromedio("compromiso"));
-    setScore(jLabel41,         p.getPromedio("iniciativa"));
-    setScore(jLabel44,         p.getPromedio("liderazgo"));
-    setScore(jLabel39,         p.getPromedio("resolución de conflictos"));
-    setScore(jLabel42,         p.getPromedio("confiabilidad"));
-    setScore(jLabel48,         p.getPromedio("actitud"));
-    setScore(jLabel43, p.getPromedioGlobal());
+    setScore(promedioResoponsabilidad, pc.getPromedio(estudiante, CriterioEvaluacion.RESPONSABILIDAD));
+    setScore(promedioColaboración, pc.getPromedio(estudiante, CriterioEvaluacion.COLABORACION));
+    setScore(promedioComunicacion, pc.getPromedio(estudiante, CriterioEvaluacion.COMUNICACION));
+    setScore(promedioParticipacion, pc.getPromedio(estudiante, CriterioEvaluacion.PARTICIPACION));
+    setScore(promedioCompromiso, pc.getPromedio(estudiante, CriterioEvaluacion.COMPROMISO));
+    setScore(promedioInciativa, pc.getPromedio(estudiante, CriterioEvaluacion.INICIATIVA));
+    setScore(promedioLiderazgo, pc.getPromedio(estudiante, CriterioEvaluacion.LIDERAZGO));
+    setScore(promedioResolucionDeConflictos, pc.getPromedio(estudiante, CriterioEvaluacion.RESOLUCION_CONFLICTOS));
+    setScore(promedioConfiabilidad, pc.getPromedio(estudiante, CriterioEvaluacion.CONFIABILIDAD));
+    setScore(promedioActitud, pc.getPromedio(estudiante, CriterioEvaluacion.ACTITUD));
+    setScore(promedioGlobal, pc.getPromedioGlobal(estudiante));
 }
     private void Cambiarpanel() {
         java.awt.Window w = SwingUtilities.getWindowAncestor(this);
@@ -64,7 +63,7 @@ private void setScore(javax.swing.JLabel label, double valor) {
         if (w instanceof PáginaMenú) {   
             PáginaMenú frame = (PáginaMenú) w;
 
-            Calificar panel = new Calificar(estudiante);  
+            Calificar panel = new Calificar(usuario, gestor, estudiante);  
             frame.cambiarPanel(panel);
         } else {
             
@@ -93,18 +92,18 @@ private void setScore(javax.swing.JLabel label, double valor) {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
+        promedioResoponsabilidad = new javax.swing.JLabel();
+        promedioParticipacion = new javax.swing.JLabel();
+        promedioCompromiso = new javax.swing.JLabel();
+        promedioColaboración = new javax.swing.JLabel();
+        promedioComunicacion = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
+        promedioResolucionDeConflictos = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
+        promedioInciativa = new javax.swing.JLabel();
+        promedioConfiabilidad = new javax.swing.JLabel();
+        promedioLiderazgo = new javax.swing.JLabel();
         Responsabilidad = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
@@ -115,9 +114,10 @@ private void setScore(javax.swing.JLabel label, double valor) {
         jLabel50 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
+        promedioActitud = new javax.swing.JLabel();
+        promedioGlobal = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        textoAtributos = new javax.swing.JLabel();
 
         fondo11.setBackground(new java.awt.Color(255, 255, 255));
         fondo11.setPreferredSize(new java.awt.Dimension(978, 653));
@@ -165,25 +165,25 @@ private void setScore(javax.swing.JLabel label, double valor) {
         jLabel23.setText("Demuestra interés y constancia en el proyecto.");
         fondo11.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
-        jLabel24.setText("jLabel24");
-        fondo11.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, -1, -1));
+        promedioResoponsabilidad.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        promedioResoponsabilidad.setText("jLabel24");
+        fondo11.add(promedioResoponsabilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, -1, -1));
 
-        jLabel26.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
-        jLabel26.setText("jLabel26");
-        fondo11.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, -1, -1));
+        promedioParticipacion.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        promedioParticipacion.setText("jLabel26");
+        fondo11.add(promedioParticipacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, -1, -1));
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
-        jLabel27.setText("jLabel27");
-        fondo11.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, -1, -1));
+        promedioCompromiso.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        promedioCompromiso.setText("jLabel27");
+        fondo11.add(promedioCompromiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, -1, -1));
 
-        jLabel28.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
-        jLabel28.setText("jLabel28");
-        fondo11.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
+        promedioColaboración.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        promedioColaboración.setText("jLabel28");
+        fondo11.add(promedioColaboración, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
 
-        jLabel29.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
-        jLabel29.setText("jLabel29");
-        fondo11.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, -1, -1));
+        promedioComunicacion.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        promedioComunicacion.setText("jLabel29");
+        fondo11.add(promedioComunicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, -1, -1));
 
         jLabel31.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
         jLabel31.setText("Actitud");
@@ -193,25 +193,25 @@ private void setScore(javax.swing.JLabel label, double valor) {
         jLabel37.setText("Compromiso");
         fondo11.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 192, -1));
 
-        jLabel39.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
-        jLabel39.setText("jLabel39");
-        fondo11.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 400, -1, -1));
+        promedioResolucionDeConflictos.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        promedioResolucionDeConflictos.setText("jLabel39");
+        fondo11.add(promedioResolucionDeConflictos, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 400, -1, -1));
 
         jLabel40.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
         jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-11-11 220725.png"))); // NOI18N
         fondo11.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 70, -1, -1));
 
-        jLabel41.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
-        jLabel41.setText("jLabel41");
-        fondo11.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 280, -1, -1));
+        promedioInciativa.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        promedioInciativa.setText("jLabel41");
+        fondo11.add(promedioInciativa, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 280, -1, -1));
 
-        jLabel42.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
-        jLabel42.setText("jLabel42");
-        fondo11.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 460, 110, -1));
+        promedioConfiabilidad.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        promedioConfiabilidad.setText("jLabel42");
+        fondo11.add(promedioConfiabilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 460, 110, -1));
 
-        jLabel44.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
-        jLabel44.setText("jLabel44");
-        fondo11.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 340, -1, -1));
+        promedioLiderazgo.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        promedioLiderazgo.setText("jLabel44");
+        fondo11.add(promedioLiderazgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 340, -1, -1));
 
         Responsabilidad.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
         Responsabilidad.setText("Responsabilidad");
@@ -248,13 +248,13 @@ private void setScore(javax.swing.JLabel label, double valor) {
         jLabel51.setText("El equipo puede contar con el/ella; cumple lo que promete.");
         fondo11.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, -1, -1));
 
-        jLabel48.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
-        jLabel48.setText("jLabel48");
-        fondo11.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 520, -1, -1));
+        promedioActitud.setFont(new java.awt.Font("Segoe UI Emoji", 0, 30)); // NOI18N
+        promedioActitud.setText("jLabel48");
+        fondo11.add(promedioActitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 520, -1, -1));
 
-        jLabel43.setFont(new java.awt.Font("Segoe UI Emoji", 0, 36)); // NOI18N
-        jLabel43.setText("jLabel43");
-        fondo11.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, -1, -1));
+        promedioGlobal.setFont(new java.awt.Font("Segoe UI Emoji", 0, 36)); // NOI18N
+        promedioGlobal.setText("jLabel43");
+        fondo11.add(promedioGlobal, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(51, 255, 102));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -265,6 +265,9 @@ private void setScore(javax.swing.JLabel label, double valor) {
             }
         });
         fondo11.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, -1, -1));
+
+        textoAtributos.setText("atributos: {atributos}");
+        fondo11.add(textoAtributos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 210, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -300,29 +303,30 @@ private void setScore(javax.swing.JLabel label, double valor) {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jNombre;
+    private javax.swing.JLabel promedioActitud;
+    private javax.swing.JLabel promedioColaboración;
+    private javax.swing.JLabel promedioCompromiso;
+    private javax.swing.JLabel promedioComunicacion;
+    private javax.swing.JLabel promedioConfiabilidad;
+    private javax.swing.JLabel promedioGlobal;
+    private javax.swing.JLabel promedioInciativa;
+    private javax.swing.JLabel promedioLiderazgo;
+    private javax.swing.JLabel promedioParticipacion;
+    private javax.swing.JLabel promedioResolucionDeConflictos;
+    private javax.swing.JLabel promedioResoponsabilidad;
+    private javax.swing.JLabel textoAtributos;
     // End of variables declaration//GEN-END:variables
 }

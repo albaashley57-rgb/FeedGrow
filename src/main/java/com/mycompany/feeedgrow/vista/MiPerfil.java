@@ -1,15 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package com.mycompany.feeedgrow.vista;
-import com.mycompany.feeedgrow.modelo.Calificación;
+import com.mycompany.feeedgrow.controlador.PerfilControlador;
+import com.mycompany.feeedgrow.modelo.CriterioEvaluacion;
 import com.mycompany.feeedgrow.modelo.Estudiante;
+import com.mycompany.feeedgrow.persistencia.GestorDatos;
 import java.awt.BorderLayout;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
@@ -18,22 +16,23 @@ import javax.swing.JPanel;
  *
  * @author PC
  */
-public class Perfil extends javax.swing.JPanel {
-private Estudiante estudiante;
-    /**
-     * Creates new form EditarPerfila
-     */
-    public Perfil(Estudiante estudiante) {
-        this.estudiante = estudiante;
+public class MiPerfil extends javax.swing.JPanel {
+private Estudiante usuario;
+private GestorDatos gestor;
+
+    public MiPerfil(Estudiante usuario, GestorDatos gestor) {
+        this.usuario = usuario;
+        this.gestor = gestor;
         initComponents();
         initCustom();
-        cargarCalificaciones(estudiante);
+        cargarPromedios();
         
     }
     public void initCustom(){
-        jLabel12.setText("Carrera • " + estudiante.getCarrera());
-        jLabel11.setText(estudiante.getNombre());
-        jLabel13.setText("Correo: " + estudiante.getCorreo());
+        textoCarrera.setText("Carrera • " + usuario.getCarrera());
+        jLabel11.setText(usuario.getNombre());
+        textoCorreo.setText("Correo: " + usuario.getCorreo());
+        textoAtributos.setText("Atributos: " + usuario.getPerfil().getMejoresAtributos());
     }
     public void cambiarPanel(JPanel p) {
         fondo11.removeAll();
@@ -43,11 +42,7 @@ private Estudiante estudiante;
         fondo11.repaint();
         
     }
-    public void cambiarFrame(javax.swing.JFrame nuevo) {
-    this.removeAll();       // Cierra la ventana actual
-    nuevo.setLocationRelativeTo(null); // Centra el nuevo frame
-    nuevo.setVisible(true); 
-}
+
 
     private static final DecimalFormat DF =
     new DecimalFormat("#0.0", new DecimalFormatSymbols(new Locale("es", "CO")));
@@ -56,21 +51,20 @@ private void setScore(javax.swing.JLabel label, double valor) {
     label.setText(DF.format(valor)); 
 }
 
-public void cargarCalificaciones(Estudiante e) {
-    if (e == null || e.getPerfil() == null) return;
-    var p = e.getPerfil();
+public void cargarPromedios() {
+    PerfilControlador pc = new PerfilControlador(gestor); // inyecta gestor si ya lo tienes
 
-    setScore(jLabel24,         p.getPromedio("responsabilidad"));
-    setScore(jLabel28,         p.getPromedio("colaboración"));
-    setScore(jLabel29,         p.getPromedio("comunicación"));
-    setScore(jLabel26,         p.getPromedio("participación"));
-    setScore(jLabel27,         p.getPromedio("compromiso"));
-    setScore(jLabel41,         p.getPromedio("iniciativa"));
-    setScore(jLabel44,         p.getPromedio("liderazgo"));
-    setScore(jLabel39,         p.getPromedio("resolución de conflictos"));
-    setScore(jLabel42,         p.getPromedio("confiabilidad"));
-    setScore(jLabel48,         p.getPromedio("actitud"));
-    setScore(jLabel43, p.getPromedioGlobal());
+    setScore(jLabel24, pc.getPromedio(usuario, CriterioEvaluacion.RESPONSABILIDAD));
+    setScore(jLabel28, pc.getPromedio(usuario, CriterioEvaluacion.COLABORACION));
+    setScore(jLabel29, pc.getPromedio(usuario, CriterioEvaluacion.COMUNICACION));
+    setScore(jLabel26, pc.getPromedio(usuario, CriterioEvaluacion.PARTICIPACION));
+    setScore(jLabel27, pc.getPromedio(usuario, CriterioEvaluacion.COMPROMISO));
+    setScore(jLabel41, pc.getPromedio(usuario, CriterioEvaluacion.INICIATIVA));
+    setScore(jLabel44, pc.getPromedio(usuario, CriterioEvaluacion.LIDERAZGO));
+    setScore(jLabel39, pc.getPromedio(usuario, CriterioEvaluacion.RESOLUCION_CONFLICTOS));
+    setScore(jLabel42, pc.getPromedio(usuario, CriterioEvaluacion.CONFIABILIDAD));
+    setScore(jLabel48, pc.getPromedio(usuario, CriterioEvaluacion.ACTITUD));
+    setScore(jLabel43, pc.getPromedioGlobal(usuario));
 }
 
 
@@ -86,9 +80,8 @@ public void cargarCalificaciones(Estudiante e) {
         fondo11 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        textoCarrera = new javax.swing.JLabel();
+        textoCorreo = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -123,6 +116,7 @@ public void cargarCalificaciones(Estudiante e) {
         jLabel51 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
+        textoAtributos = new javax.swing.JLabel();
 
         fondo11.setBackground(new java.awt.Color(255, 255, 255));
         fondo11.setPreferredSize(new java.awt.Dimension(978, 653));
@@ -135,24 +129,13 @@ public void cargarCalificaciones(Estudiante e) {
         jLabel11.setText("{estudiante nombre}");
         fondo11.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, 36));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel12.setText("Carrera • {estudiante carrera}");
-        fondo11.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
+        textoCarrera.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textoCarrera.setText("Carrera • {estudiante carrera}");
+        fondo11.add(textoCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel13.setText("Correo: {estudiante correo}");
-        fondo11.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
-
-        jButton1.setBackground(new java.awt.Color(0, 204, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Rapidez");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        fondo11.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, -1, -1));
+        textoCorreo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textoCorreo.setText("Correo: {estudiante correo}");
+        fondo11.add(textoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 0, 0));
@@ -294,6 +277,9 @@ public void cargarCalificaciones(Estudiante e) {
         jLabel43.setText("jLabel43");
         fondo11.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, -1, -1));
 
+        textoAtributos.setText("atributos: {atributos}");
+        fondo11.add(textoAtributos, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 210, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -309,32 +295,30 @@ public void cargarCalificaciones(Estudiante e) {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        cambiarFrame (new InicioDeSesión());
+        
         javax.swing.JOptionPane.showMessageDialog(this,
-            "Cierre de sesión exitoso. " + estudiante.getNombre() + "!",
+            "Cierre de sesión exitoso. " + usuario.getNombre() + "!",
             "Hasta luego",
             javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JFrame frameActual = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+            frameActual.dispose();
+            InicioDeSesion inicio = new InicioDeSesion(gestor);
+            inicio.setVisible(true);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        cambiarPanel (new EditarPerfil(estudiante));
+        cambiarPanel (new EditarPerfil(gestor, usuario));
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Responsabilidad;
     private javax.swing.JPanel fondo11;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -366,5 +350,8 @@ public void cargarCalificaciones(Estudiante e) {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel textoAtributos;
+    private javax.swing.JLabel textoCarrera;
+    private javax.swing.JLabel textoCorreo;
     // End of variables declaration//GEN-END:variables
 }

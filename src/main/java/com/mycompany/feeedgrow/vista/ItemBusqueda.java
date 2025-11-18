@@ -1,36 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
-package com.mycompany.feeedgrow.vista;
 
+package com.mycompany.feeedgrow.vista;
 import com.mycompany.feeedgrow.modelo.Estudiante;
-import com.mycompany.feeedgrow.modelo.GestorDatos;
+import com.mycompany.feeedgrow.persistencia.GestorDatos;
+import java.awt.Color;
+import java.awt.Cursor;
 import java.util.Locale;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.SwingUtilities;
 
-public class DiseñoBusqueda extends javax.swing.JPanel {
+public class ItemBusqueda extends javax.swing.JPanel {
+  
     private Estudiante estudiante;
     private Busqueda busqueda;
-   
+    private GestorDatos gestor;
+    private Estudiante usuario;
 
-    public DiseñoBusqueda(Busqueda busqueda, Estudiante estudiante) {
+    public ItemBusqueda(Busqueda busqueda, Estudiante usuario, Estudiante estudiante, GestorDatos gestor) {
         this.estudiante = estudiante;
+        this.gestor = gestor;
         this.busqueda = busqueda;
-        initComponents();
-        cargarDatos();
+        this.usuario = usuario;
+        initComponents(); 
+        initCustom();     
+    }
 
-        // Toda la tarjeta es clicable
-        this.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (DiseñoBusqueda.this.estudiante != null) {
-                    abrirIrAPerfil(DiseñoBusqueda.this.estudiante);
-                }
-            }
-        });
+    private void initCustom() {
+        cargarDatos();
+        configurarNombreClicable();
     }
 
     private void cargarDatos() {
@@ -39,41 +34,55 @@ public class DiseñoBusqueda extends javax.swing.JPanel {
         nombre.setText(estudiante.getNombre());
 
         String carrera = estudiante.getCarrera() != null ? estudiante.getCarrera() : "";
-        String correo  = estudiante.getCorreo()  != null ? estudiante.getCorreo()  : "";
+        jCarrera.setText("Carrera • " + carrera);
 
-        jcarrera.setText("Carrera • " + carrera);
-
-        String extra = "";
         double score = 0.0;
+        String attrs = "";
 
-        try {
-            if (estudiante.getPerfil() != null) {
-                String[] attrs = estudiante.getPerfil().getMejoresAtributos();
-                if (attrs != null && attrs.length > 0 && attrs[0] != null) {
-                    extra = attrs[0];
-                }
+        if (estudiante.getPerfil() != null) {
+            try {
+                attrs = estudiante.getPerfil().getMejoresAtributos();
                 score = estudiante.getPerfil().getPromedioGlobal();
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
             }
-        } catch (Exception ignored) { }
-
-        if (score > 0) {
-            jLabel3.setText(String.format(Locale.US, "%.1f", score));
-        } else {
-            jLabel3.setText(""+ estudiante.getPromedioGlobal());
         }
+
+        jMejoresAtributos.setText(attrs);
+
+        // Mostrar promedio con coma decimal en español
+        jLabel3.setText(String.format(Locale.forLanguageTag("es-CO"), "%.1f", score));
     }
 
-    // 👉 Aquí es donde se cambia al NUEVO panel "IrAPerfil"
-    private void abrirIrAPerfil(Estudiante objetivo) {
+    private void configurarNombreClicable() {
+        nombre.setForeground(Color.BLACK);
+        nombre.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        nombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                abrirPerfil();
+            }
+
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nombre.setForeground(Color.BLUE);
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nombre.setForeground(Color.BLACK);
+            }
+        });
+    }
+
+    private void abrirPerfil() {
         java.awt.Window w = SwingUtilities.getWindowAncestor(this);
 
-        if (w instanceof PáginaMenú) {   // tu JFrame principal
+        if (w instanceof PáginaMenú) {
             PáginaMenú frame = (PáginaMenú) w;
-
-            irAPerfil panel = new irAPerfil(objetivo);  // NUEVO PANEL
+            PerfilOtro panel = new PerfilOtro(usuario, gestor, estudiante);
             frame.cambiarPanel(panel);
-        } else {
-            
         }
     }
 
@@ -93,8 +102,9 @@ public class DiseñoBusqueda extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
-        jcarrera = new javax.swing.JLabel();
+        jMejoresAtributos = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jCarrera = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -106,14 +116,18 @@ public class DiseñoBusqueda extends javax.swing.JPanel {
         nombre.setText("{estudiante nombre}");
         jPanel1.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, 36));
 
-        jcarrera.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jcarrera.setText("Carrera • {estudiante carrera}");
-        jPanel1.add(jcarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, 30));
+        jMejoresAtributos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jMejoresAtributos.setText("{mejores atributos}");
+        jPanel1.add(jMejoresAtributos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-11-11 220725.png"))); // NOI18N
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, 50));
+
+        jCarrera.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jCarrera.setText("Carrera • {estudiante carrera}");
+        jPanel1.add(jCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -125,16 +139,17 @@ public class DiseñoBusqueda extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jCarrera;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jMejoresAtributos;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel jcarrera;
     private javax.swing.JLabel nombre;
     // End of variables declaration//GEN-END:variables
 }

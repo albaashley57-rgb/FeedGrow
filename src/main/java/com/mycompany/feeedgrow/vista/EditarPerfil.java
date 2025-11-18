@@ -1,16 +1,18 @@
 package com.mycompany.feeedgrow.vista;
 
+import com.mycompany.feeedgrow.controlador.PerfilControlador;
 import com.mycompany.feeedgrow.modelo.Estudiante;
-import java.util.ArrayList;
-import java.util.List;
+import com.mycompany.feeedgrow.persistencia.GestorDatos;
 import javax.swing.JOptionPane;
 
 public class EditarPerfil extends javax.swing.JPanel {
 
     private Estudiante estudiante;
+    private GestorDatos gestor;
 
-    public EditarPerfil(Estudiante estudiante) {
+    public EditarPerfil(GestorDatos gestor, Estudiante estudiante) {
         this.estudiante = estudiante;
+        this.gestor = gestor;
         initComponents();
         initCustom();
     }
@@ -18,76 +20,10 @@ public class EditarPerfil extends javax.swing.JPanel {
     private void initCustom() {
         if (estudiante != null) {
             jLabel11.setText(estudiante.getNombre());
-            jTextField2.setText(estudiante.getCorreo());
-            jComboCarrera.setSelectedItem(estudiante.getCarrera());
         }
     }
 
-    private void guardar() {
-        List<String> errores = new ArrayList<>();
-
-        String carrera    =  ((String)jComboCarrera.getSelectedItem()).trim();
-        String correo     = jTextField2.getText().trim();
-        String contrasena = new String(jPasswordField1.getPassword());
-        String newPass    = new String(jPasswordField2.getPassword());
-        String confirm    = new String(jPasswordField3.getPassword());
-
-        // Validar carrera (no vacía)
-        if (carrera.isEmpty()) {
-            errores.add("La carrera no puede estar vacía.");
-        }
-
-        // Validar correo
-        if (correo.isEmpty()) {
-            errores.add("El correo no puede estar vacío.");
-        }
-
-        // ¿Quiere cambiar contraseña?
-        boolean quiereCambiarPass =
-                !contrasena.isEmpty() || !newPass.isEmpty() || !confirm.isEmpty();
-
-        if (quiereCambiarPass) {
-            if (contrasena.isEmpty() || newPass.isEmpty() || confirm.isEmpty()) {
-                errores.add("Para cambiar la contraseña completa los tres campos.");
-            } else {
-                // Verifica contra la actual
-                if (!contrasena.equals(estudiante.getContraseña())) {  // SIN ñ
-                    errores.add("La contraseña antigua no coincide.");
-                }
-                if (newPass.length() < 6) {
-                    errores.add("La nueva contraseña debe tener al menos 6 caracteres.");
-                }
-                if (!newPass.equals(confirm)) {
-                    errores.add("La confirmación no coincide con la nueva contraseña.");
-                }
-            }
-        }
-
-        // Si hay errores, los mostramos y salimos
-        if (!errores.isEmpty()) {
-            JOptionPane.showMessageDialog(
-                    this,
-                    String.join("\n", errores),
-                    "Revisa los datos",
-                    JOptionPane.WARNING_MESSAGE
-            );
-            return;
-        }
-
-        // Guardar cambios en el modelo
-        estudiante.setCarrera(carrera);
-        estudiante.setCorreo(correo);
-        if (quiereCambiarPass) {
-            estudiante.setContraseña(newPass);   // SIN ñ
-        }
-
-        JOptionPane.showMessageDialog(
-                this,
-                "Cambios guardados.",
-                "OK",
-                JOptionPane.INFORMATION_MESSAGE
-        );
-    }
+  
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -104,7 +40,7 @@ public class EditarPerfil extends javax.swing.JPanel {
         Guardar = new javax.swing.JButton();
         Responsabilidad = new javax.swing.JLabel();
         Responsabilidad1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jCampoCorreo = new javax.swing.JTextField();
         Responsabilidad2 = new javax.swing.JLabel();
         Responsabilidad3 = new javax.swing.JLabel();
         Responsabilidad4 = new javax.swing.JLabel();
@@ -155,9 +91,8 @@ public class EditarPerfil extends javax.swing.JPanel {
         Responsabilidad1.setText("Carrera:");
         jPanel2.add(Responsabilidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 192, -1));
 
-        jTextField2.setBackground(new java.awt.Color(200, 200, 200));
-        jTextField2.setText("{jTextField2}");
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 560, -1));
+        jCampoCorreo.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel2.add(jCampoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 890, -1));
 
         Responsabilidad2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
         Responsabilidad2.setText("Correo:");
@@ -177,7 +112,7 @@ public class EditarPerfil extends javax.swing.JPanel {
                 jPasswordField1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 560, -1));
+        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 890, -1));
 
         jPasswordField2.setBackground(new java.awt.Color(200, 200, 200));
         jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +120,7 @@ public class EditarPerfil extends javax.swing.JPanel {
                 jPasswordField2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 560, -1));
+        jPanel2.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 890, -1));
 
         jPasswordField3.setBackground(new java.awt.Color(200, 200, 200));
         jPasswordField3.addActionListener(new java.awt.event.ActionListener() {
@@ -193,12 +128,12 @@ public class EditarPerfil extends javax.swing.JPanel {
                 jPasswordField3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jPasswordField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 560, -1));
+        jPanel2.add(jPasswordField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 890, -1));
 
         jComboCarrera.setBackground(new java.awt.Color(200, 200, 200));
         jComboCarrera.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Biología", "Física", "Licenciatura en Matemáticas", "Matemáticas", "Química", "Ingeniería de Sistemas", "Ingeniería Eléctrica", "Ingeniería Electrónica", "Ingeniería Industrial", "Ingeniería Mecánica", "Ingeniería Biomédica", "Ingeniería en Ciencia de Datos", "Diseño Industrial", "Ingeniería Civil", "Ingeniería Química", "Ingeniería de Petróleos", "Geología", "Enfermería", "Fisioterapia", "Medicina", "Microbiología y Bioanálisis", "Nutrición y Dietética", "Derecho", "Economía", "Filosofía", "Historia y Archivística", "Licenciatura en Educación Básica Primaria", "Licenciatura en Literatura y Lengua Castellana", "Licenciatura en Lenguas Extranjeras con énfasis en Inglés", "Licenciatura en Música", "Trabajo Social", "Técnica Profesional en Ejecución de Proyectos Culturales y Creativos" }));
-        jPanel2.add(jComboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 560, -1));
+        jComboCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione su carrera...", "Biología", "Física", "Licenciatura en Matemáticas", "Matemáticas", "Química", "Ingeniería de Sistemas", "Ingeniería Eléctrica", "Ingeniería Electrónica", "Ingeniería Industrial", "Ingeniería Mecánica", "Ingeniería Biomédica", "Ingeniería en Ciencia de Datos", "Diseño Industrial", "Ingeniería Civil", "Ingeniería Química", "Ingeniería de Petróleos", "Geología", "Enfermería", "Fisioterapia", "Medicina", "Microbiología y Bioanálisis", "Nutrición y Dietética", "Derecho", "Economía", "Filosofía", "Historia y Archivística", "Licenciatura en Educación Básica Primaria", "Licenciatura en Literatura y Lengua Castellana", "Licenciatura en Lenguas Extranjeras con énfasis en Inglés", "Licenciatura en Música", "Trabajo Social", "Técnica Profesional en Ejecución de Proyectos Culturales y Creativos" }));
+        jPanel2.add(jComboCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 890, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -218,7 +153,24 @@ public class EditarPerfil extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
-     guardar();                                   
+    String carrera = (String) jComboCarrera.getSelectedItem();
+    String correo = jCampoCorreo.getText();
+    String antiguaPass = new String(jPasswordField1.getPassword());
+    String nuevaPass = new String(jPasswordField2.getPassword());
+    String confirmarPass = new String(jPasswordField3.getPassword());
+
+    PerfilControlador controlador = new PerfilControlador(gestor);
+    String resultado = controlador.editarPerfil(estudiante, carrera, correo,
+                                                antiguaPass, nuevaPass, confirmarPass);
+
+    if (resultado.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Cambios guardados.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        jPasswordField1.setText("");
+        jPasswordField2.setText("");
+        jPasswordField3.setText("");
+    } else {
+        JOptionPane.showMessageDialog(this, resultado, "Error", JOptionPane.WARNING_MESSAGE);
+    }              
     }//GEN-LAST:event_GuardarActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
@@ -241,6 +193,7 @@ public class EditarPerfil extends javax.swing.JPanel {
     private javax.swing.JLabel Responsabilidad2;
     private javax.swing.JLabel Responsabilidad3;
     private javax.swing.JLabel Responsabilidad4;
+    private javax.swing.JTextField jCampoCorreo;
     private javax.swing.JComboBox<String> jComboCarrera;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -253,6 +206,5 @@ public class EditarPerfil extends javax.swing.JPanel {
     private javax.swing.JPasswordField jPasswordField3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

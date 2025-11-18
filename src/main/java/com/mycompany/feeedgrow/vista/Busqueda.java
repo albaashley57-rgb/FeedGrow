@@ -1,89 +1,67 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package com.mycompany.feeedgrow.vista;
 
+import com.mycompany.feeedgrow.controlador.BusquedaControlador;
 import com.mycompany.feeedgrow.modelo.Estudiante;
-import com.mycompany.feeedgrow.modelo.GestorDatos;
+import com.mycompany.feeedgrow.persistencia.GestorDatos;
+import java.awt.Color;
+import java.awt.Font;
+import java.util.List;
+import javax.swing.Box;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import com.mycompany.feeedgrow.vista.DiseñoBusqueda;
-import com.mycompany.feeedgrow.vista.PáginaMenú;
-import com.mycompany.feeedgrow.vista.Perfil;
+import javax.swing.SwingConstants;
 
 public class Busqueda extends JPanel {
 
-    private GestorDatos gestor;
+    private final GestorDatos gestor;
+    private final Estudiante usuario;
 
-    public Busqueda(GestorDatos gestor) {
+    public Busqueda(GestorDatos gestor, Estudiante usuario) {
         this.gestor = gestor;
+        this.usuario = usuario;
         initComponents();
         initCustom();
     }
 
     private void initCustom() {
        
-        jListResultados.setLayout(
-            new javax.swing.BoxLayout(jListResultados, javax.swing.BoxLayout.Y_AXIS)
+        listaEstudiantes.setLayout(
+            new javax.swing.BoxLayout(listaEstudiantes, javax.swing.BoxLayout.Y_AXIS)
         );
 
-        txtBuscar.addActionListener(e -> ejecutarBusqueda());
+        campoBusqueda.addActionListener(e -> ejecutarBusqueda());
     }
 
-private void ejecutarBusqueda() {
 
-    if (gestor == null) {
-        return;
-    }
+   private void ejecutarBusqueda() {
+    BusquedaControlador controlador = new BusquedaControlador();
+    String nombre = campoBusqueda.getText().trim();
+    String carrera = (String) jSeleccionadorDeCarrera.getSelectedItem();
 
-    String filtro = txtBuscar.getText().trim().toLowerCase();
+    List<Estudiante> resultados = controlador.buscar(nombre, carrera, usuario, gestor.getEstudiantes());
+    listaEstudiantes.removeAll();
 
-    // Limpiar resultados anteriores
-    jListResultados.removeAll();
-    jListResultados.revalidate();
-    jListResultados.repaint();
-
-    if (filtro.isEmpty()) {
-        return;
-    }
-
-    java.util.List<Estudiante> lista = gestor.obtenerEstudiantes();
-
-    if (lista == null || lista.isEmpty()) {
-        return;
-    }
-
-    int contador = 0;
-
-    for (Estudiante e : lista) {
-        if (e == null) continue;
-
-        String nombre  = e.getNombre()  != null ? e.getNombre().toLowerCase()  : "";
-        String carrera = e.getCarrera() != null ? e.getCarrera().toLowerCase() : "";
-
-        // Coincide por nombre o por carrera
-        if (nombre.contains(filtro) || carrera.contains(filtro)) {
-
-            // Aquí se une la clase DiseñoBusqueda
-            DiseñoBusqueda item = new DiseñoBusqueda(this, e);
-            jListResultados.add(item);
-            contador++;
+    if (resultados.isEmpty()) {
+        JLabel mensaje = new JLabel("No hay resultados encontrados", SwingConstants.CENTER);
+        mensaje.setForeground(Color.GRAY);
+        mensaje.setFont(new Font("Arial", Font.ITALIC, 16));
+        mensaje.setAlignmentX(CENTER_ALIGNMENT);
+        listaEstudiantes.add(Box.createVerticalGlue());
+        listaEstudiantes.add(mensaje);
+        listaEstudiantes.add(Box.createVerticalGlue());
+    } else {
+        for (Estudiante e : resultados) {
+            ItemBusqueda item = new ItemBusqueda(this, usuario, e, gestor);
+            listaEstudiantes.add(item);
         }
     }
 
-    jListResultados.revalidate();
-    jListResultados.repaint();
+    listaEstudiantes.revalidate();
+    listaEstudiantes.repaint();
 }
 
-   
 
-    // initComponents() y declarations se quedan tal cual los generó NetBeans
-
-   
-
-   
-   
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -97,10 +75,12 @@ private void ejecutarBusqueda() {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        txtBuscar = new javax.swing.JTextField();
+        jBotonLimipiarBusqueda = new javax.swing.JButton();
+        campoBusqueda = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jListResultados = new javax.swing.JList<>();
+        listaEstudiantes = new javax.swing.JList<>();
+        jBotonBuscar = new javax.swing.JButton();
+        jSeleccionadorDeCarrera = new javax.swing.JComboBox<>();
 
         jLabel1.setText("jLabel1");
 
@@ -109,29 +89,45 @@ private void ejecutarBusqueda() {
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(240, 233, 248));
-        jButton1.setText("X");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBotonLimipiarBusqueda.setBackground(new java.awt.Color(240, 233, 248));
+        jBotonLimipiarBusqueda.setText("X");
+        jBotonLimipiarBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBotonLimipiarBusquedaActionPerformed(evt);
             }
         });
-        jPanel12.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, -1, -1));
+        jPanel12.add(jBotonLimipiarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 40, -1, -1));
 
-        txtBuscar.setBackground(new java.awt.Color(240, 233, 255));
-        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+        campoBusqueda.setBackground(new java.awt.Color(250, 236, 252));
+        campoBusqueda.setText("Busque por nombre");
+        campoBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscarActionPerformed(evt);
+                campoBusquedaActionPerformed(evt);
             }
         });
-        jPanel12.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 780, 35));
+        jPanel12.add(campoBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 520, 35));
 
-        jListResultados.setToolTipText("");
-        jListResultados.setAutoscrolls(false);
-        jListResultados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollPane2.setViewportView(jListResultados);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        jPanel12.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 780, 440));
+        listaEstudiantes.setBackground(new java.awt.Color(250, 240, 252));
+        listaEstudiantes.setToolTipText("");
+        listaEstudiantes.setAutoscrolls(false);
+        listaEstudiantes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane2.setViewportView(listaEstudiantes);
+
+        jPanel12.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 800, 530));
+
+        jBotonBuscar.setText("Buscar");
+        jBotonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBotonBuscarActionPerformed(evt);
+            }
+        });
+        jPanel12.add(jBotonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 40, -1, -1));
+
+        jSeleccionadorDeCarrera.setBackground(new java.awt.Color(250, 236, 252));
+        jSeleccionadorDeCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione carrera", "Item 2", "Item 3", "Item 4" }));
+        jPanel12.add(jSeleccionadorDeCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 140, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -148,23 +144,29 @@ private void ejecutarBusqueda() {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+    private void campoBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBusquedaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscarActionPerformed
+    }//GEN-LAST:event_campoBusquedaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        txtBuscar.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jBotonLimipiarBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonLimipiarBusquedaActionPerformed
+        campoBusqueda.setText("");
+    }//GEN-LAST:event_jBotonLimipiarBusquedaActionPerformed
+
+    private void jBotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonBuscarActionPerformed
+        ejecutarBusqueda();
+    }//GEN-LAST:event_jBotonBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField campoBusqueda;
+    private javax.swing.JButton jBotonBuscar;
+    private javax.swing.JButton jBotonLimipiarBusqueda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<Estudiante> jListResultados;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JComboBox<String> jSeleccionadorDeCarrera;
+    private javax.swing.JList<Estudiante> listaEstudiantes;
     // End of variables declaration//GEN-END:variables
 }
 

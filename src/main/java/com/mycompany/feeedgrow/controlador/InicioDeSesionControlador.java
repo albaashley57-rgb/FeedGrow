@@ -1,12 +1,12 @@
 package com.mycompany.feeedgrow.controlador;
 import com.mycompany.feeedgrow.modelo.Estudiante;
-import com.mycompany.feeedgrow.modelo.GestorDatos;
+import com.mycompany.feeedgrow.persistencia.GestorDatos;
 
-public class InicioDeSesiónControlador {
-private GestorDatos gestor = new GestorDatos();
+public class InicioDeSesionControlador {
+private GestorDatos gestor;
 
-    public GestorDatos getGestor() {
-        return gestor;
+    public InicioDeSesionControlador(GestorDatos gestor){
+       this.gestor = gestor;
     }
 
 
@@ -27,13 +27,13 @@ private GestorDatos gestor = new GestorDatos();
     }
 
     public String verificarUsuario(String codigo, String contraseña) {
-        Estudiante estudiante = gestor.buscarPorCodigo(codigo);
+        Estudiante estudiante = gestor.buscarEstudiantePorCodigo(codigo);
 
         if (estudiante == null) {
             return "No existe una cuenta con ese código.";
         }
 
-        if (!estudiante.getContraseña().equals(contraseña)) {
+        if (!estudiante.getContrasena().equals(contraseña)) {
             return "La contraseña es incorrecta.";
         }
 

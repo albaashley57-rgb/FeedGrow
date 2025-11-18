@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.mycompany.feeedgrow.vista;
 import com.mycompany.feeedgrow.modelo.Estudiante;
-import com.mycompany.feeedgrow.modelo.GestorDatos;
+import com.mycompany.feeedgrow.persistencia.GestorDatos;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
@@ -82,6 +79,7 @@ private GestorDatos gestor;
         jPanel1.setBackground(new java.awt.Color(250, 236, 252));
         jPanel1.setToolTipText("");
 
+        BotónPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         BotónPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/principal50x50.png.png"))); // NOI18N
         BotónPrincipal.setBorderPainted(false);
         BotónPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -98,6 +96,7 @@ private GestorDatos gestor;
             }
         });
 
+        BotónBúsqueda.setBackground(new java.awt.Color(255, 255, 255));
         BotónBúsqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Búsqueda50x50.png.png"))); // NOI18N
         BotónBúsqueda.setBorderPainted(false);
         BotónBúsqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -109,6 +108,7 @@ private GestorDatos gestor;
             }
         });
 
+        BotónGestor.setBackground(new java.awt.Color(255, 255, 255));
         BotónGestor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gestor50x50.png.png"))); // NOI18N
         BotónGestor.setBorderPainted(false);
         BotónGestor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -120,6 +120,7 @@ private GestorDatos gestor;
             }
         });
 
+        BotónRanking.setBackground(new java.awt.Color(255, 255, 255));
         BotónRanking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ranking50x50.png.png"))); // NOI18N
         BotónRanking.setBorderPainted(false);
         BotónRanking.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -131,6 +132,7 @@ private GestorDatos gestor;
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icono perfil pequeño.png"))); // NOI18N
         jButton5.setAutoscrolls(true);
         jButton5.setBorderPainted(false);
@@ -197,7 +199,7 @@ private GestorDatos gestor;
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
@@ -271,24 +273,22 @@ private GestorDatos gestor;
 
     private void BotónPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónPrincipalActionPerformed
     cambiarPanel(new Principa1(estudiante));
-
-// TODO add your handling code here:
     }//GEN-LAST:event_BotónPrincipalActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-   cambiarPanel ( new Perfil(estudiante));
+   cambiarPanel ( new MiPerfil(estudiante, gestor));
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void BotónGestorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónGestorActionPerformed
-        cambiarPanel(new Gestor());
+        cambiarPanel(new GestorMisCalificaciones(estudiante, gestor));
     }//GEN-LAST:event_BotónGestorActionPerformed
 
     private void BotónBúsquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónBúsquedaActionPerformed
- cambiarPanel(new Busqueda(gestor));
+ cambiarPanel(new Busqueda(gestor, estudiante));
     }//GEN-LAST:event_BotónBúsquedaActionPerformed
 
     private void BotónRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónRankingActionPerformed
-        // TODO add your handling code here:
+        cambiarPanel(new Ranking());
     }//GEN-LAST:event_BotónRankingActionPerformed
 
     private void BotónPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotónPrincipalMouseClicked

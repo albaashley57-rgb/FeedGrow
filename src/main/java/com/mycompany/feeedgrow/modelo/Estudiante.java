@@ -5,41 +5,36 @@ import java.util.ArrayList;
 public class Estudiante {
    
     private final String nombre;
-    private final String código;
+    private final String codigo;
     private String carrera;
     private String correo;
-    private String contraseña;
+    private String contrasena;
     private double promedioGlobal;
     private final Perfil perfil;
-    private final ArrayList<Calificación> calificacionesHechas;
-    private final ArrayList<Calificación> calificacionesRecibidas;
+    private final ArrayList<Calificacion> calificacionesHechas;
+    private final ArrayList<Calificacion> calificacionesRecibidas;
     
-    
-    public Estudiante(String nombre, String código, String carrera, String correo, String contrasena) {
+
+    public Estudiante(String nombre, String codigo, String carrera, String correo, String contrasena) {
         this.nombre = nombre;
-        this.código = código;
+        this.codigo = codigo;
         this.carrera = carrera;
         this.correo = correo;
-        this.contraseña = contrasena;
+        this.contrasena = contrasena;
         this.calificacionesHechas = new ArrayList<>();
         this.calificacionesRecibidas = new ArrayList<>();
         this.perfil = new Perfil(this);
-        this.promedioGlobal = this.perfil.getPromedioGlobal();
     }
 
-    /*getters &setters (si llegan a existir unos que no se usen eliminar, igual para todas las clase
-    sin embargo es algo que se hara al final dedspues de implementar ttodo para no tener codigo
-    innecesario)*/
+    // Getters y setters simplificados para claridad
+
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
-    public double getPromedioGlobal() {
-        return promedioGlobal;
-    }
-
-    public String getCódigo() {
-        return código;
+  
+    public String getCodigo() {
+        return this.codigo;
     }
 
     public String getCarrera() {
@@ -58,46 +53,72 @@ public class Estudiante {
         this.correo = correo;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena; // considerar hashing para producción */
     }
 
-    public ArrayList<Calificación> getCalificacionesHechas() {
+    public ArrayList<Calificacion> getCalificacionesHechas() {
         return calificacionesHechas;
     }
 
-
-    public ArrayList<Calificación> getCalificacionesRecibidas() {
+    public ArrayList<Calificacion> getCalificacionesRecibidas() {
         return calificacionesRecibidas;
     }
 
-     public Perfil getPerfil() { 
-         return perfil; 
-     }
-    
+    public Perfil getPerfil() {
+        return perfil;
+    }
 
-    public void agregarCalificacionRecibida(Calificación calificación) { 
-        this.calificacionesRecibidas.add(calificación);
-        this.perfil.actualizarPerfil();
-        
-     }
-    
-    public void agregarCalificacionHecha(Calificación calificación) {
-        this.calificacionesHechas.add(calificación); 
-        calificación.getEvaluado().perfil.actualizarPerfil();
+    public void agregarCalificacionRecibida(Calificacion calificacion) {
+        this.calificacionesRecibidas.add(calificacion);
+        this.perfil.actualizarPromedios();
+    }
+
+    public void agregarCalificacionHecha(Calificacion calificacion) {
+        this.calificacionesHechas.add(calificacion);
+    }
+
+    public void editarPerfil(String carrera, String correo, String nuevaContrasena) {
+        setCarrera(carrera);
+        setCorreo(correo);
+        setContrasena(nuevaContrasena); // Aquí debería usarse hash
+    }
+//revisaa
+
+    public Calificacion buscarCalificacionHechaPorEstudiante(String codigo) {
+        for (Calificacion c : calificacionesHechas) {
+            if (c.getEvaluado().getCodigo().equals(codigo)) {
+                return c;
+            }
+        }
+        return null;
+    }
+
+  
+    public void editarCalificacion(Calificacion calificacion) {
+        for (int i = 0; i < calificacionesRecibidas.size(); i++) {
+            Calificacion c = calificacionesRecibidas.get(i);
+            if (c.getEvaluador().getCodigo().equals(calificacion.getEvaluador().getCodigo())) {
+                calificacionesRecibidas.set(i, calificacion);
+                this.perfil.actualizarPromedios();
+                break;
+            }
+        }
+    }
+
+    public void eliminarCalificacion(Calificacion calificacion) {
+        calificacionesRecibidas.remove(calificacion);
+        this.perfil.actualizarPromedios();
     }
 
    @Override
    public String toString(){
-       return this.código + "," + this.nombre + "," + this.correo + "," +  this.carrera + ","+this.contraseña;
+       return this.codigo + "," + this.nombre + "," + this.correo + "," +  this.carrera + ","+this.contrasena;
    }
-    
-   
 
-    // quizás lo de editar el "perfil" es mejor editar el estudiante enlazado a él
 }
 

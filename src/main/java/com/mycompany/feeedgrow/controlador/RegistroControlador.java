@@ -1,13 +1,16 @@
 package com.mycompany.feeedgrow.controlador;
 
 import com.mycompany.feeedgrow.modelo.Estudiante;
-import com.mycompany.feeedgrow.modelo.GestorDatos;
+import com.mycompany.feeedgrow.persistencia.GestorDatos;
 import java.util.List;
 
 public class RegistroControlador {
-    GestorDatos gestor = new GestorDatos();
-
-
+ private GestorDatos gestor;
+ 
+ public RegistroControlador(GestorDatos gestor){
+     this.gestor = gestor;
+     
+ }
     public String validarEstudiante(Estudiante estudiante, String confirmarContraseña) {
         String[] placeholders = {
         "Nombre", "Seleccione su carrera", 
@@ -20,9 +23,9 @@ public class RegistroControlador {
             errores.append("Debe ingresar su nombre completo.\n");
         }
 
-        if (estudiante.getCódigo().isEmpty() || estudiante.getCódigo().equalsIgnoreCase(placeholders[2])) {
+        if (estudiante.getCodigo().isEmpty() || estudiante.getCodigo().equalsIgnoreCase(placeholders[2])) {
             errores.append("Debe ingresar su código estudiantil.\n");
-        } else if (!estudiante.getCódigo().matches("\\d+")) {
+        } else if (!estudiante.getCodigo().matches("\\d+")) {
             errores.append("El código solo puede contener números.\n");
         }
         //el correo no se vlaida porque no es relevante
@@ -31,13 +34,13 @@ public class RegistroControlador {
             errores.append("Debe ingresar su carrera.\n");
         }
 
-        if (estudiante.getContraseña().isEmpty()  || estudiante.getContraseña().equalsIgnoreCase(placeholders[3])) {
+        if (estudiante.getContrasena().isEmpty()  || estudiante.getContrasena().equalsIgnoreCase(placeholders[3])) {
             errores.append("Debe ingresar una contraseña.\n");
         }
 
         if (confirmarContraseña.isEmpty()  || confirmarContraseña.equalsIgnoreCase(placeholders[4])) {
             errores.append("Debe confirmar la contraseña.\n");
-        } else if (!estudiante.getContraseña().equals(confirmarContraseña)) {
+        } else if (!estudiante.getContrasena().equals(confirmarContraseña)) {
             errores.append("Las contraseñas no coinciden.\n");
         }
 
@@ -46,11 +49,11 @@ public class RegistroControlador {
 
     public String registrarEstudiante(Estudiante nuevo) {
         gestor.cargarEstudiantes();
-        List<Estudiante> estudiantes = gestor.obtenerEstudiantes();
+        List<Estudiante> estudiantes = gestor.getEstudiantes();
 
         // Verificar si ya existe un estudiante con el mismo código
         for (Estudiante e : estudiantes) {
-            if (e.getCódigo().equals(nuevo.getCódigo())) {
+            if (e.getCodigo().equals(nuevo.getCodigo())) {
                 return "Ya existe un estudiante con ese código.";
             }
         }

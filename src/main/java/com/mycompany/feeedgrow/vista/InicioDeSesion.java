@@ -1,20 +1,23 @@
 
 package com.mycompany.feeedgrow.vista;
 
-import com.mycompany.feeedgrow.controlador.InicioDeSesiónControlador;
+import com.mycompany.feeedgrow.controlador.InicioDeSesionControlador;
 import com.mycompany.feeedgrow.modelo.Estudiante;
-import com.mycompany.feeedgrow.modelo.GestorDatos;
+import com.mycompany.feeedgrow.persistencia.GestorDatos;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
 
-public class InicioDeSesión extends javax.swing.JFrame {
+public class InicioDeSesion extends javax.swing.JFrame {
+private final GestorDatos gestor;
 
-    public InicioDeSesión() {
+    public InicioDeSesion(GestorDatos gestor) {
+        this.gestor = gestor;
         initComponents();
         initLocation();
         initCustom();
+
     }
     
  private void initCustom() {
@@ -246,7 +249,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
     }//GEN-LAST:event_campoContraseñaMouseClicked
 
     private void botonAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAceptarMouseClicked
-    InicioDeSesiónControlador controlador = new InicioDeSesiónControlador();
+    InicioDeSesionControlador controlador = new InicioDeSesionControlador(this.gestor);
     String codigoIngresado = campoUsuario.getText().trim();
     String contraseñaIngresada = String.valueOf(campoContraseña.getPassword());
     
@@ -261,14 +264,13 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         javax.swing.JOptionPane.showMessageDialog(this, errorLogin, "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         return;
     }
-    Estudiante e = controlador.getGestor().buscarPorCodigo(codigoIngresado);
+    Estudiante e = gestor.buscarEstudiantePorCodigo(codigoIngresado);
     javax.swing.JOptionPane.showMessageDialog(this,
             "Inicio de sesión exitoso. Bienvenido/a " + e.getNombre() + "!",
             "Éxito",
             javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
-    GestorDatos g = controlador.getGestor();
-     PáginaMenú ventana = new PáginaMenú(g, e);
+     PáginaMenú ventana = new PáginaMenú(gestor, e);
      ventana.setVisible(true);
      this.dispose();
     }//GEN-LAST:event_botonAceptarMouseClicked
@@ -282,46 +284,11 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
     }//GEN-LAST:event_registrarseMouseExited
 
     private void registrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarseMouseClicked
-        Registro ventana = new Registro();
+        Registro ventana = new Registro(gestor);
         ventana.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registrarseMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InicioDeSesión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InicioDeSesión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InicioDeSesión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InicioDeSesión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InicioDeSesión().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IndicadorUsuario;
