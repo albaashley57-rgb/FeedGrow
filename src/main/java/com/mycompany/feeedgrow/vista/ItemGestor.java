@@ -45,6 +45,7 @@ public class ItemGestor extends javax.swing.JPanel {
         botonEliminar = new javax.swing.JButton();
         botonEditar = new javax.swing.JButton();
         jAtributo = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(900, 99));
@@ -53,13 +54,15 @@ public class ItemGestor extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-11-16 151912.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        nombre.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        nombre.setFont(new java.awt.Font("Roboto SemiCondensed", 1, 24)); // NOI18N
+        nombre.setForeground(new java.awt.Color(30, 30, 30));
         nombre.setText("{estudiante nombre}");
         jPanel1.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, 36));
 
-        jcarrera.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jcarrera.setFont(new java.awt.Font("Roboto SemiCondensed", 0, 18)); // NOI18N
+        jcarrera.setForeground(new java.awt.Color(30, 30, 30));
         jcarrera.setText("Carrera • {estudiante carrera}");
-        jPanel1.add(jcarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, 30));
+        jPanel1.add(jcarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, 30));
 
         botonEliminar.setBackground(new java.awt.Color(255, 0, 0));
         botonEliminar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
@@ -70,7 +73,7 @@ public class ItemGestor extends javax.swing.JPanel {
                 botonEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, 100, 30));
+        jPanel1.add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 100, 30));
 
         botonEditar.setBackground(new java.awt.Color(51, 255, 102));
         botonEditar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
@@ -81,17 +84,21 @@ public class ItemGestor extends javax.swing.JPanel {
                 botonEditarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 80, 30));
+        jPanel1.add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 80, 30));
 
-        jAtributo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jAtributo.setFont(new java.awt.Font("Roboto SemiCondensed", 0, 18)); // NOI18N
+        jAtributo.setForeground(new java.awt.Color(30, 30, 30));
         jAtributo.setText("{calificacion atributo}");
-        jPanel1.add(jAtributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, 30));
+        jPanel1.add(jAtributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, 30));
+
+        jSeparator1.setForeground(new java.awt.Color(30, 30, 30));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 117, 860, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 943, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,6 +121,7 @@ public class ItemGestor extends javax.swing.JPanel {
     private javax.swing.JLabel jAtributo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jcarrera;
     private javax.swing.JLabel nombre;
     // End of variables declaration//GEN-END:variables

@@ -1,17 +1,12 @@
-
 package com.mycompany.feeedgrow.vista;
 import com.mycompany.feeedgrow.modelo.Estudiante;
 import com.mycompany.feeedgrow.persistencia.GestorDatos;
-import java.awt.BorderLayout;
 import javax.swing.JPanel;
-
-
 
 public class PáginaMenú extends javax.swing.JFrame {
 private Estudiante estudiante;
 private GestorDatos gestor;
 
-   
     public PáginaMenú(GestorDatos gestor,Estudiante estudiante) {
         this.estudiante = estudiante;
         this.gestor = gestor;
@@ -27,7 +22,7 @@ private GestorDatos gestor;
     }
     
     private void initContent() {
-        cambiarPanel(new Principa1(estudiante));
+        cambiarPanel(new Principal(estudiante));
     }
     
     private void initStyles(){  
@@ -38,14 +33,20 @@ private GestorDatos gestor;
     }
     
     public void cambiarPanel(JPanel p) {
-        p.setSize(972, 651);
-        p.setLocation(0,0); 
-        content.removeAll();
-        content.add(p, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
-        //revusar el layout horizontal
-    }
+    content.removeAll();
+    content.setLayout(null);
+    p.setBounds(0, 0, content.getWidth(), content.getHeight());
+    content.add(p);
+    content.addComponentListener(new java.awt.event.ComponentAdapter() {
+        @Override
+        public void componentResized(java.awt.event.ComponentEvent e) {
+            p.setSize(content.getSize());
+            p.revalidate();
+        }
+    });
+    content.revalidate();
+    content.repaint();
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -147,27 +148,27 @@ private GestorDatos gestor;
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fg_107x107.png.png"))); // NOI18N
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel2.setFont(new java.awt.Font("Roboto SemiBold", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(98, 91, 113));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Búsqueda");
 
-        jLabel3.setFont(new java.awt.Font("Roboto SemiBold", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(98, 91, 113));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Principal");
 
-        jLabel4.setFont(new java.awt.Font("Roboto SemiBold", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(98, 91, 113));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Gestor");
 
-        jLabel5.setFont(new java.awt.Font("Roboto SemiBold", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(98, 91, 113));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Ranking");
 
-        jLabel6.setFont(new java.awt.Font("Roboto SemiBold", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(98, 91, 113));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Perfil");
@@ -186,7 +187,7 @@ private GestorDatos gestor;
                     .addComponent(BotónPrincipal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotónBúsqueda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotónGestor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                     .addComponent(BotónRanking, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -194,7 +195,7 @@ private GestorDatos gestor;
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(19, 19, 19))
+                .addGap(13, 13, 13))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +273,7 @@ private GestorDatos gestor;
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotónPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónPrincipalActionPerformed
-    cambiarPanel(new Principa1(estudiante));
+    cambiarPanel(new Principal(estudiante));
     }//GEN-LAST:event_BotónPrincipalActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -284,7 +285,7 @@ private GestorDatos gestor;
     }//GEN-LAST:event_BotónGestorActionPerformed
 
     private void BotónBúsquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónBúsquedaActionPerformed
- cambiarPanel(new Busqueda(gestor, estudiante));
+ cambiarPanel(new Busqueda(estudiante, gestor));
     }//GEN-LAST:event_BotónBúsquedaActionPerformed
 
     private void BotónRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotónRankingActionPerformed

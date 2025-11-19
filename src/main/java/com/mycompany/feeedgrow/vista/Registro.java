@@ -188,6 +188,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         botonAceptar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         botonAceptar.setForeground(new java.awt.Color(255, 255, 255));
         botonAceptar.setText("Aceptar");
+        botonAceptar.setBorderPainted(false);
         botonAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

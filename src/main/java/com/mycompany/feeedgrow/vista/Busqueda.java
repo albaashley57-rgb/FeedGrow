@@ -17,7 +17,7 @@ public class Busqueda extends JPanel {
     private final GestorDatos gestor;
     private final Estudiante usuario;
 
-    public Busqueda(GestorDatos gestor, Estudiante usuario) {
+    public Busqueda( Estudiante usuario, GestorDatos gestor) {
         this.gestor = gestor;
         this.usuario = usuario;
         initComponents();
@@ -77,10 +77,10 @@ public class Busqueda extends JPanel {
         jPanel12 = new javax.swing.JPanel();
         jBotonLimipiarBusqueda = new javax.swing.JButton();
         campoBusqueda = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        listaEstudiantes = new javax.swing.JList<>();
         jBotonBuscar = new javax.swing.JButton();
         jSeleccionadorDeCarrera = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaEstudiantes = new javax.swing.JPanel();
 
         jLabel1.setText("jLabel1");
 
@@ -90,6 +90,7 @@ public class Busqueda extends JPanel {
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jBotonLimipiarBusqueda.setBackground(new java.awt.Color(240, 233, 248));
+        jBotonLimipiarBusqueda.setForeground(new java.awt.Color(153, 153, 153));
         jBotonLimipiarBusqueda.setText("X");
         jBotonLimipiarBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +100,7 @@ public class Busqueda extends JPanel {
         jPanel12.add(jBotonLimipiarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 40, -1, -1));
 
         campoBusqueda.setBackground(new java.awt.Color(250, 236, 252));
+        campoBusqueda.setForeground(new java.awt.Color(153, 153, 153));
         campoBusqueda.setText("Busque por nombre");
         campoBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,17 +109,9 @@ public class Busqueda extends JPanel {
         });
         jPanel12.add(campoBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 520, 35));
 
-        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
-        listaEstudiantes.setBackground(new java.awt.Color(250, 240, 252));
-        listaEstudiantes.setToolTipText("");
-        listaEstudiantes.setAutoscrolls(false);
-        listaEstudiantes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollPane2.setViewportView(listaEstudiantes);
-
-        jPanel12.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 800, 530));
-
+        jBotonBuscar.setBackground(new java.awt.Color(49, 148, 252));
         jBotonBuscar.setText("Buscar");
+        jBotonBuscar.setBorderPainted(false);
         jBotonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBotonBuscarActionPerformed(evt);
@@ -126,16 +120,38 @@ public class Busqueda extends JPanel {
         jPanel12.add(jBotonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 40, -1, -1));
 
         jSeleccionadorDeCarrera.setBackground(new java.awt.Color(250, 236, 252));
-        jSeleccionadorDeCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione carrera", "Item 2", "Item 3", "Item 4" }));
+        jSeleccionadorDeCarrera.setForeground(new java.awt.Color(153, 153, 153));
+        jSeleccionadorDeCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione su carrera", "Biología", "Física", "Licenciatura en Matemáticas", "Matemáticas", "Química", "Ingeniería de Sistemas", "Ingeniería Eléctrica", "Ingeniería Electrónica", "Ingeniería Industrial", "Ingeniería Mecánica", "Ingeniería Biomédica", "Ingeniería en Ciencia de Datos", "Diseño Industrial", "Ingeniería Civil", "Ingeniería Química", "Ingeniería de Petróleos", "Geología", "Enfermería", "Fisioterapia", "Medicina", "Microbiología y Bioanálisis", "Nutrición y Dietética", "Derecho", "Economía", "Filosofía", "Historia y Archivística", "Licenciatura en Educación Básica Primaria", "Licenciatura en Literatura y Lengua Castellana", "Licenciatura en Lenguas Extranjeras con énfasis en Inglés", "Licenciatura en Música", "Trabajo Social", "Técnica Profesional en Ejecución de Proyectos Culturales y Creativos" }));
+        jSeleccionadorDeCarrera.setBorder(null);
         jPanel12.add(jSeleccionadorDeCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 140, -1));
+
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        listaEstudiantes.setBackground(new java.awt.Color(255, 255, 255));
+        listaEstudiantes.setMinimumSize(new java.awt.Dimension(100, 100));
+
+        javax.swing.GroupLayout listaEstudiantesLayout = new javax.swing.GroupLayout(listaEstudiantes);
+        listaEstudiantes.setLayout(listaEstudiantesLayout);
+        listaEstudiantesLayout.setHorizontalGroup(
+            listaEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 978, Short.MAX_VALUE)
+        );
+        listaEstudiantesLayout.setVerticalGroup(
+            listaEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 530, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(listaEstudiantes);
+
+        jPanel12.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 960, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 978, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -164,9 +180,9 @@ public class Busqueda extends JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> jSeleccionadorDeCarrera;
-    private javax.swing.JList<Estudiante> listaEstudiantes;
+    private javax.swing.JPanel listaEstudiantes;
     // End of variables declaration//GEN-END:variables
 }
 

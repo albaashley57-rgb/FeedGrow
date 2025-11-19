@@ -33,8 +33,8 @@ private GestorDatos gestor;
         );
 
         campoBusqueda.addActionListener(e -> ejecutarBusqueda());
+        System.out.println("Layout real de listaEstudiantes: " + jPanel1.getLayout());
     }
-
 
   private void ejecutarBusqueda() {
   BusquedaControlador controlador = new BusquedaControlador();
@@ -105,32 +105,38 @@ private GestorDatos gestor;
         jScrollPane2.setViewportView(jListResultados);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto SemiBold", 0, 45)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(30, 30, 30));
         jLabel1.setText("Mis Calificaciones");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 600, -1));
 
         campoBusqueda.setBackground(new java.awt.Color(250, 236, 252));
+        campoBusqueda.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        campoBusqueda.setForeground(new java.awt.Color(153, 153, 153));
         campoBusqueda.setText("Busque por nombre");
+        campoBusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                campoBusquedaMouseClicked(evt);
+            }
+        });
         campoBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoBusquedaActionPerformed(evt);
             }
         });
-        jPanel2.add(campoBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 520, 35));
 
         jSeleccionadorDeCarrera.setBackground(new java.awt.Color(250, 236, 252));
-        jSeleccionadorDeCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione carrera", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(jSeleccionadorDeCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 140, -1));
+        jSeleccionadorDeCarrera.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jSeleccionadorDeCarrera.setForeground(new java.awt.Color(153, 153, 153));
+        jSeleccionadorDeCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione su carrera", "Biología", "Física", "Licenciatura en Matemáticas", "Matemáticas", "Química", "Ingeniería de Sistemas", "Ingeniería Eléctrica", "Ingeniería Electrónica", "Ingeniería Industrial", "Ingeniería Mecánica", "Ingeniería Biomédica", "Ingeniería en Ciencia de Datos", "Diseño Industrial", "Ingeniería Civil", "Ingeniería Química", "Ingeniería de Petróleos", "Geología", "Enfermería", "Fisioterapia", "Medicina", "Microbiología y Bioanálisis", "Nutrición y Dietética", "Derecho", "Economía", "Filosofía", "Historia y Archivística", "Licenciatura en Educación Básica Primaria", "Licenciatura en Literatura y Lengua Castellana", "Licenciatura en Lenguas Extranjeras con énfasis en Inglés", "Licenciatura en Música", "Trabajo Social", "Técnica Profesional en Ejecución de Proyectos Culturales y Creativos" }));
 
+        jBotonBuscar.setBackground(new java.awt.Color(49, 148, 252));
         jBotonBuscar.setText("Buscar");
         jBotonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBotonBuscarActionPerformed(evt);
             }
         });
-        jPanel2.add(jBotonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 80, -1, -1));
 
         jBotonLimipiarBusqueda.setBackground(new java.awt.Color(240, 233, 248));
         jBotonLimipiarBusqueda.setText("X");
@@ -139,39 +145,70 @@ private GestorDatos gestor;
                 jBotonLimipiarBusquedaActionPerformed(evt);
             }
         });
-        jPanel2.add(jBotonLimipiarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, -1, -1));
 
+        jScrollPane1.setBorder(null);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        jPanel1.setBackground(new java.awt.Color(250, 240, 252));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(100, 100));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 822, Short.MAX_VALUE)
+            .addGap(0, 958, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGap(0, 490, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(jPanel1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 840, 460));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(campoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jSeleccionadorDeCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jBotonBuscar)
+                .addGap(4, 4, 4)
+                .addComponent(jBotonLimipiarBusqueda))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeleccionadorDeCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBotonBuscar)
+                    .addComponent(jBotonLimipiarBusqueda))
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -189,7 +226,13 @@ private GestorDatos gestor;
 
     private void jBotonLimipiarBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonLimipiarBusquedaActionPerformed
         campoBusqueda.setText("");
+        jSeleccionadorDeCarrera.setSelectedIndex(0);
     }//GEN-LAST:event_jBotonLimipiarBusquedaActionPerformed
+
+    private void campoBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoBusquedaMouseClicked
+    campoBusqueda.setText("");
+    campoBusqueda.setForeground(Color.BLACK);
+    }//GEN-LAST:event_campoBusquedaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
