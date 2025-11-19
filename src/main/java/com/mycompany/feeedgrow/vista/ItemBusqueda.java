@@ -8,7 +8,6 @@ import java.util.Locale;
 import javax.swing.SwingUtilities;
 
 public class ItemBusqueda extends javax.swing.JPanel {
-  
     private Estudiante estudiante;
     private Busqueda busqueda;
     private GestorDatos gestor;
@@ -30,15 +29,11 @@ public class ItemBusqueda extends javax.swing.JPanel {
 
     private void cargarDatos() {
         if (estudiante == null) return;
-
         nombre.setText(estudiante.getNombre());
-
         String carrera = estudiante.getCarrera() != null ? estudiante.getCarrera() : "";
         jCarrera.setText("Carrera • " + carrera);
-
         double score = 0.0;
         String attrs = "";
-
         if (estudiante.getPerfil() != null) {
             try {
                 attrs = estudiante.getPerfil().getMejoresAtributos();
@@ -47,10 +42,7 @@ public class ItemBusqueda extends javax.swing.JPanel {
                 System.out.println(ex.getMessage());
             }
         }
-
         jMejoresAtributos.setText(attrs);
-
-        // Mostrar promedio con coma decimal en español
         jLabel3.setText(String.format(Locale.forLanguageTag("es-CO"), "%.1f", score));
     }
 

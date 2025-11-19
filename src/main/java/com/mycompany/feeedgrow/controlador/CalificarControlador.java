@@ -18,51 +18,72 @@ public class CalificarControlador {
         Estudiante evaluado,
         Map<CriterioEvaluacion, String> valoresTexto,
         String titulo, 
-        String recomendacion) {
+        String recomendacion, boolean edicion) {
+        String errores = validarValores(valoresTexto);
+        if (!errores.isEmpty()) return errores; 
+        Map<CriterioEvaluacion, Double> valores = new java.util.HashMap<>();
+        for (Map.Entry<CriterioEvaluacion, String> e : valoresTexto.entrySet()) {
+            valores.put(e.getKey(), Double.parseDouble(e.getValue().trim()));
+        }
+        if(!edicion){
+            for (Calificacion c : evaluador.getCalificacionesHechas()) {
+                if (c.getEvaluado().getCodigo().equals(evaluado.getCodigo())) {
+                    return "Ya existe una calificación de este evaluador para este estudiante";
+                }
+            }
+            Calificacion nueva = new Calificacion(evaluador, evaluado, valores, titulo, recomendacion);
+            evaluador.agregarCalificacionHecha(nueva);
+            evaluado.agregarCalificacionRecibida(nueva);
+            gestor.agregarCalificacion(nueva); //si vee, deberiamos crear un metodo que sea editarcalificacionrecibida?, busacar el mas conviencite 
+            gestor.actualizarEstudiante(evaluador);
+            gestor.actualizarEstudiante(evaluado);
+            return "";
+        }else{
+            
+            Calificacion b = null;
+            for (Calificacion c : evaluador.getCalificacionesHechas()) {
+                if (c.getEvaluado().getCodigo().equals(evaluado.getCodigo())) {
+                   b = c; 
+                }
+            }
+                String edicionError = editarCalificacion(b, valores, titulo, recomendacion);
+                return edicionError;
+        }
+}
+//aqui hay que revisar para cargar calificaciones recibidas dentro del estudiante, mirar porque con calificar actua normal (quizas porque ya le damos a add)
+    public String editarCalificacion(Calificacion calificacion, 
+                                 Map<CriterioEvaluacion, Double> nuevosValores, 
+                                 String nuevoTitulo, 
+                                 String nuevaRecomendacion) {
 
-    // VALIDACIÓN PRIMERO
-    String errores = validarValores(valoresTexto);
-    if (!errores.isEmpty()) return errores;
-
-    // Convertimos a double SOLO después de validar
-    Map<CriterioEvaluacion, Double> valores = new java.util.HashMap<>();
-    for (Map.Entry<CriterioEvaluacion, String> e : valoresTexto.entrySet()) {
-        valores.put(e.getKey(), Double.parseDouble(e.getValue().trim()));
+    if (calificacion == null) {
+        return "La calificación que se intenta editar no existe.";
     }
+    for (Map.Entry<CriterioEvaluacion, Double> entry : nuevosValores.entrySet()) {
+        calificacion.actualizarCalificacion(entry.getKey(), entry.getValue());
+    }
+    calificacion.setTituloRecomendacion(nuevoTitulo);
+    calificacion.setRecomendacion(nuevaRecomendacion);
+    for (int i = 0; i < gestor.getCalificaciones().size(); i++) {
+        Calificacion c = gestor.getCalificaciones().get(i);
+        if (c.getEvaluador().getCodigo().equals(calificacion.getEvaluador().getCodigo()) &&
+            c.getEvaluado().getCodigo().equals(calificacion.getEvaluado().getCodigo())) {
 
-    // Evitar calificar dos veces
-    for (Calificacion c : evaluador.getCalificacionesHechas()) {
-        if (c.getEvaluado().getCodigo().equals(evaluado.getCodigo())) {
-            return "Ya existe una calificación de este evaluador para este estudiante";
+            gestor.getCalificaciones().set(i, calificacion);
+            break;
         }
     }
-
-    // Crear y guardar calificación
-    Calificacion nueva = new Calificacion(evaluador, evaluado, valores, titulo, recomendacion);
-    evaluador.agregarCalificacionHecha(nueva);
-    evaluado.agregarCalificacionRecibida(nueva);
-
-    gestor.agregarCalificacion(nueva);
-    gestor.actualizarEstudiante(evaluador);
-    gestor.actualizarEstudiante(evaluado);
-
+    gestor.guardarCalificaciones();
     return "";
 }
 
-    public String editarCalificacion(Calificacion calificacion, Map<CriterioEvaluacion, Double> nuevosValores, String nuevoTitulo, String nuevaRecomendacion) {
-        for (Map.Entry<CriterioEvaluacion, Double> entry : nuevosValores.entrySet()) {
-            calificacion.actualizarCalificacion(entry.getKey(), entry.getValue());//revisar como funciona esto
-        }
-        calificacion.setTituloRecomendacion(nuevoTitulo);
-        calificacion.setRecomendacion(nuevaRecomendacion);
-        return ""; 
-    }
 
-    public String eliminarCalificacion(Estudiante evaluador, Calificacion calificacion) {
+    public String eliminarCalificacion(Estudiante evaluador, Estudiante evaluado, Calificacion calificacion) {
         evaluador.getCalificacionesHechas().remove(calificacion);
-        calificacion.getEvaluado().getCalificacionesRecibidas().remove(calificacion);
+        evaluado.getCalificacionesRecibidas().remove(calificacion);
         gestor.actualizarEstudiante(evaluador);
-        gestor.actualizarEstudiante(calificacion.getEvaluado());
+        gestor.actualizarEstudiante(evaluado);
+        gestor.eliminarCalificacion(calificacion);
         return ""; 
     }
     
@@ -71,8 +92,6 @@ public class CalificarControlador {
 
     for (Map.Entry<CriterioEvaluacion, String> entry : valoresTexto.entrySet()) {
         String texto = entry.getValue().trim();
-
-        // ¿Campo vacío o letra?
         double v;
         try {
             v = Double.parseDouble(texto);
@@ -81,8 +100,6 @@ public class CalificarControlador {
                    .append(" debe ser un número válido.\n");
             continue;
         }
-
-        // ¿Rango?
         if (v < 0 || v > 5) {
             errores.append(entry.getKey().name())
                    .append(" debe estar entre 0 y 5.\n");

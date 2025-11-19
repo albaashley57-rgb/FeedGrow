@@ -63,7 +63,7 @@ private void setScore(javax.swing.JLabel label, double valor) {
         if (w instanceof PáginaMenú) {   
             PáginaMenú frame = (PáginaMenú) w;
 
-            Calificar panel = new Calificar(usuario, gestor, estudiante);  
+            Calificar panel = new Calificar(usuario, gestor, estudiante, false);  
             frame.cambiarPanel(panel);
         } else {
             

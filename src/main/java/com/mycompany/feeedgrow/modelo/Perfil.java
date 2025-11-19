@@ -1,7 +1,6 @@
 
 package com.mycompany.feeedgrow.modelo;
-
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -24,12 +23,10 @@ private String[] mejoresAtributos;
     }
 
     public void actualizarPromedios() {
-        // Inicializar suma por criterio
         Map<CriterioEvaluacion, Double> sumas = new EnumMap<>(CriterioEvaluacion.class);
         for (CriterioEvaluacion criterio : CriterioEvaluacion.values()) {
             sumas.put(criterio, 0.0);
         }
-
         int n = (calificacionesRecibidas != null) ? calificacionesRecibidas.size() : 0;
         if (n == 0) {
             for (CriterioEvaluacion criterio : CriterioEvaluacion.values()) {
@@ -39,14 +36,12 @@ private String[] mejoresAtributos;
             actualizarMejoresAtributos();
             return;
         }
-
         for (Calificacion c : calificacionesRecibidas) {
             Map<CriterioEvaluacion, Double> califs = c.getCalificaciones();
             for (CriterioEvaluacion criterio : CriterioEvaluacion.values()) {
                 sumas.put(criterio, sumas.get(criterio) + califs.getOrDefault(criterio, 0.0));
             }
         }
-
         double sumaGlobal = 0;
         for (CriterioEvaluacion criterio : CriterioEvaluacion.values()) {
             double prom = sumas.get(criterio) / n;
@@ -56,31 +51,19 @@ private String[] mejoresAtributos;
         promedioGlobal = sumaGlobal / CriterioEvaluacion.values().length;
         actualizarMejoresAtributos();
     }
-
+// aqui es que hay que revisar para el null
     private void actualizarMejoresAtributos() {
-    
-    java.util.Arrays.fill(mejoresAtributos, "");
-
-   
-    java.util.List<java.util.Map.Entry<CriterioEvaluacion, Double>> lista =
-            new java.util.ArrayList<>(promediosPorCriterio.entrySet());
-
-    
-    lista.removeIf(e -> e.getValue() == null || e.getValue() <= 0.0);
-
-    
-    if (lista.isEmpty()) {
-        // mejoresAtributos se queda con "", "", ""
-        return;
-    }
-
-   
-    lista.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
-
-    
-    int limite = Math.min(3, lista.size());
-    for (int i = 0; i < limite; i++) {
-        mejoresAtributos[i] = lista.get(i).getKey().name();  // o toString() si lo formateas distinto
+        Arrays.fill(mejoresAtributos, null);
+        java.util.List<java.util.Map.Entry<CriterioEvaluacion, Double>> lista =
+                new java.util.ArrayList<>(promediosPorCriterio.entrySet());
+        lista.removeIf(e -> e.getValue() == null || e.getValue() <= 0.0);
+        if (lista.isEmpty()) {
+            return;
+        }
+        lista.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
+        int limite = Math.min(3, lista.size());
+        for (int i = 0; i < limite; i++) {
+            mejoresAtributos[i] = lista.get(i).getKey().name(); 
     }
 }
 
@@ -93,8 +76,9 @@ private String[] mejoresAtributos;
     }
 
     public String getMejoresAtributos() { 
+        if (mejoresAtributos == null)return "";
         return mejoresAtributos[0] +","+ mejoresAtributos[1] + ", " + mejoresAtributos[2]; 
-    }
+        }
 
     public Estudiante getEstudiante() {
         return estudiante;

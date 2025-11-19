@@ -13,20 +13,20 @@ public class Calificar extends javax.swing.JPanel {
 private Estudiante usuario;
 private Estudiante evaluado;
 private GestorDatos gestor;
+private boolean calificacionEdicion;
    
-    public Calificar(Estudiante usuario, GestorDatos gestor, Estudiante evaluado) {
+    public Calificar(Estudiante usuario, GestorDatos gestor, Estudiante evaluado, boolean isEdicion) {
         initComponents();
         this.gestor = gestor;
         this.evaluado = evaluado;
         this.usuario = usuario;
+        this.calificacionEdicion = isEdicion;
         initCustom();
     }
-    
+  
 private void initCustom(){
     Nombre.setText(evaluado.getNombre());
-    
 }
-
 
 private void guardar(){
     CalificarControlador controller = new CalificarControlador(gestor);
@@ -56,7 +56,7 @@ private void guardar(){
         evaluado,
         valoresTexto,
         titulo,
-        recomendacion
+        recomendacion, calificacionEdicion
 );
 if (mensaje.isEmpty()) {
     JOptionPane.showMessageDialog(this, "Calificación guardada con éxito");

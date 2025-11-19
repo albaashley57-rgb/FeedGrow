@@ -1,34 +1,36 @@
 
 package com.mycompany.feeedgrow.vista;
 
+import com.mycompany.feeedgrow.controlador.CalificarControlador;
 import com.mycompany.feeedgrow.modelo.Calificacion;
 import com.mycompany.feeedgrow.modelo.Estudiante;
 import com.mycompany.feeedgrow.persistencia.GestorDatos;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 
 public class ItemGestor extends javax.swing.JPanel {
     private Calificacion calificacion;
     private GestorDatos gestor;
     private Estudiante evaluado;
+    private Estudiante usuario;
 
     public ItemGestor(Estudiante usuario, GestorDatos gestor, Estudiante estudiante) {
         initComponents();
         this.evaluado = estudiante;
         this.calificacion = gestor.buscarCalificacionPorEvaluadorYEvaluado(usuario, estudiante);
         this.gestor = gestor;
+        this.usuario = usuario;
         cargarDatos();
     }
 
     private void cargarDatos() {
         nombre.setText(evaluado.getNombre());
         jcarrera.setText("Carrera • " + evaluado.getCarrera());
-        jAtributo.setText(calificacion.getEvaluado().getPerfil().getMejoresAtributos());
+        jAtributo.setText(evaluado.getPerfil().getMejoresAtributos());
        
     }
-
-
-    
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -107,11 +109,29 @@ public class ItemGestor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        // TODO add your handling code here:
+          if (calificacion == null) return;
+          CalificarControlador controlador = new CalificarControlador(gestor);
+          String error = controlador.eliminarCalificacion(usuario, evaluado, calificacion);
+          if(!error.isBlank()){
+              JOptionPane.showMessageDialog(this, error, "Error al eliminar", JOptionPane.ERROR_MESSAGE);
+              return;
+          }
+    java.awt.Window w = SwingUtilities.getWindowAncestor(this);
+    if (w instanceof PáginaMenú) {
+        PáginaMenú frame = (PáginaMenú) w;
+        GestorMisCalificaciones nuevoPanel = new GestorMisCalificaciones(usuario, gestor);
+        frame.cambiarPanel(nuevoPanel);
+    }
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
-        // TODO add your handling code here:
+        if (calificacion == null) return;
+        java.awt.Window w = SwingUtilities.getWindowAncestor(this);
+    if (w instanceof PáginaMenú) {
+        PáginaMenú frame = (PáginaMenú) w;
+        Calificar nuevoPanel = new Calificar(usuario, gestor, evaluado, true);
+        frame.cambiarPanel(nuevoPanel);
+    }
     }//GEN-LAST:event_botonEditarActionPerformed
 
 

@@ -17,14 +17,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class GestorDatos {
-
-      
     private final File archivoEstudiantes = new File("estudiantes.txt");
     private final File archivoCalificaciones = new File("calificaciones.txt");
     private ArrayList<Estudiante> estudiantes;
     private ArrayList<Calificacion> calificaciones;
  
-
     public GestorDatos() {
         this.calificaciones = new ArrayList<>();
         this.estudiantes = new ArrayList<>();
@@ -39,7 +36,6 @@ public class GestorDatos {
             System.out.println("El archivo no existe todavía. Se creará al registrar el primer estudiante.");
             return;
         }
-
         try (BufferedReader reader = new BufferedReader(new FileReader(archivoEstudiantes))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
@@ -66,7 +62,6 @@ public class GestorDatos {
             System.out.println("El archivo no existe todavía. Se creará al registrar el primer estudiante.");
             return;
         }
-
         try (BufferedReader reader = new BufferedReader(new FileReader(archivoCalificaciones))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
@@ -77,8 +72,6 @@ public class GestorDatos {
                 String califStr = datos[2].trim();
                 String tituloRecomendacion = datos[3].trim();
                 String recomendacion = datos[4].trim();
-
-                // Reconstruir el Map de calificaciones
                 Map<CriterioEvaluacion, Double> map = new EnumMap<>(CriterioEvaluacion.class);
                 if (!califStr.isEmpty()) {
                     String[] pares = califStr.split(";");
@@ -91,10 +84,8 @@ public class GestorDatos {
                         }
                     }
                 }
-
                 Estudiante evaluador = buscarEstudiantePorNombre(nombreEvaluador); 
                 Estudiante evaluado = buscarEstudiantePorNombre(nombreEvaluado);
-
                 Calificacion c = new Calificacion(evaluador, evaluado, map, tituloRecomendacion, recomendacion);
                 calificaciones.add(c);
                 evaluado.agregarCalificacionRecibida(c);
@@ -138,6 +129,7 @@ public class GestorDatos {
         return calificaciones;
     }
 
+    
     public void registrarEstudiante(Estudiante nuevo) {
         estudiantes.add(nuevo);
         guardarEstudiantes();
@@ -151,7 +143,24 @@ public class GestorDatos {
             guardarCalificaciones();
          }
     }
+    
+    
+public void eliminarCalificacion(Calificacion c) {
+    calificaciones.remove(c);
+    guardarCalificaciones();
+}
 
+ public void actualizarEstudiante(Estudiante estudianteActualizado) {
+    for (int i = 0; i < estudiantes.size(); i++) {
+        Estudiante e = estudiantes.get(i);
+        if (e.getCodigo().equals(estudianteActualizado.getCodigo())) {
+            estudiantes.set(i, estudianteActualizado);
+            guardarEstudiantes();
+            return;
+        }
+    }
+}
+ 
     public Estudiante buscarEstudiantePorCodigo(String codigo) {
         for (Estudiante e : estudiantes) {
             if (e.getCodigo().equals(codigo)) {
@@ -218,17 +227,7 @@ public Calificacion buscarCalificacionPorEvaluadorYEvaluado(Estudiante evaluador
         }
         return false;
     }
-    public void actualizarEstudiante(Estudiante estudianteActualizado) {
-    for (int i = 0; i < estudiantes.size(); i++) {
-        Estudiante e = estudiantes.get(i);
-        if (e.getCodigo().equals(estudianteActualizado.getCodigo())) {
-            // Reemplaza el objeto antiguo por el actualizado
-            estudiantes.set(i, estudianteActualizado);
-            guardarEstudiantes(); // persistencia
-            return;
-        }
-    }
-}
+   
     
 }
 
