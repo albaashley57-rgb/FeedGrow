@@ -73,7 +73,7 @@ public class Calificacion {
     if (sb.length() > 0) {
         sb.deleteCharAt(sb.length() - 1);
     }
-    return evaluador.getNombre() + "," + evaluado.getNombre() + "," + sb.toString() + "," + titulorecomendacion + "," + recomendacion;
+    return evaluador.getCodigo() + "," + evaluado.getCodigo() + "," + sb.toString() + "," + titulorecomendacion + "," + recomendacion;
     }
 
 }

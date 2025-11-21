@@ -1,11 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package com.mycompany.feeedgrow.vista;
 
 import com.mycompany.feeedgrow.modelo.Estudiante;
 import com.mycompany.feeedgrow.persistencia.GestorDatos;
+import java.awt.Dimension;
 import java.util.List;
 import javax.swing.BoxLayout;
 
@@ -17,9 +15,9 @@ private GestorDatos gestor;
         cargarRanking();
     }
     private void cargarRanking(){
-         
-        contenedorTop3.setLayout(new BoxLayout(contenedorTop3, BoxLayout.Y_AXIS));
         contenedorTop3.removeAll();
+        contenedorTop3.setLayout(new BoxLayout(contenedorTop3, BoxLayout.Y_AXIS));
+        contenedorTop3.setAlignmentX(LEFT_ALIGNMENT);
 
         if (gestor == null) return;
 
@@ -28,6 +26,10 @@ private GestorDatos gestor;
             if (e == null) 
                 continue;
             ItemRanking item = new ItemRanking(e);
+            item.setAlignmentX(LEFT_ALIGNMENT);
+            item.setMaximumSize(
+                new Dimension(Integer.MAX_VALUE, item.getPreferredSize().height)
+            );
             contenedorTop3.add(item);
         }
 
@@ -62,17 +64,7 @@ private GestorDatos gestor;
 
         contenedorTop3.setBackground(new java.awt.Color(255, 255, 255));
         contenedorTop3.setForeground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout contenedorTop3Layout = new javax.swing.GroupLayout(contenedorTop3);
-        contenedorTop3.setLayout(contenedorTop3Layout);
-        contenedorTop3Layout.setHorizontalGroup(
-            contenedorTop3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        contenedorTop3Layout.setVerticalGroup(
-            contenedorTop3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 458, Short.MAX_VALUE)
-        );
+        contenedorTop3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
@@ -80,21 +72,21 @@ private GestorDatos gestor;
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
                 .addGap(390, 390, 390)
-                .addComponent(ranking, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addComponent(ranking, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                 .addGap(388, 388, 388))
             .addGroup(fondoLayout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(contenedorTop3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(70, 70, 70))
+                .addGap(61, 61, 61)
+                .addComponent(contenedorTop3, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(ranking)
-                .addGap(26, 26, 26)
-                .addComponent(contenedorTop3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(61, 61, 61))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contenedorTop3, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

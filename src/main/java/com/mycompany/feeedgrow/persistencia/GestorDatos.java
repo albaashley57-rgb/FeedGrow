@@ -52,8 +52,9 @@ public class GestorDatos {
                     estudiantes.add(e);
                 }
             }
+            reader.close();
         } catch (IOException e) {
-            System.out.println("Error al leer el archivo: " + e.getMessage());
+            System.out.println("Error al leer el archivo de estudiantes: " + e.getMessage());
         }
     }
 
@@ -68,8 +69,8 @@ public class GestorDatos {
             while ((linea = reader.readLine()) != null) {
                 String[] datos = linea.split(",", 5); 
             if (datos.length == 5) {
-                String nombreEvaluador = datos[0].trim();
-                String nombreEvaluado = datos[1].trim();
+                String codigoEvaluador = datos[0].trim();
+                String codigoEvaluado = datos[1].trim();
                 String califStr = datos[2].trim();
                 String tituloRecomendacion = datos[3].trim();
                 String recomendacion = datos[4].trim();
@@ -85,16 +86,17 @@ public class GestorDatos {
                         }
                     }
                 }
-                Estudiante evaluador = buscarEstudiantePorNombre(nombreEvaluador); 
-                Estudiante evaluado = buscarEstudiantePorNombre(nombreEvaluado);
+                Estudiante evaluador = buscarEstudiantePorCodigo(codigoEvaluador); 
+                Estudiante evaluado = buscarEstudiantePorCodigo(codigoEvaluado); 
                 Calificacion c = new Calificacion(evaluador, evaluado, map, tituloRecomendacion, recomendacion);
                 calificaciones.add(c);
                 evaluado.agregarCalificacionRecibida(c);
                 evaluador.agregarCalificacionHecha(c);
                 }
             }
+             reader.close();
         } catch (IOException e) {
-            System.out.println("Error al leer el archivo: " + e.getMessage());
+            System.out.println("Error al leer el archivo de calificaciones: " + e.getMessage());
         }
     }
  
@@ -105,8 +107,9 @@ public class GestorDatos {
                 writer.write(e.toString());
                 writer.newLine();
             }
+            writer.close();
         } catch (IOException e) {
-            System.out.println("Error al escribir el archivo: " + e.getMessage());
+            System.out.println("Error al escribir el archivo de estudiante: " + e.getMessage());
         }
     }
     
@@ -116,8 +119,9 @@ public class GestorDatos {
                 writer.write(c.toString());
                 writer.newLine();
             }
+            writer.close();
         } catch (IOException e) {
-            System.out.println("Error al escribir el archivo: " + e.getMessage());
+            System.out.println("Error al escribir el archivo de calificaciones: " + e.getMessage());
         }
     }
 
