@@ -1,6 +1,6 @@
 
-import com.mycompany.feeedgrow.persistencia.GestorDatos;
-import com.mycompany.feeedgrow.vista.InicioDeSesion;
+import com.mycompany.feedgrow.persistencia.GestorDatos;
+import com.mycompany.feedgrow.vista.InicioDeSesion;
 
 public class Main {
 
