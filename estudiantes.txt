@@ -1,8 +1,2 @@
-2250194,andres rivera,hola@gmail.com,Ingeniería de Sistemas,hola123
-2250195,Andres Felipe Rivera Carreño,Medicina,hola@gmail.com,hola123
-225091,hola123,j@gmail.com,Ingeniería Electrónica,hola123
-2250196,hola,hola123@gmail.com,Geología,hola123
-2250190,Maria Rivera,maria@gmail.com,Ingeniería Química,aleja123
-1094050932,2250181,albaashley57@gmail.com,Ingeniería de Sistemas,1094050932
-2250181,ashley,tunometescabra@gmail.com,Ingeniería de Sistemas,a
-2025,Roberto Perez,Química,RobertoPerez@gmail.com,hola123
+2250181,Ashley Dayana Alba Pérez,albaashley57@gmail.com,Ingeniería de Sistemas,yc11svmds57ykrkMZ7qgLg==,JRSkJRLYZbZrkUidIhh+oQmQvF4BHZsurqjK0d3/fhQ=
+2251711,Wilmar Herley Patiño Castaño,wilmar123xd@gmail.com,Ingeniería Biomédica,RsxDVqci4Z2pEr4sZBdU4w==,Jd3m3i/ha4sK2P8YD2Au1CAv7P8/qM97b6fe3LOqaEg=

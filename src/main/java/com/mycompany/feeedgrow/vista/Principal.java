@@ -137,9 +137,10 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         );
 
         scroll.setBorder(null);
-        scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         contenedorRecomendaciones.setBackground(new java.awt.Color(255, 255, 255));
+        contenedorRecomendaciones.setToolTipText("");
+        contenedorRecomendaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout contenedorRecomendacionesLayout = new javax.swing.GroupLayout(contenedorRecomendaciones);
         contenedorRecomendaciones.setLayout(contenedorRecomendacionesLayout);

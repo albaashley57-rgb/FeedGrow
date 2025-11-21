@@ -53,17 +53,32 @@ private String[] mejoresAtributos;
     }
 // aqui es que hay que revisar para el null
     private void actualizarMejoresAtributos() {
-        Arrays.fill(mejoresAtributos, null);
-        java.util.List<java.util.Map.Entry<CriterioEvaluacion, Double>> lista =
-                new java.util.ArrayList<>(promediosPorCriterio.entrySet());
-        lista.removeIf(e -> e.getValue() == null || e.getValue() <= 0.0);
-        if (lista.isEmpty()) {
-            return;
+       Arrays.fill(mejoresAtributos, null);
+
+    java.util.List<java.util.Map.Entry<CriterioEvaluacion, Double>> lista =
+            new java.util.ArrayList<>(promediosPorCriterio.entrySet());
+
+    java.util.Iterator<java.util.Map.Entry<CriterioEvaluacion, Double>> it = lista.iterator();
+    while (it.hasNext()) {
+        java.util.Map.Entry<CriterioEvaluacion, Double> e = it.next();
+        if (e.getValue() == null || e.getValue() <= 0.0) {
+            it.remove();
         }
-        lista.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
-        int limite = Math.min(3, lista.size());
-        for (int i = 0; i < limite; i++) {
-            mejoresAtributos[i] = lista.get(i).getKey().name(); 
+    }
+
+    for (int i = 0; i < 3 && !lista.isEmpty(); i++) {
+        java.util.Map.Entry<CriterioEvaluacion, Double> mejor = null;
+
+        for (java.util.Map.Entry<CriterioEvaluacion, Double> e : lista) {
+            if (mejor == null || e.getValue() > mejor.getValue()) {
+                mejor = e;
+            }
+        }
+
+        if (mejor == null) break;
+
+        mejoresAtributos[i] = mejor.getKey().name();
+        lista.remove(mejor); 
     }
 }
 
@@ -76,9 +91,13 @@ private String[] mejoresAtributos;
     }
 
     public String getMejoresAtributos() { 
-        if (mejoresAtributos == null)return "";
-        return mejoresAtributos[0] +","+ mejoresAtributos[1] + ", " + mejoresAtributos[2]; 
+        if (mejoresAtributos == null){
+            return "";
         }
+        else{
+            return mejoresAtributos[0] +","+ mejoresAtributos[1] + ", " + mejoresAtributos[2]; 
+        }
+    }
 
     public Estudiante getEstudiante() {
         return estudiante;

@@ -43,7 +43,7 @@ public class ItemBusqueda extends javax.swing.JPanel {
             }
         }
         jMejoresAtributos.setText(attrs);
-        jLabel3.setText(String.format(Locale.forLanguageTag("es-CO"), "%.1f", score));
+        promedio.setText(String.format(Locale.forLanguageTag("es-CO"), "%.1f", score));
     }
 
     private void configurarNombreClicable() {
@@ -91,57 +91,106 @@ public class ItemBusqueda extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        fondo = new javax.swing.JPanel();
+        iconoUsuario = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
         jMejoresAtributos = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        promedio = new javax.swing.JLabel();
         jCarrera = new javax.swing.JLabel();
+        separador = new javax.swing.JSeparator();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        fondo.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-11-16 151912.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        iconoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-11-16 151912.png"))); // NOI18N
 
-        nombre.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        nombre.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
+        nombre.setForeground(new java.awt.Color(29, 27, 32));
         nombre.setText("{estudiante nombre}");
-        jPanel1.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, 36));
 
-        jMejoresAtributos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jMejoresAtributos.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jMejoresAtributos.setForeground(new java.awt.Color(63, 69, 79));
         jMejoresAtributos.setText("{mejores atributos}");
-        jPanel1.add(jMejoresAtributos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 430, 30));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-11-11 220725.png"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, 50));
+        promedio.setFont(new java.awt.Font("Roboto", 0, 23)); // NOI18N
+        promedio.setForeground(new java.awt.Color(30, 30, 30));
+        promedio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-11-11 220725.png"))); // NOI18N
+        promedio.setText("0,0");
 
-        jCarrera.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jCarrera.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jCarrera.setForeground(new java.awt.Color(63, 69, 79));
         jCarrera.setText("Carrera • {estudiante carrera}");
-        jPanel1.add(jCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, 30));
+
+        separador.setForeground(new java.awt.Color(202, 196, 208));
+
+        javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
+        fondo.setLayout(fondoLayout);
+        fondoLayout.setHorizontalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(iconoUsuario)
+                        .addGap(4, 4, 4)
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(fondoLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jMejoresAtributos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(fondoLayout.createSequentialGroup()
+                                        .addComponent(jCarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(251, 251, 251)))
+                                .addGap(130, 130, 130)))
+                        .addGap(10, 10, 10)
+                        .addComponent(promedio)
+                        .addGap(62, 62, 62))
+                    .addComponent(separador))
+                .addGap(16, 16, 16))
+        );
+        fondoLayout.setVerticalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(iconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(fondoLayout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(jMejoresAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(fondoLayout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(promedio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel fondo;
+    private javax.swing.JLabel iconoUsuario;
     private javax.swing.JLabel jCarrera;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jMejoresAtributos;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nombre;
+    private javax.swing.JLabel promedio;
+    private javax.swing.JSeparator separador;
     // End of variables declaration//GEN-END:variables
 }

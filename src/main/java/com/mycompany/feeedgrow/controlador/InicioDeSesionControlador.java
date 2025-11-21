@@ -1,5 +1,6 @@
 package com.mycompany.feeedgrow.controlador;
 import com.mycompany.feeedgrow.modelo.Estudiante;
+import com.mycompany.feeedgrow.modelo.Seguridad;
 import com.mycompany.feeedgrow.persistencia.GestorDatos;
 
 public class InicioDeSesionControlador {
@@ -23,21 +24,21 @@ private GestorDatos gestor;
             return "El código debe contener solo números.";
         }
 
-        return ""; // todo bien
+        return "";
     }
 
-    public String verificarUsuario(String codigo, String contraseña) {
+    public String verificarUsuario(String codigo, String contrasena) {
         Estudiante estudiante = gestor.buscarEstudiantePorCodigo(codigo);
 
         if (estudiante == null) {
             return "No existe una cuenta con ese código.";
         }
 
-        if (!estudiante.getContrasena().equals(contraseña)) {
+        if (!Seguridad.validar(contrasena, estudiante.getSalt(), estudiante.getPasswordHash())) {
             return "La contraseña es incorrecta.";
         }
 
-        return ""; // todo bien
+        return "";
     }
 } 
 

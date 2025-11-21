@@ -22,6 +22,7 @@ public class Busqueda extends JPanel {
         this.usuario = usuario;
         initComponents();
         initCustom();
+        initLista();
     }
 
     private void initCustom() {
@@ -32,7 +33,17 @@ public class Busqueda extends JPanel {
 
         campoBusqueda.addActionListener(e -> ejecutarBusqueda());
     }
-
+    private void initLista(){
+      BusquedaControlador controlador = new BusquedaControlador();
+      List<Estudiante> resultados = controlador.buscar("", "", usuario, gestor.getEstudiantes());
+      listaEstudiantes.removeAll();
+       for (Estudiante e : resultados) {
+                ItemBusqueda item = new ItemBusqueda(this, usuario, e, gestor);
+                listaEstudiantes.add(item);
+            }
+       listaEstudiantes.revalidate();
+       listaEstudiantes.repaint();
+    }
 
    private void ejecutarBusqueda() {
     BusquedaControlador controlador = new BusquedaControlador();
@@ -87,46 +98,52 @@ public class Busqueda extends JPanel {
         jLabel2.setText("jLabel2");
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jBotonLimipiarBusqueda.setBackground(new java.awt.Color(240, 233, 248));
         jBotonLimipiarBusqueda.setForeground(new java.awt.Color(153, 153, 153));
         jBotonLimipiarBusqueda.setText("X");
+        jBotonLimipiarBusqueda.setBorderPainted(false);
+        jBotonLimipiarBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBotonLimipiarBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBotonLimipiarBusquedaActionPerformed(evt);
             }
         });
-        jPanel12.add(jBotonLimipiarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 40, -1, -1));
 
         campoBusqueda.setBackground(new java.awt.Color(250, 236, 252));
+        campoBusqueda.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         campoBusqueda.setForeground(new java.awt.Color(153, 153, 153));
         campoBusqueda.setText("Busque por nombre");
+        campoBusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                campoBusquedaMouseClicked(evt);
+            }
+        });
         campoBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoBusquedaActionPerformed(evt);
             }
         });
-        jPanel12.add(campoBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 520, 35));
 
         jBotonBuscar.setBackground(new java.awt.Color(49, 148, 252));
+        jBotonBuscar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jBotonBuscar.setForeground(new java.awt.Color(255, 255, 255));
         jBotonBuscar.setText("Buscar");
         jBotonBuscar.setBorderPainted(false);
+        jBotonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBotonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBotonBuscarActionPerformed(evt);
             }
         });
-        jPanel12.add(jBotonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 40, -1, -1));
 
         jSeleccionadorDeCarrera.setBackground(new java.awt.Color(250, 236, 252));
+        jSeleccionadorDeCarrera.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         jSeleccionadorDeCarrera.setForeground(new java.awt.Color(153, 153, 153));
         jSeleccionadorDeCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione su carrera", "Biología", "Física", "Licenciatura en Matemáticas", "Matemáticas", "Química", "Ingeniería de Sistemas", "Ingeniería Eléctrica", "Ingeniería Electrónica", "Ingeniería Industrial", "Ingeniería Mecánica", "Ingeniería Biomédica", "Ingeniería en Ciencia de Datos", "Diseño Industrial", "Ingeniería Civil", "Ingeniería Química", "Ingeniería de Petróleos", "Geología", "Enfermería", "Fisioterapia", "Medicina", "Microbiología y Bioanálisis", "Nutrición y Dietética", "Derecho", "Economía", "Filosofía", "Historia y Archivística", "Licenciatura en Educación Básica Primaria", "Licenciatura en Literatura y Lengua Castellana", "Licenciatura en Lenguas Extranjeras con énfasis en Inglés", "Licenciatura en Música", "Trabajo Social", "Técnica Profesional en Ejecución de Proyectos Culturales y Creativos" }));
-        jSeleccionadorDeCarrera.setBorder(null);
-        jPanel12.add(jSeleccionadorDeCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 140, -1));
+        jSeleccionadorDeCarrera.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jScrollPane1.setBorder(null);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         listaEstudiantes.setBackground(new java.awt.Color(255, 255, 255));
         listaEstudiantes.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -144,19 +161,54 @@ public class Busqueda extends JPanel {
 
         jScrollPane1.setViewportView(listaEstudiantes);
 
-        jPanel12.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 960, 530));
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(campoBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jSeleccionadorDeCarrera, 0, 143, Short.MAX_VALUE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jBotonBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBotonLimipiarBusqueda)
+                        .addGap(102, 102, 102))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addGap(14, 14, 14))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeleccionadorDeCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jBotonBuscar)
+                                .addComponent(jBotonLimipiarBusqueda)))))
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane1)
+                .addGap(22, 22, 22))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -165,12 +217,21 @@ public class Busqueda extends JPanel {
     }//GEN-LAST:event_campoBusquedaActionPerformed
 
     private void jBotonLimipiarBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonLimipiarBusquedaActionPerformed
-        campoBusqueda.setText("");
+        campoBusqueda.setText("Busque por nombre");
+        campoBusqueda.setForeground(new Color(153, 153, 153));
+        jSeleccionadorDeCarrera.setSelectedIndex(0);
     }//GEN-LAST:event_jBotonLimipiarBusquedaActionPerformed
 
     private void jBotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonBuscarActionPerformed
         ejecutarBusqueda();
     }//GEN-LAST:event_jBotonBuscarActionPerformed
+
+    private void campoBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoBusquedaMouseClicked
+        if(campoBusqueda.getText().trim().equalsIgnoreCase("Busque por nombre")){
+        campoBusqueda.setText("");
+        campoBusqueda.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_campoBusquedaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

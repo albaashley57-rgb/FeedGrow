@@ -83,7 +83,7 @@ private GestorDatos gestor;
         BotónPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         BotónPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/principal50x50.png.png"))); // NOI18N
         BotónPrincipal.setBorderPainted(false);
-        BotónPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotónPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotónPrincipal.setMaximumSize(new java.awt.Dimension(86, 32));
         BotónPrincipal.setMinimumSize(new java.awt.Dimension(86, 32));
         BotónPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -100,7 +100,7 @@ private GestorDatos gestor;
         BotónBúsqueda.setBackground(new java.awt.Color(255, 255, 255));
         BotónBúsqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Búsqueda50x50.png.png"))); // NOI18N
         BotónBúsqueda.setBorderPainted(false);
-        BotónBúsqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotónBúsqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotónBúsqueda.setMaximumSize(new java.awt.Dimension(86, 32));
         BotónBúsqueda.setMinimumSize(new java.awt.Dimension(86, 32));
         BotónBúsqueda.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +112,7 @@ private GestorDatos gestor;
         BotónGestor.setBackground(new java.awt.Color(255, 255, 255));
         BotónGestor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gestor50x50.png.png"))); // NOI18N
         BotónGestor.setBorderPainted(false);
-        BotónGestor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotónGestor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotónGestor.setMaximumSize(new java.awt.Dimension(86, 32));
         BotónGestor.setMinimumSize(new java.awt.Dimension(86, 32));
         BotónGestor.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +124,7 @@ private GestorDatos gestor;
         BotónRanking.setBackground(new java.awt.Color(255, 255, 255));
         BotónRanking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ranking50x50.png.png"))); // NOI18N
         BotónRanking.setBorderPainted(false);
-        BotónRanking.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BotónRanking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotónRanking.setMaximumSize(new java.awt.Dimension(86, 32));
         BotónRanking.setMinimumSize(new java.awt.Dimension(86, 32));
         BotónRanking.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +137,7 @@ private GestorDatos gestor;
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icono perfil pequeño.png"))); // NOI18N
         jButton5.setAutoscrolls(true);
         jButton5.setBorderPainted(false);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);

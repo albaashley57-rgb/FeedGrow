@@ -40,14 +40,15 @@ public class GestorDatos {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String[] datos = linea.split(",");
-                if (datos.length == 5) {
+                if (datos.length == 6) {
                     Estudiante e = new Estudiante(
                         datos[1].trim(), // nombre
                         datos[0].trim(), // código
                         datos[3].trim(), // carrera
-                        datos[2].trim(), // correo
-                        datos[4].trim()  // contraseña
+                        datos[2].trim() // correo
                     );
+                    e.setSalt(datos[4].trim());
+                    e.setPasswordHash(datos[5].trim());
                     estudiantes.add(e);
                 }
             }
@@ -187,7 +188,7 @@ public void eliminarCalificacion(Calificacion c) {
             .filter(c -> c.getEvaluador() != null
                       && c.getEvaluador().getCodigo().equals(evaluador.getCodigo()))
             .map(Calificacion::getEvaluado)
-            .distinct() // evita repetidos
+            .distinct() 
             .collect(Collectors.toList());
 }
 

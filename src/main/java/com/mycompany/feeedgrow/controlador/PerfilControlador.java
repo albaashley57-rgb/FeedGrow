@@ -3,6 +3,7 @@ package com.mycompany.feeedgrow.controlador;
 
 import com.mycompany.feeedgrow.modelo.CriterioEvaluacion;
 import com.mycompany.feeedgrow.modelo.Estudiante;
+import com.mycompany.feeedgrow.modelo.Seguridad;
 import com.mycompany.feeedgrow.persistencia.GestorDatos;
 
 public class PerfilControlador {
@@ -29,6 +30,7 @@ public class PerfilControlador {
     if (nuevaCarrera == null || nuevaCarrera.isEmpty()) {
         return "La carrera no puede estar vacía.";
     }
+    
     if (nuevoCorreo == null || nuevoCorreo.isEmpty()) {
         return "El correo no puede estar vacío.";
     }
@@ -37,7 +39,8 @@ public class PerfilControlador {
     if (antiguaContrasena == null || antiguaContrasena.isEmpty()) {
         return "Debes ingresar la contraseña actual para realizar cambios.";
     }
-    if (!estudiante.getContrasena().equals(antiguaContrasena)) {
+    
+    if (!Seguridad.validar(antiguaContrasena, estudiante.getSalt(), estudiante.getPasswordHash())) {
         return "La contraseña actual no coincide.";
     }
 
@@ -55,15 +58,13 @@ public class PerfilControlador {
         if (nuevaContrasena.length() < 6) {
             return "La nueva contraseña debe tener al menos 6 caracteres.";
         }
-        estudiante.setContrasena(nuevaContrasena);
+      estudiante.setContrasena(nuevaContrasena);
     }
-
-    // Guardar los cambios de carrera y correo
     estudiante.setCarrera(nuevaCarrera);
     estudiante.setCorreo(nuevoCorreo);
     gestor.actualizarEstudiante(estudiante);
 
-    return ""; // Éxito
+    return ""; 
 }
  
 

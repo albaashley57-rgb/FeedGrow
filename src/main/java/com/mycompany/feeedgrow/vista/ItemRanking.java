@@ -27,7 +27,7 @@ private void initCustom() {
 
         
        nombre1.setText(estudiante.getNombre());
-        jCarrera1.setText("Carrera • " + estudiante.getCarrera());
+        carrera.setText("Carrera • " + estudiante.getCarrera());
 
         
         if (estudiante.getPerfil() != null) {
@@ -35,18 +35,18 @@ private void initCustom() {
 
             
             double score = perfil.getPromedioGlobal();
-            jLabel4.setText(String.format(Locale.US, "%.1f", score));
+            promedio.setText(String.format(Locale.US, "%.1f", score));
 
             
             String attrs = perfil.getMejoresAtributos();
             if (attrs != null && !attrs.isBlank()) {
-             jMejoresAtributos1.setText(attrs);
+             mejoresAtributos.setText(attrs);
             } else {
-                jMejoresAtributos1.setText("");
+                mejoresAtributos.setText("");
             }
         } else {
-            jLabel4.setText("—");
-            jMejoresAtributos1.setText("");
+            promedio.setText("—");
+            mejoresAtributos.setText("");
         }
     }
     
@@ -66,12 +66,12 @@ private void initCustom() {
         jLabel3 = new javax.swing.JLabel();
         jCarrera = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        fondo = new javax.swing.JPanel();
+        iconoMedalla = new javax.swing.JLabel();
         nombre1 = new javax.swing.JLabel();
-        jMejoresAtributos1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jCarrera1 = new javax.swing.JLabel();
+        mejoresAtributos = new javax.swing.JLabel();
+        promedio = new javax.swing.JLabel();
+        carrera = new javax.swing.JLabel();
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -96,40 +96,81 @@ private void initCustom() {
         jCarrera.setText("Carrera • {estudiante carrera}");
         jPanel2.add(jCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, 30));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        fondo.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-11-16 151912.png"))); // NOI18N
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        iconoMedalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/medalla96x96.png"))); // NOI18N
 
-        nombre1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        nombre1.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        nombre1.setForeground(new java.awt.Color(30, 30, 30));
         nombre1.setText("{estudiante nombre}");
-        jPanel3.add(nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, 36));
 
-        jMejoresAtributos1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jMejoresAtributos1.setText("{mejores atributos}");
-        jPanel3.add(jMejoresAtributos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 410, 30));
+        mejoresAtributos.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        mejoresAtributos.setForeground(new java.awt.Color(63, 69, 79));
+        mejoresAtributos.setText("{mejores atributos}");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-11-11 220725.png"))); // NOI18N
-        jLabel4.setText("jLabel3");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, 50));
+        promedio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        promedio.setForeground(new java.awt.Color(30, 30, 30));
+        promedio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-11-11 220725.png"))); // NOI18N
+        promedio.setText("0,0");
 
-        jCarrera1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jCarrera1.setText("Carrera • {estudiante carrera}");
-        jPanel3.add(jCarrera1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, 30));
+        carrera.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        carrera.setForeground(new java.awt.Color(63, 69, 79));
+        carrera.setText("Carrera • {estudiante carrera}");
+
+        javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
+        fondo.setLayout(fondoLayout);
+        fondoLayout.setHorizontalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(iconoMedalla)
+                .addGap(4, 4, 4)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombre1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(fondoLayout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(carrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(9, 9, 9)))
+                        .addGap(152, 152, 152)
+                        .addComponent(promedio))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(mejoresAtributos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(38, 38, 38)))
+                .addGap(195, 195, 195))
+        );
+        fondoLayout.setVerticalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(iconoMedalla)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(fondoLayout.createSequentialGroup()
+                                .addComponent(nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
+                                .addComponent(carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(promedio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(mejoresAtributos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -150,18 +191,18 @@ private void initCustom() {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel carrera;
+    private javax.swing.JPanel fondo;
+    private javax.swing.JLabel iconoMedalla;
     private javax.swing.JLabel jCarrera;
-    private javax.swing.JLabel jCarrera1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jMejoresAtributos;
-    private javax.swing.JLabel jMejoresAtributos1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel mejoresAtributos;
     private javax.swing.JLabel nombre;
     private javax.swing.JLabel nombre1;
+    private javax.swing.JLabel promedio;
     // End of variables declaration//GEN-END:variables
 }

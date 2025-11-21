@@ -18,8 +18,8 @@ private GestorDatos gestor;
     }
     private void cargarRanking(){
          
-        jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.Y_AXIS));
-        jPanel2.removeAll();
+        contenedorTop3.setLayout(new BoxLayout(contenedorTop3, BoxLayout.Y_AXIS));
+        contenedorTop3.removeAll();
 
         if (gestor == null) return;
 
@@ -28,11 +28,11 @@ private GestorDatos gestor;
             if (e == null) 
                 continue;
             ItemRanking item = new ItemRanking(e);
-            jPanel2.add(item);
+            contenedorTop3.add(item);
         }
 
-        jPanel2.revalidate();
-        jPanel2.repaint();
+        contenedorTop3.revalidate();
+        contenedorTop3.repaint();
     }
     
 
@@ -46,44 +46,66 @@ private GestorDatos gestor;
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        fondo = new javax.swing.JPanel();
+        ranking = new javax.swing.JLabel();
+        contenedorTop3 = new javax.swing.JPanel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
         jLabel1.setText("Mis Calificaciones");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        fondo.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
-        jLabel2.setText("Ranking");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 200, -1));
+        ranking.setFont(new java.awt.Font("Roboto SemiBold", 0, 48)); // NOI18N
+        ranking.setForeground(new java.awt.Color(30, 30, 30));
+        ranking.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ranking.setText("Ranking");
 
-        jPanel2.setBackground(new java.awt.Color(250, 240, 252));
+        contenedorTop3.setBackground(new java.awt.Color(255, 255, 255));
+        contenedorTop3.setForeground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 828, Short.MAX_VALUE)
+        javax.swing.GroupLayout contenedorTop3Layout = new javax.swing.GroupLayout(contenedorTop3);
+        contenedorTop3.setLayout(contenedorTop3Layout);
+        contenedorTop3Layout.setHorizontalGroup(
+            contenedorTop3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        contenedorTop3Layout.setVerticalGroup(
+            contenedorTop3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 458, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
+        javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
+        fondo.setLayout(fondoLayout);
+        fondoLayout.setHorizontalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(390, 390, 390)
+                .addComponent(ranking, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addGap(388, 388, 388))
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(contenedorTop3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(70, 70, 70))
+        );
+        fondoLayout.setVerticalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(ranking)
+                .addGap(26, 26, 26)
+                .addComponent(contenedorTop3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(61, 61, 61))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 978, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         getAccessibleContext().setAccessibleName("");
@@ -91,9 +113,9 @@ private GestorDatos gestor;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel contenedorTop3;
+    private javax.swing.JPanel fondo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel ranking;
     // End of variables declaration//GEN-END:variables
 }

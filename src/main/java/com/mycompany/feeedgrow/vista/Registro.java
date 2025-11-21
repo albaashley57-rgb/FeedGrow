@@ -3,6 +3,7 @@ package com.mycompany.feeedgrow.vista;
 
 import com.mycompany.feeedgrow.controlador.RegistroControlador;
 import com.mycompany.feeedgrow.modelo.Estudiante;
+import com.mycompany.feeedgrow.modelo.Seguridad;
 import com.mycompany.feeedgrow.persistencia.GestorDatos;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -189,7 +190,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         botonAceptar.setForeground(new java.awt.Color(255, 255, 255));
         botonAceptar.setText("Aceptar");
         botonAceptar.setBorderPainted(false);
-        botonAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        botonAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonAceptarMouseClicked(evt);
@@ -205,7 +206,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         IniciarSesión.setForeground(new java.awt.Color(102, 102, 102));
         IniciarSesión.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         IniciarSesión.setText("O Inciar Sesión");
-        IniciarSesión.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        IniciarSesión.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         IniciarSesión.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 IniciarSesiónMouseClicked(evt);
@@ -409,26 +410,27 @@ private void estéticaCampos(javax.swing.JTextField campo){
     private void botonAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAceptarMouseClicked
 
     RegistroControlador controller = new RegistroControlador(gestor);
-
-    Estudiante estudiante = new Estudiante(
-        campoNombre.getText().trim(),
-        campoCódigo.getText().trim(),
-        campoCorreo.getText().trim(),
-        jComboBoxCarrera.getSelectedItem().toString(),
-        campoContraseña.getText().trim()
-    );
-
     String confirmar = campoConfirmarContraseña.getText().trim();
-
-    String errores = controller.validarEstudiante(estudiante, confirmar);
+    String errores = controller.validarEstudiante(campoNombre.getText().trim(),
+        campoCódigo.getText().trim(),
+        jComboBoxCarrera.getSelectedItem().toString(),
+        campoContraseña.getText().trim(), confirmar);
 
     if (!errores.isEmpty()) {
         JOptionPane.showMessageDialog(this, errores, "Error de validación", JOptionPane.ERROR_MESSAGE);
         return;
     }
-
+    String salt = Seguridad.generarSalt();
+    String hash = Seguridad.hashear(campoContraseña.getText().trim(), salt);
+    Estudiante estudiante = new Estudiante(
+        campoNombre.getText().trim(),
+        campoCódigo.getText().trim(),
+        jComboBoxCarrera.getSelectedItem().toString(),
+        campoCorreo.getText()
+    );
+    estudiante.setSalt(salt);
+    estudiante.setPasswordHash(hash);
     String resultado = controller.registrarEstudiante(estudiante);
-
     if (resultado.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Registro exitoso. ¡Bienvenido/a, " + estudiante.getNombre() + "!");
         new InicioDeSesion(gestor).setVisible(true);

@@ -17,19 +17,19 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="fondo11" pref="984" max="32767" attributes="0"/>
+              <Component id="fondo" pref="984" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="fondo11" alignment="0" pref="642" max="32767" attributes="0"/>
+          <Component id="fondo" alignment="0" pref="642" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="fondo11">
+    <Container class="javax.swing.JPanel" name="fondo">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -46,7 +46,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="jLabel15" max="32767" attributes="0"/>
+                          <Component id="descripcionResponsabilidad" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -63,57 +63,57 @@
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jLabel10" max="32767" attributes="0"/>
+                          <Component id="iconoUsuario" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel11" max="32767" attributes="0"/>
-                                      <Component id="textoCarrera" max="32767" attributes="0"/>
+                                      <Component id="nombre" max="32767" attributes="0"/>
+                                      <Component id="carrera" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="textoAtributos" max="32767" attributes="0"/>
+                                      <Component id="atributos" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="botonEditar" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="362" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <Component id="textoCorreo" max="32767" attributes="0"/>
+                              <Component id="correo" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconoEstrella" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
+                          <Component id="promedio" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="jLabel19" max="32767" attributes="0"/>
+                          <Component id="descripcionParticipacion" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
-                          <Component id="jLabel51" max="32767" attributes="0"/>
+                          <Component id="descripcionConfiabilidad" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="225" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jButton2" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="botonCerrarSesion" min="-2" pref="100" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="jLabel22" max="32767" attributes="0"/>
+                          <Component id="Participacion" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="634" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="jLabel37" max="32767" attributes="0"/>
+                          <Component id="Compromiso" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="316" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel20" max="32767" attributes="0"/>
+                                  <Component id="comunicacion" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel46" max="32767" attributes="0"/>
+                                  <Component id="colaboracion" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -123,19 +123,19 @@
                                   <EmptySpace min="-2" pref="480" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel28" max="32767" attributes="0"/>
+                                  <Component id="jColaboracion" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="391" max="-2" attributes="0"/>
                                   <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel26" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jParticipacion" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jComunicaicon" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jCompromiso" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                                  <Component id="jLabel34" max="32767" attributes="0"/>
+                                  <Component id="confiabilidad" max="32767" attributes="0"/>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
@@ -146,15 +146,15 @@
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="jLabel23" max="32767" attributes="0"/>
+                          <Component id="descripcionCompromiso" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel47" max="32767" attributes="0"/>
+                                  <Component id="descripcionActitud" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="264" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel31" max="32767" attributes="0"/>
+                                  <Component id="actitud" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
@@ -162,36 +162,36 @@
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="jLabel17" max="32767" attributes="0"/>
+                          <Component id="descripcionColaboracion" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel32" max="32767" attributes="0"/>
+                                  <Component id="liderazgo" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel49" max="32767" attributes="0"/>
+                                  <Component id="descripcionLiderazgo" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel16" max="32767" attributes="0"/>
+                                  <Component id="Iniciativa" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel45" max="32767" attributes="0"/>
+                                  <Component id="descripcionIniciatia" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="jLabel21" max="32767" attributes="0"/>
+                          <Component id="descripcionComunicacion" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel50" max="32767" attributes="0"/>
+                                  <Component id="descripcionResolucion" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jLabel33" max="32767" attributes="0"/>
+                              <Component id="resolucion" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -203,25 +203,25 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel10" min="-2" pref="173" max="-2" attributes="0"/>
+                      <Component id="iconoUsuario" min="-2" pref="173" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="jLabel11" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="nombre" min="-2" pref="36" max="-2" attributes="0"/>
                           <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                          <Component id="textoCarrera" min="-2" max="-2" attributes="0"/>
+                          <Component id="carrera" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                          <Component id="textoCorreo" min="-2" max="-2" attributes="0"/>
+                          <Component id="correo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                          <Component id="textoAtributos" min="-2" max="-2" attributes="0"/>
+                          <Component id="atributos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonEditar" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-                          <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconoEstrella" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                          <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
+                          <Component id="promedio" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="72" pref="72" max="-2" attributes="0"/>
@@ -231,83 +231,83 @@
                           <Component id="Responsabilidad" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Iniciativa" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="textoPromedioResponsabilidad" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="descripcionResponsabilidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="descripcionIniciatia" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
+                      <Component id="colaboracion" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jColaboracion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="liderazgo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
+                      <Component id="descripcionColaboracion" min="-2" max="-2" attributes="0"/>
+                      <Component id="descripcionLiderazgo" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                      <Component id="comunicacion" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComunicaicon" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="resolucion" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
+                      <Component id="descripcionComunicacion" min="-2" max="-2" attributes="0"/>
+                      <Component id="descripcionResolucion" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                      <Component id="jParticipacion" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                              <Component id="Participacion" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="confiabilidad" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
+                              <Component id="descripcionParticipacion" min="-2" max="-2" attributes="0"/>
+                              <Component id="descripcionConfiabilidad" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Compromiso" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jCompromiso" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="actitud" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel48" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
+                              <Component id="descripcionCompromiso" min="-2" max="-2" attributes="0"/>
+                              <Component id="descripcionActitud" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="32" pref="32" max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="botonCerrarSesion" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -315,7 +315,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel10">
+        <Component class="javax.swing.JLabel" name="iconoUsuario">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -323,7 +323,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel11">
+        <Component class="javax.swing.JLabel" name="nombre">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="28" style="0"/>
@@ -334,7 +334,7 @@
             <Property name="text" type="java.lang.String" value="{estudiante nombre}"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="textoCarrera">
+        <Component class="javax.swing.JLabel" name="carrera">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -345,7 +345,7 @@
             <Property name="text" type="java.lang.String" value="Carrera &#x2022; {estudiante carrera}"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="textoCorreo">
+        <Component class="javax.swing.JLabel" name="correo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -356,7 +356,7 @@
             <Property name="text" type="java.lang.String" value="Correo: {estudiante correo}"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="botonCerrarSesion">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="18" green="18" red="e9" type="rgb"/>
@@ -371,12 +371,15 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCerrarSesionActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel16">
+        <Component class="javax.swing.JLabel" name="Iniciativa">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -387,40 +390,40 @@
             <Property name="text" type="java.lang.String" value="Iniciativa"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel15">
+        <Component class="javax.swing.JLabel" name="descripcionResponsabilidad">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="12" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1d" type="rgb"/>
+              <Color blue="45" green="4f" red="3f" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cumple las tareas a tiempo y con calidad."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel17">
+        <Component class="javax.swing.JLabel" name="descripcionColaboracion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="12" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1d" type="rgb"/>
+              <Color blue="45" green="4f" red="3f" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ayuda y aporta al trabajo conjunto."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel19">
+        <Component class="javax.swing.JLabel" name="descripcionParticipacion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="12" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1d" type="rgb"/>
+              <Color blue="45" green="4f" red="3f" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nivel de involucramiento en reuniones y discusiones."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel20">
+        <Component class="javax.swing.JLabel" name="comunicacion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -431,18 +434,18 @@
             <Property name="text" type="java.lang.String" value="Comunicaci&#xf3;n"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel21">
+        <Component class="javax.swing.JLabel" name="descripcionComunicacion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="12" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1d" type="rgb"/>
+              <Color blue="45" green="4f" red="3f" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Explica claro, escucha y respesta turnos."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel22">
+        <Component class="javax.swing.JLabel" name="Participacion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -453,18 +456,18 @@
             <Property name="text" type="java.lang.String" value="Participaci&#xf3;n"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel23">
+        <Component class="javax.swing.JLabel" name="descripcionCompromiso">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="12" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1d" type="rgb"/>
+              <Color blue="45" green="4f" red="3f" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Demuestra inter&#xe9;s y constancia en el proyecto."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="botonEditar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="cc" red="0" type="rgb"/>
@@ -476,9 +479,12 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Editar perfil"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonEditarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="textoPromedioResponsabilidad">
@@ -492,7 +498,7 @@
             <Property name="text" type="java.lang.String" value="0,0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel26">
+        <Component class="javax.swing.JLabel" name="jCompromiso">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="23" style="0"/>
@@ -503,7 +509,7 @@
             <Property name="text" type="java.lang.String" value="0,0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel27">
+        <Component class="javax.swing.JLabel" name="jParticipacion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="23" style="0"/>
@@ -514,7 +520,7 @@
             <Property name="text" type="java.lang.String" value="0,0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel28">
+        <Component class="javax.swing.JLabel" name="jColaboracion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="23" style="0"/>
@@ -525,7 +531,7 @@
             <Property name="text" type="java.lang.String" value="0,0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel29">
+        <Component class="javax.swing.JLabel" name="jComunicaicon">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="23" style="0"/>
@@ -536,7 +542,7 @@
             <Property name="text" type="java.lang.String" value="0,0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel31">
+        <Component class="javax.swing.JLabel" name="actitud">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -547,7 +553,7 @@
             <Property name="text" type="java.lang.String" value="Actitud"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel37">
+        <Component class="javax.swing.JLabel" name="Compromiso">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -569,7 +575,7 @@
             <Property name="text" type="java.lang.String" value="0,0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel40">
+        <Component class="javax.swing.JLabel" name="iconoEstrella">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Emoji" size="30" style="0"/>
@@ -623,18 +629,18 @@
             <Property name="text" type="java.lang.String" value="Responsabilidad"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel45">
+        <Component class="javax.swing.JLabel" name="descripcionIniciatia">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="12" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1d" type="rgb"/>
+              <Color blue="45" green="4f" red="3f" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Propone ideas nuevas."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel46">
+        <Component class="javax.swing.JLabel" name="colaboracion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -645,18 +651,18 @@
             <Property name="text" type="java.lang.String" value="Colaboracion"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel47">
+        <Component class="javax.swing.JLabel" name="descripcionActitud">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="12" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1d" type="rgb"/>
+              <Color blue="45" green="4f" red="3f" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Muestra disposici&#xf3;n positiva, respeto y motivaci&#xf3;n."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel32">
+        <Component class="javax.swing.JLabel" name="liderazgo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -667,18 +673,18 @@
             <Property name="text" type="java.lang.String" value="Liderazgo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel49">
+        <Component class="javax.swing.JLabel" name="descripcionLiderazgo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="12" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1d" type="rgb"/>
+              <Color blue="45" green="4f" red="3f" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Motiva, organia o gu&#xed;a al grupo cuando es necesario."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel33">
+        <Component class="javax.swing.JLabel" name="resolucion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -689,18 +695,18 @@
             <Property name="text" type="java.lang.String" value="Resoluci&#xf3;n de conflictos"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel50">
+        <Component class="javax.swing.JLabel" name="descripcionResolucion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="12" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1d" type="rgb"/>
+              <Color blue="45" green="4f" red="3f" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Maneja difrencias sin generar discusiones negativas."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel34">
+        <Component class="javax.swing.JLabel" name="confiabilidad">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>
@@ -711,13 +717,13 @@
             <Property name="text" type="java.lang.String" value="Confiabilidad"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel51">
+        <Component class="javax.swing.JLabel" name="descripcionConfiabilidad">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="12" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1d" type="rgb"/>
+              <Color blue="45" green="4f" red="3f" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="El equipo puede contar con el/ella; cumple lo que promete."/>
           </Properties>
@@ -733,7 +739,7 @@
             <Property name="text" type="java.lang.String" value="0,0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel43">
+        <Component class="javax.swing.JLabel" name="promedio">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="24" style="0"/>
@@ -744,7 +750,7 @@
             <Property name="text" type="java.lang.String" value="0,0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="textoAtributos">
+        <Component class="javax.swing.JLabel" name="atributos">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="18" style="0"/>

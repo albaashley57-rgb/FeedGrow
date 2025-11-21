@@ -1,6 +1,4 @@
 package com.mycompany.feeedgrow.modelo;
-
-
 import java.util.ArrayList;
 public class Estudiante {
    
@@ -8,25 +6,41 @@ public class Estudiante {
     private final String codigo;
     private String carrera;
     private String correo;
-    private String contrasena;
     private double promedioGlobal;
     private final Perfil perfil;
     private final ArrayList<Calificacion> calificacionesHechas;
     private final ArrayList<Calificacion> calificacionesRecibidas;
-    
+    private String passwordHash;
+    private String salt;
 
-    public Estudiante(String nombre, String codigo, String carrera, String correo, String contrasena) {
+
+    public Estudiante(String nombre, String codigo, String carrera, String correo) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.carrera = carrera;
         this.correo = correo;
-        this.contrasena = contrasena;
         this.calificacionesHechas = new ArrayList<>();
         this.calificacionesRecibidas = new ArrayList<>();
         this.perfil = new Perfil(this);
     }
 
-    // Getters y setters simplificados para claridad
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+
 
     public String getNombre() {
         return this.nombre;
@@ -53,14 +67,6 @@ public class Estudiante {
         this.correo = correo;
     }
 
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena; // considerar hashing para producción */
-    }
-
     public ArrayList<Calificacion> getCalificacionesHechas() {
         return calificacionesHechas;
     }
@@ -81,43 +87,16 @@ public class Estudiante {
     public void agregarCalificacionHecha(Calificacion calificacion) {
         this.calificacionesHechas.add(calificacion);
     }
-
-    public void editarPerfil(String carrera, String correo, String nuevaContrasena) {
-        setCarrera(carrera);
-        setCorreo(correo);
-        setContrasena(nuevaContrasena); // Aquí debería usarse hash
-    }
-//revisaa
-
-    public Calificacion buscarCalificacionHechaPorEstudiante(String codigo) {
-        for (Calificacion c : calificacionesHechas) {
-            if (c.getEvaluado().getCodigo().equals(codigo)) {
-                return c;
-            }
-        }
-        return null;
-    }
-
+public void setContrasena(String nuevaContrasena){
+        String localSalt = Seguridad.generarSalt();
+        String hash = Seguridad.hashear(nuevaContrasena, localSalt);
+        setSalt(salt);
+        setPasswordHash(hash);
+}
   
-    public void editarCalificacion(Calificacion calificacion) {
-        for (int i = 0; i < calificacionesRecibidas.size(); i++) {
-            Calificacion c = calificacionesRecibidas.get(i);
-            if (c.getEvaluador().getCodigo().equals(calificacion.getEvaluador().getCodigo())) {
-                calificacionesRecibidas.set(i, calificacion);
-                this.perfil.actualizarPromedios();
-                break;
-            }
-        }
-    }
-
-    public void eliminarCalificacion(Calificacion calificacion) {
-        calificacionesRecibidas.remove(calificacion);
-        this.perfil.actualizarPromedios();
-    }
-
    @Override
    public String toString(){
-       return this.codigo + "," + this.nombre + "," + this.correo + "," +  this.carrera + ","+this.contrasena;
+       return this.codigo + "," + this.nombre + "," + this.correo + "," +  this.carrera + "," + this.salt + "," +this.passwordHash;
    }
 
 }

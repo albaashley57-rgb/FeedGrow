@@ -50,6 +50,7 @@ public class CalificarControlador {
                 return edicionError;
         }
 }
+    
 //aqui hay que revisar para cargar calificaciones recibidas dentro del estudiante, mirar porque con calificar actua normal (quizas porque ya le damos a add)
     public String editarCalificacion(Calificacion calificacion, 
                                  Map<CriterioEvaluacion, Double> nuevosValores, 
@@ -74,17 +75,22 @@ public class CalificarControlador {
         }
     }
     gestor.guardarCalificaciones();
+     calificacion.getEvaluado().getPerfil().actualizarPromedios();
     return "";
 }
 
 
     public String eliminarCalificacion(Estudiante evaluador, Estudiante evaluado, Calificacion calificacion) {
-        evaluador.getCalificacionesHechas().remove(calificacion);
-        evaluado.getCalificacionesRecibidas().remove(calificacion);
-        gestor.actualizarEstudiante(evaluador);
-        gestor.actualizarEstudiante(evaluado);
-        gestor.eliminarCalificacion(calificacion);
-        return ""; 
+    evaluador.getCalificacionesHechas()
+         .removeIf(c -> c.getEvaluado().getCodigo().equals(calificacion.getEvaluado().getCodigo()));
+evaluado.getCalificacionesRecibidas()
+         .removeIf(c -> c.getEvaluador().getCodigo().equals(calificacion.getEvaluador().getCodigo()));
+    gestor.actualizarEstudiante(evaluador);
+    gestor.actualizarEstudiante(evaluado);
+    gestor.eliminarCalificacion(calificacion);
+    gestor.guardarCalificaciones();
+    evaluado.getPerfil().actualizarPromedios();
+    return ""; 
     }
     
    private String validarValores(Map<CriterioEvaluacion, String> valoresTexto) {

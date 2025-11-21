@@ -40,71 +40,122 @@ public class ItemGestor extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        fondo = new javax.swing.JPanel();
+        inconoUsuario = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
         jcarrera = new javax.swing.JLabel();
         botonEliminar = new javax.swing.JButton();
         botonEditar = new javax.swing.JButton();
         jAtributo = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        separador = new javax.swing.JSeparator();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(900, 99));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        fondo.setBackground(new java.awt.Color(255, 255, 255));
+        fondo.setMinimumSize(new java.awt.Dimension(900, 99));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-11-16 151912.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        inconoUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        inconoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Captura de pantalla 2025-11-16 151859.png"))); // NOI18N
 
-        nombre.setFont(new java.awt.Font("Roboto SemiCondensed", 1, 24)); // NOI18N
+        nombre.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
         nombre.setForeground(new java.awt.Color(30, 30, 30));
         nombre.setText("{estudiante nombre}");
-        jPanel1.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, 36));
 
-        jcarrera.setFont(new java.awt.Font("Roboto SemiCondensed", 0, 18)); // NOI18N
-        jcarrera.setForeground(new java.awt.Color(30, 30, 30));
+        jcarrera.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jcarrera.setForeground(new java.awt.Color(63, 69, 79));
         jcarrera.setText("Carrera • {estudiante carrera}");
-        jPanel1.add(jcarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, 30));
 
-        botonEliminar.setBackground(new java.awt.Color(255, 0, 0));
-        botonEliminar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
-        botonEliminar.setForeground(new java.awt.Color(30, 30, 30));
+        botonEliminar.setBackground(new java.awt.Color(230, 37, 37));
+        botonEliminar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        botonEliminar.setForeground(new java.awt.Color(255, 255, 255));
         botonEliminar.setText("Eliminar");
+        botonEliminar.setBorderPainted(false);
+        botonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 100, 30));
 
-        botonEditar.setBackground(new java.awt.Color(51, 255, 102));
-        botonEditar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
-        botonEditar.setForeground(new java.awt.Color(30, 30, 30));
+        botonEditar.setBackground(new java.awt.Color(54, 197, 68));
+        botonEditar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        botonEditar.setForeground(new java.awt.Color(255, 255, 255));
         botonEditar.setText("Editar");
+        botonEditar.setBorderPainted(false);
+        botonEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonEditarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 80, 30));
 
-        jAtributo.setFont(new java.awt.Font("Roboto SemiCondensed", 0, 18)); // NOI18N
-        jAtributo.setForeground(new java.awt.Color(30, 30, 30));
+        jAtributo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jAtributo.setForeground(new java.awt.Color(63, 69, 79));
         jAtributo.setText("{calificacion atributo}");
-        jPanel1.add(jAtributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, 30));
 
-        jSeparator1.setForeground(new java.awt.Color(30, 30, 30));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 117, 860, 10));
+        separador.setForeground(new java.awt.Color(202, 196, 208));
+
+        javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
+        fondo.setLayout(fondoLayout);
+        fondoLayout.setHorizontalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(inconoUsuario)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jAtributo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(fondoLayout.createSequentialGroup()
+                                .addComponent(jcarrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(20, 20, 20))))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94))
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        fondoLayout.setVerticalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(inconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(fondoLayout.createSequentialGroup()
+                                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(fondoLayout.createSequentialGroup()
+                                        .addGap(26, 26, 26)
+                                        .addComponent(jAtributo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jcarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -138,11 +189,11 @@ public class ItemGestor extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonEditar;
     private javax.swing.JButton botonEliminar;
+    private javax.swing.JPanel fondo;
+    private javax.swing.JLabel inconoUsuario;
     private javax.swing.JLabel jAtributo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel jcarrera;
     private javax.swing.JLabel nombre;
+    private javax.swing.JSeparator separador;
     // End of variables declaration//GEN-END:variables
 }

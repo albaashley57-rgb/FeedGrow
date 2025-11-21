@@ -1,6 +1,4 @@
 package com.mycompany.feeedgrow.vista;
-
-
 import com.mycompany.feeedgrow.controlador.CalificarControlador;
 import com.mycompany.feeedgrow.modelo.CriterioEvaluacion;
 import com.mycompany.feeedgrow.modelo.Estudiante;
@@ -22,8 +20,23 @@ private boolean calificacionEdicion;
         this.usuario = usuario;
         this.calificacionEdicion = isEdicion;
         initCustom();
+        initDatos(calificacionEdicion);
     }
-  
+private void initDatos(boolean t){
+    if(t){
+        Map m = gestor.buscarCalificacionPorEvaluadorYEvaluado(usuario, evaluado).getCalificaciones();
+        jResponsabilidad.setText("" + m.get(CriterioEvaluacion.RESPONSABILIDAD));
+        jColaboracion.setText("" + m.get(CriterioEvaluacion.COLABORACION));
+        jComunicacion.setText("" +m.get(CriterioEvaluacion.COMUNICACION));
+        jParticipacion.setText("" + m.get(CriterioEvaluacion.PARTICIPACION));
+        jCompromiso.setText("" + m.get(CriterioEvaluacion.COMPROMISO));
+        jIniciativa.setText("" + m.get(CriterioEvaluacion.INICIATIVA));
+        jLiderazgo.setText("" + m.get(CriterioEvaluacion.LIDERAZGO));
+        JResolucion.setText("" + m.get(CriterioEvaluacion.RESOLUCION_CONFLICTOS));
+        jConfiabilidad.setText("" + m.get(CriterioEvaluacion.CONFIABILIDAD));
+        jActitud.setText("" + m.get(CriterioEvaluacion.ACTITUD));
+    }
+}
 private void initCustom(){
     Nombre.setText(evaluado.getNombre());
 }
@@ -75,40 +88,40 @@ if (mensaje.isEmpty()) {
     private void initComponents() {
 
         panel1 = new java.awt.Panel();
-        jPanel1 = new javax.swing.JPanel();
+        fondo = new javax.swing.JPanel();
         Nombre = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
+        descripcionResponsabilidad = new javax.swing.JLabel();
+        descripcionColaboracion = new javax.swing.JLabel();
+        descripcionParticipacion = new javax.swing.JLabel();
+        Comunicacion = new javax.swing.JLabel();
+        descripcionComunicacion = new javax.swing.JLabel();
+        Participacion = new javax.swing.JLabel();
+        descripcionCompromiso = new javax.swing.JLabel();
         Responsabilidad = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
+        Colaboracion = new javax.swing.JLabel();
         jTituloRecomendacion = new javax.swing.JTextField();
         jActitud = new javax.swing.JTextField();
         jColaboracion = new javax.swing.JTextField();
         jComunicacion = new javax.swing.JTextField();
         jParticipacion = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
+        iniciativa = new javax.swing.JLabel();
+        actitud = new javax.swing.JLabel();
+        descripcionInciativa = new javax.swing.JLabel();
+        descripcionActitud = new javax.swing.JLabel();
+        liderazgo = new javax.swing.JLabel();
+        descripcionLiderazgo = new javax.swing.JLabel();
+        resolucionConflictos = new javax.swing.JLabel();
+        descripcionResolucion = new javax.swing.JLabel();
+        confiabilidad = new javax.swing.JLabel();
+        descripcionConfiabilidad = new javax.swing.JLabel();
         jResponsabilidad = new javax.swing.JTextField();
         jIniciativa = new javax.swing.JTextField();
         jLiderazgo = new javax.swing.JTextField();
         JResolucion = new javax.swing.JTextField();
         jConfiabilidad = new javax.swing.JTextField();
-        jLabel38 = new javax.swing.JLabel();
+        compromiso = new javax.swing.JLabel();
         jCompromiso = new javax.swing.JTextField();
-        jLabel39 = new javax.swing.JLabel();
+        Recomendaciones = new javax.swing.JLabel();
         Guardar = new javax.swing.JButton();
         jRecomendacion = new javax.swing.JTextField();
 
@@ -123,145 +136,366 @@ if (mensaje.isEmpty()) {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        fondo.setBackground(new java.awt.Color(255, 255, 255));
 
-        Nombre.setFont(new java.awt.Font("Segoe UI Black", 0, 28)); // NOI18N
+        Nombre.setFont(new java.awt.Font("Roboto", 0, 28)); // NOI18N
+        Nombre.setForeground(new java.awt.Color(30, 30, 30));
         Nombre.setText("{estudiante nombre}");
-        jPanel1.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, -1, 36));
 
-        jLabel15.setText("Cumple las tareas a tiempo y con calidad.");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        descripcionResponsabilidad.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        descripcionResponsabilidad.setForeground(new java.awt.Color(63, 69, 79));
+        descripcionResponsabilidad.setText("Cumple las tareas a tiempo y con calidad.");
 
-        jLabel17.setText("Ayuda y aporta al trabajo conjunto.");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        descripcionColaboracion.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        descripcionColaboracion.setForeground(new java.awt.Color(63, 69, 79));
+        descripcionColaboracion.setText("Ayuda y aporta al trabajo conjunto.");
 
-        jLabel19.setText("Nivel de involucramiento en reuniones y discusiones.");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
+        descripcionParticipacion.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        descripcionParticipacion.setForeground(new java.awt.Color(63, 69, 79));
+        descripcionParticipacion.setText("Nivel de involucramiento en reuniones y discusiones.");
 
-        jLabel20.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel20.setText("Comunicación");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 192, -1));
+        Comunicacion.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
+        Comunicacion.setForeground(new java.awt.Color(30, 30, 30));
+        Comunicacion.setText("Comunicación");
 
-        jLabel21.setText("Explica claro, escucha y respesta turnos.");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+        descripcionComunicacion.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        descripcionComunicacion.setForeground(new java.awt.Color(63, 69, 79));
+        descripcionComunicacion.setText("Explica claro, escucha y respeta turnos.");
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel22.setText("Participación");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 192, -1));
+        Participacion.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
+        Participacion.setForeground(new java.awt.Color(30, 30, 30));
+        Participacion.setText("Participación");
 
-        jLabel23.setText("Demuestra interés y constancia en el proyecto.");
-        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
+        descripcionCompromiso.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        descripcionCompromiso.setForeground(new java.awt.Color(63, 69, 79));
+        descripcionCompromiso.setText("Demuestra interés y constancia en el proyecto.");
 
-        Responsabilidad.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        Responsabilidad.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
+        Responsabilidad.setForeground(new java.awt.Color(30, 30, 30));
         Responsabilidad.setText("Responsabilidad");
-        jPanel1.add(Responsabilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 192, -1));
 
-        jLabel46.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel46.setText("Colaboracion");
-        jPanel1.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+        Colaboracion.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
+        Colaboracion.setForeground(new java.awt.Color(30, 30, 30));
+        Colaboracion.setText("Colaboración");
 
         jTituloRecomendacion.setBackground(new java.awt.Color(200, 200, 200));
-        jTituloRecomendacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTituloRecomendacion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTituloRecomendacion.setForeground(new java.awt.Color(30, 30, 30));
         jTituloRecomendacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTituloRecomendacionActionPerformed(evt);
             }
         });
-        jPanel1.add(jTituloRecomendacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, 420, 20));
 
-        jActitud.setBackground(new java.awt.Color(200, 200, 200));
-        jPanel1.add(jActitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 410, 40, 30));
+        jActitud.setBackground(new java.awt.Color(217, 217, 217));
+        jActitud.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jActitud.setForeground(new java.awt.Color(30, 30, 30));
 
-        jColaboracion.setBackground(new java.awt.Color(200, 200, 200));
-        jPanel1.add(jColaboracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 40, 30));
+        jColaboracion.setBackground(new java.awt.Color(217, 217, 217));
+        jColaboracion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jColaboracion.setForeground(new java.awt.Color(30, 30, 30));
 
-        jComunicacion.setBackground(new java.awt.Color(200, 200, 200));
-        jPanel1.add(jComunicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 40, 30));
+        jComunicacion.setBackground(new java.awt.Color(217, 217, 217));
+        jComunicacion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jComunicacion.setForeground(new java.awt.Color(30, 30, 30));
 
-        jParticipacion.setBackground(new java.awt.Color(200, 200, 200));
-        jPanel1.add(jParticipacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 40, 30));
+        jParticipacion.setBackground(new java.awt.Color(217, 217, 217));
+        jParticipacion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jParticipacion.setForeground(new java.awt.Color(30, 30, 30));
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel16.setText("Iniciativa");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 192, -1));
+        iniciativa.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
+        iniciativa.setForeground(new java.awt.Color(30, 30, 30));
+        iniciativa.setText("Iniciativa");
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel31.setText("Actitud");
-        jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 270, -1));
+        actitud.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
+        actitud.setForeground(new java.awt.Color(30, 30, 30));
+        actitud.setText("Actitud");
 
-        jLabel45.setText("Propone ideas nuevas.");
-        jPanel1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
+        descripcionInciativa.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        descripcionInciativa.setForeground(new java.awt.Color(63, 69, 79));
+        descripcionInciativa.setText("Propone ideas nuevas.");
 
-        jLabel47.setText("Muestra disposición positiva, respeto y motivación.");
-        jPanel1.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, -1, -1));
+        descripcionActitud.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        descripcionActitud.setForeground(new java.awt.Color(63, 69, 79));
+        descripcionActitud.setText("Muestra disposición positiva, respeto y motivación.");
 
-        jLabel32.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel32.setText("Liderazgo");
-        jPanel1.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 192, -1));
+        liderazgo.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
+        liderazgo.setForeground(new java.awt.Color(30, 30, 30));
+        liderazgo.setText("Liderazgo");
 
-        jLabel49.setText("Motiva, organia o guía al grupo cuando es necesario.");
-        jPanel1.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
+        descripcionLiderazgo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        descripcionLiderazgo.setForeground(new java.awt.Color(63, 69, 79));
+        descripcionLiderazgo.setText("Motiva, organiza o guía al grupo cuando es necesario.");
 
-        jLabel33.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel33.setText("Resolución de conflictos");
-        jPanel1.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 270, -1));
+        resolucionConflictos.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
+        resolucionConflictos.setForeground(new java.awt.Color(30, 30, 30));
+        resolucionConflictos.setText("Resolución de conflictos");
 
-        jLabel50.setText("Maneja difrencias sin generar discusiones negativas.");
-        jPanel1.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
+        descripcionResolucion.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        descripcionResolucion.setForeground(new java.awt.Color(63, 69, 79));
+        descripcionResolucion.setText("Maneja diferencias sin generar discusiones negativas.");
 
-        jLabel34.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel34.setText("Confiabilidad");
-        jPanel1.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 270, -1));
+        confiabilidad.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
+        confiabilidad.setForeground(new java.awt.Color(30, 30, 30));
+        confiabilidad.setText("Confiabilidad");
 
-        jLabel51.setText("El equipo puede contar con el/ella; cumple lo que promete.");
-        jPanel1.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, -1, -1));
+        descripcionConfiabilidad.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        descripcionConfiabilidad.setForeground(new java.awt.Color(63, 69, 79));
+        descripcionConfiabilidad.setText("El equipo puede contar con el/ella; cumple lo que promete.");
 
-        jResponsabilidad.setBackground(new java.awt.Color(200, 200, 200));
-        jPanel1.add(jResponsabilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 40, 30));
+        jResponsabilidad.setBackground(new java.awt.Color(217, 217, 217));
+        jResponsabilidad.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jResponsabilidad.setForeground(new java.awt.Color(30, 30, 30));
 
-        jIniciativa.setBackground(new java.awt.Color(200, 200, 200));
-        jPanel1.add(jIniciativa, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 160, 40, 30));
+        jIniciativa.setBackground(new java.awt.Color(217, 217, 217));
+        jIniciativa.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jIniciativa.setForeground(new java.awt.Color(30, 30, 30));
+        jIniciativa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jIniciativaActionPerformed(evt);
+            }
+        });
 
-        jLiderazgo.setBackground(new java.awt.Color(200, 200, 200));
-        jPanel1.add(jLiderazgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 230, 40, 30));
+        jLiderazgo.setBackground(new java.awt.Color(217, 217, 217));
+        jLiderazgo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLiderazgo.setForeground(new java.awt.Color(30, 30, 30));
 
-        JResolucion.setBackground(new java.awt.Color(200, 200, 200));
-        jPanel1.add(JResolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 290, 40, 30));
+        JResolucion.setBackground(new java.awt.Color(217, 217, 217));
+        JResolucion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        JResolucion.setForeground(new java.awt.Color(30, 30, 30));
 
-        jConfiabilidad.setBackground(new java.awt.Color(200, 200, 200));
-        jPanel1.add(jConfiabilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 350, 40, 30));
+        jConfiabilidad.setBackground(new java.awt.Color(217, 217, 217));
+        jConfiabilidad.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jConfiabilidad.setForeground(new java.awt.Color(30, 30, 30));
 
-        jLabel38.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel38.setText("Compromiso");
-        jPanel1.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 192, -1));
+        compromiso.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
+        compromiso.setForeground(new java.awt.Color(30, 30, 30));
+        compromiso.setText("Compromiso");
 
-        jCompromiso.setBackground(new java.awt.Color(200, 200, 200));
-        jPanel1.add(jCompromiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 430, 40, 30));
+        jCompromiso.setBackground(new java.awt.Color(217, 217, 217));
+        jCompromiso.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jCompromiso.setForeground(new java.awt.Color(30, 30, 30));
 
-        jLabel39.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel39.setText("Recomendaciones:");
-        jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 220, -1));
+        Recomendaciones.setFont(new java.awt.Font("Roboto", 0, 22)); // NOI18N
+        Recomendaciones.setForeground(new java.awt.Color(30, 30, 30));
+        Recomendaciones.setText("Recomendaciones:");
 
         Guardar.setBackground(new java.awt.Color(0, 204, 102));
-        Guardar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        Guardar.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         Guardar.setForeground(new java.awt.Color(255, 255, 255));
         Guardar.setText("Guardar cambios");
+        Guardar.setBorderPainted(false);
         Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 550, -1, -1));
 
         jRecomendacion.setBackground(new java.awt.Color(200, 200, 200));
-        jRecomendacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jRecomendacion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jRecomendacion.setForeground(new java.awt.Color(30, 30, 30));
         jRecomendacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRecomendacionActionPerformed(evt);
             }
         });
-        jPanel1.add(jRecomendacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 420, 70));
+
+        javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
+        fondo.setLayout(fondoLayout);
+        fondoLayout.setHorizontalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(240, 240, 240))
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(descripcionResponsabilidad, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                        .addGap(122, 122, 122))
+                    .addComponent(Responsabilidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jResponsabilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(descripcionInciativa, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addGap(269, 269, 269))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                        .addComponent(iniciativa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLiderazgo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jIniciativa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JResolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jConfiabilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jActitud, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23))))
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(descripcionColaboracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(158, 158, 158))
+                    .addComponent(Colaboracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jColaboracion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(liderazgo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(91, 91, 91))
+                    .addComponent(descripcionLiderazgo))
+                .addGap(107, 107, 107))
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(descripcionComunicacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(134, 134, 134))
+                    .addComponent(Comunicacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jComunicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(resolucionConflictos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(17, 17, 17))
+                    .addComponent(descripcionResolucion))
+                .addGap(103, 103, 103))
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(descripcionParticipacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(69, 69, 69))
+                    .addComponent(Participacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jParticipacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(confiabilidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(39, 39, 39))
+                    .addComponent(descripcionConfiabilidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(81, 81, 81))
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addComponent(descripcionCompromiso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(99, 99, 99))
+                    .addComponent(compromiso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCompromiso, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(actitud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(descripcionActitud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(120, 120, 120))
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(Recomendaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(650, 650, 650))
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jRecomendacion, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTituloRecomendacion, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(173, 173, 173)
+                .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        fondoLayout.setVerticalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(Responsabilidad)
+                        .addGap(3, 3, 3)
+                        .addComponent(descripcionResponsabilidad))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jResponsabilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(iniciativa)
+                            .addComponent(jIniciativa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
+                        .addComponent(descripcionInciativa)))
+                .addGap(5, 5, 5)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(Colaboracion)
+                        .addGap(3, 3, 3)
+                        .addComponent(descripcionColaboracion))
+                    .addComponent(jColaboracion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(liderazgo)
+                            .addComponent(jLiderazgo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
+                        .addComponent(descripcionLiderazgo)))
+                .addGap(5, 5, 5)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(Comunicacion)
+                        .addGap(3, 3, 3)
+                        .addComponent(descripcionComunicacion))
+                    .addComponent(jComunicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(resolucionConflictos)
+                            .addComponent(JResolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
+                        .addComponent(descripcionResolucion)))
+                .addGap(5, 5, 5)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(confiabilidad)
+                            .addComponent(jConfiabilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
+                        .addComponent(descripcionConfiabilidad))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(fondoLayout.createSequentialGroup()
+                                .addComponent(Participacion)
+                                .addGap(3, 3, 3)
+                                .addComponent(descripcionParticipacion))
+                            .addComponent(jParticipacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(5, 5, 5)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(compromiso)
+                        .addGap(3, 3, 3)
+                        .addComponent(descripcionCompromiso))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jCompromiso, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(actitud)
+                            .addComponent(jActitud, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
+                        .addComponent(descripcionActitud)))
+                .addGap(35, 35, 35)
+                .addComponent(Recomendaciones)
+                .addGap(3, 3, 3)
+                .addComponent(jTituloRecomendacion, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRecomendacion, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Guardar)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -269,12 +503,11 @@ if (mensaje.isEmpty()) {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -290,44 +523,48 @@ if (mensaje.isEmpty()) {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRecomendacionActionPerformed
 
+    private void jIniciativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIniciativaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jIniciativaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Colaboracion;
+    private javax.swing.JLabel Comunicacion;
     private javax.swing.JButton Guardar;
     private javax.swing.JTextField JResolucion;
     private javax.swing.JLabel Nombre;
+    private javax.swing.JLabel Participacion;
+    private javax.swing.JLabel Recomendaciones;
     private javax.swing.JLabel Responsabilidad;
+    private javax.swing.JLabel actitud;
+    private javax.swing.JLabel compromiso;
+    private javax.swing.JLabel confiabilidad;
+    private javax.swing.JLabel descripcionActitud;
+    private javax.swing.JLabel descripcionColaboracion;
+    private javax.swing.JLabel descripcionCompromiso;
+    private javax.swing.JLabel descripcionComunicacion;
+    private javax.swing.JLabel descripcionConfiabilidad;
+    private javax.swing.JLabel descripcionInciativa;
+    private javax.swing.JLabel descripcionLiderazgo;
+    private javax.swing.JLabel descripcionParticipacion;
+    private javax.swing.JLabel descripcionResolucion;
+    private javax.swing.JLabel descripcionResponsabilidad;
+    private javax.swing.JPanel fondo;
+    private javax.swing.JLabel iniciativa;
     private javax.swing.JTextField jActitud;
     private javax.swing.JTextField jColaboracion;
     private javax.swing.JTextField jCompromiso;
     private javax.swing.JTextField jComunicacion;
     private javax.swing.JTextField jConfiabilidad;
     private javax.swing.JTextField jIniciativa;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
     private javax.swing.JTextField jLiderazgo;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jParticipacion;
     private javax.swing.JTextField jRecomendacion;
     private javax.swing.JTextField jResponsabilidad;
     private javax.swing.JTextField jTituloRecomendacion;
+    private javax.swing.JLabel liderazgo;
     private java.awt.Panel panel1;
+    private javax.swing.JLabel resolucionConflictos;
     // End of variables declaration//GEN-END:variables
 }

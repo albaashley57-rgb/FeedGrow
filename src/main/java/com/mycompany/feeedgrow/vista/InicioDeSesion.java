@@ -68,13 +68,13 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
 
         jPanel3.setBackground(new java.awt.Color(230, 246, 246));
         jPanel3.setForeground(new java.awt.Color(225, 225, 225));
+        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.setPreferredSize(new java.awt.Dimension(550, 451));
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FeedGrow_241x86.png.png"))); // NOI18N
         logo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        campoUsuario.setBackground(new java.awt.Color(255, 255, 255));
         campoUsuario.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         campoUsuario.setForeground(new java.awt.Color(153, 153, 153));
         campoUsuario.setText("Ingrese su usuario");
@@ -110,7 +110,7 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         registrarse.setForeground(new java.awt.Color(102, 102, 102));
         registrarse.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         registrarse.setText("O registrarse");
-        registrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         registrarse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registrarseMouseClicked(evt);
@@ -128,7 +128,6 @@ private void agregarDegradado(JPanel destino, Degradado fondo) {
         título.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         título.setText("INICIAR SESIÓN");
 
-        campoContraseña.setBackground(new java.awt.Color(255, 255, 255));
         campoContraseña.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         campoContraseña.setForeground(new java.awt.Color(153, 153, 153));
         campoContraseña.setText("wwwwwww");

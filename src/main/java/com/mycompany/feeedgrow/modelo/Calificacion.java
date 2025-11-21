@@ -47,7 +47,6 @@ public class Calificacion {
         return calificaciones;
     }
 
-
     public String getRecomendacion() {
         return recomendacion;
     }
@@ -76,6 +75,7 @@ public class Calificacion {
     }
     return evaluador.getNombre() + "," + evaluado.getNombre() + "," + sb.toString() + "," + titulorecomendacion + "," + recomendacion;
     }
+
 }
 
 
